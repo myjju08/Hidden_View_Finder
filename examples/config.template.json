@@ -1,0 +1,33 @@
+{
+  "output_dir": "../data/processed/example-5m",
+  "data_root": "../data",
+  "crs": "EPSG:5186",
+  "vertical_reference": "REPLACE_WITH_DOCUMENTED_VERTICAL_REFERENCE",
+  "resolution_m": 5,
+  "bounds": [190000, 540000, 210000, 560000],
+  "terrain": {
+    "kind": "raster",
+    "path": "../data/raw/REPLACE_WITH_VERIFIED_DTM.tif",
+    "band": 1,
+    "bare_earth_verified": true,
+    "units": "m",
+    "vertical_reference": "REPLACE_WITH_DOCUMENTED_VERTICAL_REFERENCE"
+  },
+  "buildings": {
+    "path": "../data/raw/REPLACE_WITH_FOOTPRINTS.shp",
+    "encoding": "CP949",
+    "height_field": null,
+    "height_is_agl": true,
+    "floors_field": null,
+    "units": "m",
+    "vertical_reference": "REPLACE_WITH_DOCUMENTED_VERTICAL_REFERENCE",
+    "coverage_bounds": [190000, 540000, 210000, 560000],
+    "invalid_geometry": "repair"
+  },
+  "storage_policy": {
+    "total_budget_bytes": 21474836480,
+    "minimum_free_bytes": 8589934592,
+    "disk_cache_bytes": 1073741824,
+    "temporary_budget_bytes": 4294967296
+  }
+}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seoul-point-visibility"
+version = "0.1.0"
+description = "Prepared-raster inverse point viewsheds with explicit coverage and height semantics"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "shapely>=2.0,<3", "pyproj>=3.6,<4", "psutil>=5.9,<8", "GDAL>=3.8,<3.9"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+acquisition = ["requests==2.34.2", "pyarrow==25.0.1"]
+
+[project.scripts]
+seoul-visibility = "seoul_visibility.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "latest_suite": "reports/tests-real-integration.xml",
+  "tests": 173,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 9.98
+}

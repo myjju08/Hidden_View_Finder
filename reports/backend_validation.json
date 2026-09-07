@@ -1,0 +1,521 @@
+{
+  "source_region": "deterministic synthetic rasters; no Seoul measurements",
+  "backend": "GDAL/3.8.4/GVM_Edge/GVOT_NORMAL/pixel-center-v1",
+  "gdal_version": "3.8.4",
+  "python": "3.12.14 | packaged by conda-forge | (main, Aug 21 2026, 22:48:28) [GCC 14.4.0]",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+  "numpy": "2.5.2",
+  "seed": 20260907,
+  "api_signature": "ViewshedGenerate(Band srcBand, char const * driverName, char const * targetRasterName, char ** creationOptions, double observerX, double observerY, double observerHeight, double targetHeight, double visibleVal, double invisibleVal, double outOfRangeVal, double noDataVal, double dfCurvCoeff, GDALViewshedMode mode, double maxDistance, GDALProgressFunc callback=0, void * callback_data=None, GDALViewshedOutputType heightMode=GVOT_NORMAL, char ** options=None) -> Dataset",
+  "selected_mode": "GVM_Edge",
+  "earth_diameter_m": 12756274.0,
+  "quantization_probe": {
+    "same_cell_offsets_identical": true,
+    "records": [
+      {
+        "pixel_fraction": [
+          0.01,
+          0.01
+        ],
+        "requested_xy": [
+          200075.05,
+          549924.95
+        ],
+        "output_sha256": "60764343559385a8b47e1668db21067c6dbf34539e152ac907f752e3e144fc27",
+        "output_transform": [
+          200000.0,
+          5.0,
+          0.0,
+          550000.0,
+          0.0,
+          -5.0
+        ]
+      },
+      {
+        "pixel_fraction": [
+          0.25,
+          0.75
+        ],
+        "requested_xy": [
+          200076.25,
+          549921.25
+        ],
+        "output_sha256": "60764343559385a8b47e1668db21067c6dbf34539e152ac907f752e3e144fc27",
+        "output_transform": [
+          200000.0,
+          5.0,
+          0.0,
+          550000.0,
+          0.0,
+          -5.0
+        ]
+      },
+      {
+        "pixel_fraction": [
+          0.5,
+          0.5
+        ],
+        "requested_xy": [
+          200077.5,
+          549922.5
+        ],
+        "output_sha256": "60764343559385a8b47e1668db21067c6dbf34539e152ac907f752e3e144fc27",
+        "output_transform": [
+          200000.0,
+          5.0,
+          0.0,
+          550000.0,
+          0.0,
+          -5.0
+        ]
+      },
+      {
+        "pixel_fraction": [
+          0.75,
+          0.25
+        ],
+        "requested_xy": [
+          200078.75,
+          549923.75
+        ],
+        "output_sha256": "60764343559385a8b47e1668db21067c6dbf34539e152ac907f752e3e144fc27",
+        "output_transform": [
+          200000.0,
+          5.0,
+          0.0,
+          550000.0,
+          0.0,
+          -5.0
+        ]
+      },
+      {
+        "pixel_fraction": [
+          0.99,
+          0.99
+        ],
+        "requested_xy": [
+          200079.95,
+          549920.05
+        ],
+        "output_sha256": "60764343559385a8b47e1668db21067c6dbf34539e152ac907f752e3e144fc27",
+        "output_transform": [
+          200000.0,
+          5.0,
+          0.0,
+          550000.0,
+          0.0,
+          -5.0
+        ]
+      }
+    ],
+    "effective_xy_convention": [
+      200077.5,
+      549922.5
+    ],
+    "adjacent_cell_changed_pixels": 87,
+    "source_elevation_m": 7,
+    "observer_height_above_source_cell_m": 20,
+    "resolved_absolute_source_elevation_m": 27,
+    "mode_changed_pixels_vs_edge": {
+      "GVM_Diagonal": 125,
+      "GVM_Max": 137,
+      "GVM_Min": 113
+    },
+    "interpretation": "Measured same-cell invariance; effective location is reported at the containing cell center. No subpixel source precision is claimed.",
+    "source_code_review": "GDAL 3.8.4 casts inverse-transformed XY to integer pixel indices, adds the source cell elevation to observerHeight, and uses index-distance geometry. GVM_Edge uses horizon propagation with edge interpolation; it is not full-column supercover LOS."
+  },
+  "comparisons": [
+    {
+      "case": "flat_unobstructed",
+      "shape": [
+        31,
+        31
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        15,
+        6
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 961,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": true,
+      "examples": []
+    },
+    {
+      "case": "tall_continuous_wall",
+      "shape": [
+        31,
+        31
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        15,
+        6
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 930,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": true,
+      "examples": []
+    },
+    {
+      "case": "low_wall_no_eye_height_on_obstacles",
+      "shape": [
+        31,
+        31
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        15,
+        6
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 930,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": true,
+      "examples": []
+    },
+    {
+      "case": "roof_target_on_surface",
+      "shape": [
+        31,
+        31
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        15,
+        6
+      ],
+      "source_absolute_z_m": 10,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 949,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": false,
+      "examples": []
+    },
+    {
+      "case": "roof_target_above_surface",
+      "shape": [
+        31,
+        31
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        15,
+        6
+      ],
+      "source_absolute_z_m": 14,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 949,
+      "false_visible": 44,
+      "false_blocked": 0,
+      "hard_regression": false,
+      "examples": [
+        {
+          "row": 11,
+          "col": 2,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 3,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 4,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 5,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 6,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 7,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 8,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 9,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 10,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 11,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 12,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 11,
+          "col": 13,
+          "gdal_visible": true,
+          "reference_visible": false
+        }
+      ]
+    },
+    {
+      "case": "thin_corner_touch",
+      "shape": [
+        5,
+        5
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        0,
+        0
+      ],
+      "source_absolute_z_m": 2,
+      "eye_height_m": 2,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 24,
+      "false_visible": 3,
+      "false_blocked": 0,
+      "hard_regression": false,
+      "examples": [
+        {
+          "row": 2,
+          "col": 2,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "gdal_visible": true,
+          "reference_visible": false
+        }
+      ]
+    },
+    {
+      "case": "random_columns",
+      "shape": [
+        41,
+        41
+      ],
+      "resolution_m": 5,
+      "source_row_col": [
+        20,
+        20
+      ],
+      "source_absolute_z_m": 25,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.0,
+      "sampled_open_ground_cells": 500,
+      "false_visible": 75,
+      "false_blocked": 14,
+      "hard_regression": false,
+      "examples": [
+        {
+          "row": 30,
+          "col": 3,
+          "gdal_visible": false,
+          "reference_visible": true
+        },
+        {
+          "row": 28,
+          "col": 6,
+          "gdal_visible": false,
+          "reference_visible": true
+        },
+        {
+          "row": 32,
+          "col": 3,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 8,
+          "col": 7,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 15,
+          "col": 17,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 5,
+          "col": 37,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 22,
+          "col": 8,
+          "gdal_visible": false,
+          "reference_visible": true
+        },
+        {
+          "row": 5,
+          "col": 35,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 10,
+          "col": 8,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 27,
+          "col": 24,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 31,
+          "col": 31,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 27,
+          "col": 17,
+          "gdal_visible": true,
+          "reference_visible": false
+        }
+      ]
+    },
+    {
+      "case": "curvature_0",
+      "shape": [
+        101,
+        101
+      ],
+      "resolution_m": 200,
+      "source_row_col": [
+        50,
+        50
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0,
+      "sampled_open_ground_cells": 150,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": true,
+      "examples": []
+    },
+    {
+      "case": "curvature_0.857143",
+      "shape": [
+        101,
+        101
+      ],
+      "resolution_m": 200,
+      "source_row_col": [
+        50,
+        50
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 0.8571428571428571,
+      "sampled_open_ground_cells": 150,
+      "false_visible": 0,
+      "false_blocked": 0,
+      "hard_regression": false,
+      "examples": []
+    },
+    {
+      "case": "curvature_1",
+      "shape": [
+        101,
+        101
+      ],
+      "resolution_m": 200,
+      "source_row_col": [
+        50,
+        50
+      ],
+      "source_absolute_z_m": 1.7,
+      "eye_height_m": 1.7,
+      "curvature_coefficient": 1,
+      "sampled_open_ground_cells": 150,
+      "false_visible": 2,
+      "false_blocked": 0,
+      "hard_regression": false,
+      "examples": [
+        {
+          "row": 23,
+          "col": 88,
+          "gdal_visible": true,
+          "reference_visible": false
+        },
+        {
+          "row": 93,
+          "col": 32,
+          "gdal_visible": true,
+          "reference_visible": false
+        }
+      ]
+    }
+  ],
+  "total_false_visible": 124,
+  "total_false_blocked": 14,
+  "comparison_interpretation": [
+    "False-visible and false-blocked label disagreement relative to the closed-column reference, not measured real-world error.",
+    "Columns retain full source and destination cell intervals, closed corner/edge touches, and endpoint contact tolerance 1e-6 m. GDAL propagates a horizon between raster samples.",
+    "Roof source intervals, thin/corner obstacles, near-grazing rays, and propagated horizon interpolation can therefore disagree. No visibility-bound guarantee is asserted.",
+    "The three simple flat/wall cases and flat-model long-distance case are hard regression checks. Other counts are diagnostic; review examples and model differences before relying on a shortlisted sightline."
+  ],
+  "primary_sources": [
+    "https://gdal.org/en/stable/programs/gdal_viewshed.html",
+    "https://gdal.org/en/stable/api/gdal_alg.html",
+    "https://raw.githubusercontent.com/OSGeo/gdal/v3.8.4/alg/viewshed.cpp"
+  ],
+  "elapsed_s": 1.2387684490240645
+}

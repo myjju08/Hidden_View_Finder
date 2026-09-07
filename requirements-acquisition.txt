@@ -1,0 +1,6 @@
+# Optional public data download helpers; use the existing GDAL-compatible .venv.
+# These versions are the ones used for the recorded September 2026 acquisition.
+pyarrow==25.0.1
+requests==2.34.2
+# Source-comparison helper uses Shapely's vectorized coordinate transform.
+shapely==2.1.2

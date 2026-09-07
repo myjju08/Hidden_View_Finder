@@ -1,0 +1,644 @@
+{
+  "exports": [
+    {
+      "disk_bytes": 8879,
+      "elapsed_s": 0.009188571013510227,
+      "radius_m": 1000.0,
+      "resolution_m": 5,
+      "retained": false
+    },
+    {
+      "disk_bytes": 21386,
+      "elapsed_s": 0.01979185701929964,
+      "radius_m": 3000.0,
+      "resolution_m": 5,
+      "retained": false
+    },
+    {
+      "disk_bytes": 36188,
+      "elapsed_s": 0.033432004012865946,
+      "radius_m": 5000.0,
+      "resolution_m": 5,
+      "retained": false
+    },
+    {
+      "disk_bytes": 108601,
+      "elapsed_s": 0.12668427999597043,
+      "radius_m": 10000.0,
+      "resolution_m": 5,
+      "retained": false
+    }
+  ],
+  "first_query_existing_filesystem_cache_s": 0.047508733987342566,
+  "groups": [
+    {
+      "exact_cache_hit": {
+        "count": 30,
+        "max_s": 0.003852099005598575,
+        "median_s": 0.0005258690071059391,
+        "min_s": 0.0004928780253976583,
+        "p95_s": 0.001228894598898476
+      },
+      "output_array_bytes": 160801,
+      "output_shape": [
+        401,
+        401
+      ],
+      "peak_sampled_rss_bytes": 222543872,
+      "prewarm_queries": 5,
+      "prewarm_total_s": 0.09768351400271058,
+      "radius_m": 1000.0,
+      "resolution_m": 5,
+      "targets_used": 5,
+      "useful_sample_count": true,
+      "warm_uncached": {
+        "dense_s": {
+          "count": 30,
+          "max_s": 0.007633355999132618,
+          "median_s": 0.004123293489101343,
+          "min_s": 0.0032351470144931227,
+          "p95_s": 0.007463634613668545
+        },
+        "elapsed_s": {
+          "count": 30,
+          "max_s": 0.019135959999402985,
+          "median_s": 0.014608432495151646,
+          "min_s": 0.009119458991335705,
+          "p95_s": 0.017501896950125228
+        },
+        "mask_s": {
+          "count": 30,
+          "max_s": 0.0054985780152492225,
+          "median_s": 0.0018246109975734726,
+          "min_s": 0.0014926240255590528,
+          "p95_s": 0.003483965210034511
+        },
+        "read_s": {
+          "count": 30,
+          "max_s": 0.008657002006657422,
+          "median_s": 0.005447301489766687,
+          "min_s": 0.0028812939999625087,
+          "p95_s": 0.008504205696226563
+        },
+        "total_s": {
+          "count": 30,
+          "max_s": 0.018913401989266276,
+          "median_s": 0.014401684995391406,
+          "min_s": 0.00897411402547732,
+          "p95_s": 0.017247602260613348
+        }
+      }
+    },
+    {
+      "exact_cache_hit": {
+        "count": 30,
+        "max_s": 0.0030437389796134084,
+        "median_s": 0.0005122184957144782,
+        "min_s": 0.0004909080162178725,
+        "p95_s": 0.001431793290248605
+      },
+      "output_array_bytes": 1442401,
+      "output_shape": [
+        1201,
+        1201
+      ],
+      "peak_sampled_rss_bytes": 241729536,
+      "prewarm_queries": 5,
+      "prewarm_total_s": 0.8106417270028032,
+      "radius_m": 3000.0,
+      "resolution_m": 5,
+      "targets_used": 5,
+      "useful_sample_count": true,
+      "warm_uncached": {
+        "dense_s": {
+          "count": 30,
+          "max_s": 0.05273225301061757,
+          "median_s": 0.03553658751479816,
+          "min_s": 0.030191886005923152,
+          "p95_s": 0.043215380942274347
+        },
+        "elapsed_s": {
+          "count": 30,
+          "max_s": 0.18430325298686512,
+          "median_s": 0.13505184500536416,
+          "min_s": 0.11043378998874687,
+          "p95_s": 0.1692485192077583
+        },
+        "mask_s": {
+          "count": 30,
+          "max_s": 0.026946797006530687,
+          "median_s": 0.021026718502980657,
+          "min_s": 0.014306032011518255,
+          "p95_s": 0.026605533536348955
+        },
+        "read_s": {
+          "count": 30,
+          "max_s": 0.11423920700326562,
+          "median_s": 0.07697607598674949,
+          "min_s": 0.05982565099839121,
+          "p95_s": 0.0977635378454579
+        },
+        "total_s": {
+          "count": 30,
+          "max_s": 0.1841670469730161,
+          "median_s": 0.13486678899789695,
+          "min_s": 0.11020740200183354,
+          "p95_s": 0.16905883720173728
+        }
+      }
+    },
+    {
+      "design_goal": {
+        "median_met": true,
+        "median_target_s": 1.0,
+        "p95_met": true,
+        "p95_target_s": 3.0
+      },
+      "exact_cache_hit": {
+        "count": 30,
+        "max_s": 0.003930616978323087,
+        "median_s": 0.0005224880005698651,
+        "min_s": 0.0004895370220765471,
+        "p95_s": 0.0010102941974764672
+      },
+      "output_array_bytes": 4004001,
+      "output_shape": [
+        2001,
+        2001
+      ],
+      "peak_sampled_rss_bytes": 335634432,
+      "prewarm_queries": 5,
+      "prewarm_total_s": 2.3412263710342813,
+      "radius_m": 5000.0,
+      "resolution_m": 5,
+      "targets_used": 5,
+      "useful_sample_count": true,
+      "warm_uncached": {
+        "dense_s": {
+          "count": 30,
+          "max_s": 0.115933088993188,
+          "median_s": 0.10246968649153132,
+          "min_s": 0.08714224401046522,
+          "p95_s": 0.11332039924891431
+        },
+        "elapsed_s": {
+          "count": 30,
+          "max_s": 0.47440686798654497,
+          "median_s": 0.4012015244952636,
+          "min_s": 0.3151057279901579,
+          "p95_s": 0.4602489687502384
+        },
+        "mask_s": {
+          "count": 30,
+          "max_s": 0.07787351799197495,
+          "median_s": 0.06290393049130216,
+          "min_s": 0.049128339014714584,
+          "p95_s": 0.07547794870188226
+        },
+        "read_s": {
+          "count": 30,
+          "max_s": 0.28955592500278726,
+          "median_s": 0.23693019051279407,
+          "min_s": 0.17210695400717668,
+          "p95_s": 0.27542331904114686
+        },
+        "total_s": {
+          "count": 30,
+          "max_s": 0.47417599000618793,
+          "median_s": 0.40101945349306334,
+          "min_s": 0.31492541197803803,
+          "p95_s": 0.46006590585166124
+        }
+      }
+    },
+    {
+      "exact_cache_hit": {
+        "count": 30,
+        "max_s": 0.003989189019193873,
+        "median_s": 0.000535111510544084,
+        "min_s": 0.0005088660109322518,
+        "p95_s": 0.0028468447460909324
+      },
+      "output_array_bytes": 16008001,
+      "output_shape": [
+        4001,
+        4001
+      ],
+      "peak_sampled_rss_bytes": 654241792,
+      "prewarm_queries": 5,
+      "prewarm_total_s": 12.187867413973436,
+      "radius_m": 10000.0,
+      "resolution_m": 5,
+      "targets_used": 5,
+      "useful_sample_count": true,
+      "warm_uncached": {
+        "dense_s": {
+          "count": 30,
+          "max_s": 0.451976200012723,
+          "median_s": 0.407310315509676,
+          "min_s": 0.34089480800321326,
+          "p95_s": 0.4461104174522916
+        },
+        "elapsed_s": {
+          "count": 30,
+          "max_s": 2.6425019660091493,
+          "median_s": 2.3632625175087014,
+          "min_s": 2.0072963169950526,
+          "p95_s": 2.5612283821887103
+        },
+        "mask_s": {
+          "count": 30,
+          "max_s": 0.325346575002186,
+          "median_s": 0.27316722249088343,
+          "min_s": 0.18640893400879577,
+          "p95_s": 0.32206659084622513
+        },
+        "read_s": {
+          "count": 30,
+          "max_s": 1.898204388009617,
+          "median_s": 1.683547427994199,
+          "min_s": 1.4332150270056445,
+          "p95_s": 1.8558858382137258
+        },
+        "total_s": {
+          "count": 30,
+          "max_s": 2.6423074600170366,
+          "median_s": 2.363027466009953,
+          "min_s": 2.0071424509806093,
+          "p95_s": 2.5610161143500587
+        }
+      }
+    }
+  ],
+  "initial_data_open_s": 0.06712187200901099,
+  "machine": {
+    "cgroup": {
+      "cpu.max": "3071999 100000",
+      "cpuset.cpus.effective": "0-31",
+      "memory.current": "25304068096",
+      "memory.max": "259310747648"
+    },
+    "cpu_affinity_count": 32,
+    "cpu_model": "AMD Ryzen Threadripper PRO 3955WX 16-Cores",
+    "executable": "/workspace/Hidden_View_Finder/.venv/bin/python",
+    "gdal_release": "3.8.4",
+    "logical_cpus": 32,
+    "os": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "GDAL": "3.8.4",
+      "numpy": "2.5.2",
+      "psutil": "7.2.2",
+      "pyproj": "3.7.2",
+      "scipy": "1.18.1",
+      "seoul-visibility": null
+    },
+    "physical_cpus": 16,
+    "python": "3.12.14 | packaged by conda-forge | (main, Aug 21 2026, 22:48:28) [GCC 14.4.0]",
+    "ram_available_bytes": 247955095552,
+    "ram_total_bytes": 270117117952,
+    "storage": {
+      "filesystem_and_source": "overlay overlay",
+      "free_bytes": 44290768896,
+      "type": "unknown (filesystem type does not identify physical storage)"
+    },
+    "thread_environment": {
+      "GDAL_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null,
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null
+    }
+  },
+  "manifest": "/workspace/Hidden_View_Finder/data/benchmark/manifest.json",
+  "notes": [
+    "Synthetic source_kind means entirely fictional terrain/buildings; these measurements establish no Seoul accuracy.",
+    "Warm uncached runs disable result caching. All target locations are prewarmed; no cold-disk performance is claimed.",
+    "Large windows may exceed the engine's bounded data block cache; filesystem caching remains uncontrolled.",
+    "One native target-centred viewshed per uncached query. Radius and eligibility masks are timed separately.",
+    "Export and sparse checks are outside dense query timing. RSS sampling interval is 10 ms; process high-water RSS is also recorded.",
+    "Runs cycle through spatially distributed requested targets with an explicit 120 m default AGL height; target coordinates and seed are recorded.",
+    "At least 30 timed runs per radius are required for an initial useful median/p95 estimate; shorter smoke tests are marked insufficient."
+  ],
+  "one_time": {
+    "inspected": "prepared raster metadata, not unavailable original vectors",
+    "prepared_raster_inspection_s": 2.0172544520173687,
+    "preprocessing_provenance": "Recorded during actual product creation, if provided by its manifest.",
+    "preprocessing_recorded_s": 6.434513251006138
+  },
+  "prepared_data_disk_bytes": 6151288,
+  "process_peak_rss_bytes": 652476416,
+  "report_schema_version": 1,
+  "result_cache_disk_bytes": 0,
+  "result_cache_policy": "Engine's bounded RAM result cache; no disk result cache is implemented.",
+  "runs_requested_per_radius": 30,
+  "seed": 1729,
+  "skipped": [],
+  "source_data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+  "source_kind": "synthetic",
+  "source_region": {
+    "crs": "EPSG:5186",
+    "products": {
+      "5": {
+        "bounds": [
+          188000.0,
+          538000.0,
+          212005.0,
+          562005.0
+        ],
+        "height": 4801,
+        "resolution_m": 5,
+        "width": 4801
+      }
+    }
+  },
+  "sparse": [
+    {
+      "elapsed_s": 0.04381907099741511,
+      "implementation": "Independent Python column-intersection LOS; no JIT compilation",
+      "jit_startup_s": 0.0,
+      "metadata": {
+        "backend": "independent Python closed-column reference",
+        "curvature_coefficient": 0.8571428571428571,
+        "eye_height_m": 1.7,
+        "limitations": [
+          "Point visibility only; raster-model screening, not exact footprint geometry.",
+          "Observer output is open ground; public access is unverified.",
+          "Pixel-center target quantization; projected planar distances in metres.",
+          "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+          "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+          "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+          "Curvature/refraction coefficient is an assumed model setting, not a weather measurement."
+        ],
+        "observer_coordinates": "requested XY, DTM from containing cell",
+        "source_data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+        "target": {
+          "absolute_elevation_m": 200.00330352783203,
+          "effective": {
+            "col": 2400,
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "row": 2400,
+            "x": 200002.5,
+            "y": 550002.5
+          },
+          "quantization": "containing half-open cell, then cell center; no subpixel dense precision",
+          "requested": {
+            "height_m": 120.0,
+            "height_reference": "agl",
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "vertical_reference": null,
+            "x": 200002.50000000012,
+            "y": 550002.5
+          },
+          "source_dtm_m": 80.00330352783203,
+          "source_surface_m": 80.00330352783203,
+          "vertical_reference": "synthetic local orthometric datum (not real Seoul)"
+        },
+        "timings": {
+          "total_s": 0.04319941901485436
+        }
+      },
+      "observers": 16,
+      "radius_m": 1000.0,
+      "resolution_m": 5,
+      "state_counts": [
+        9,
+        6,
+        1,
+        0
+      ]
+    },
+    {
+      "elapsed_s": 0.09979774401290342,
+      "implementation": "Independent Python column-intersection LOS; no JIT compilation",
+      "jit_startup_s": 0.0,
+      "metadata": {
+        "backend": "independent Python closed-column reference",
+        "curvature_coefficient": 0.8571428571428571,
+        "eye_height_m": 1.7,
+        "limitations": [
+          "Point visibility only; raster-model screening, not exact footprint geometry.",
+          "Observer output is open ground; public access is unverified.",
+          "Pixel-center target quantization; projected planar distances in metres.",
+          "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+          "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+          "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+          "Curvature/refraction coefficient is an assumed model setting, not a weather measurement."
+        ],
+        "observer_coordinates": "requested XY, DTM from containing cell",
+        "source_data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+        "target": {
+          "absolute_elevation_m": 200.00330352783203,
+          "effective": {
+            "col": 2400,
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "row": 2400,
+            "x": 200002.5,
+            "y": 550002.5
+          },
+          "quantization": "containing half-open cell, then cell center; no subpixel dense precision",
+          "requested": {
+            "height_m": 120.0,
+            "height_reference": "agl",
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "vertical_reference": null,
+            "x": 200002.50000000012,
+            "y": 550002.5
+          },
+          "source_dtm_m": 80.00330352783203,
+          "source_surface_m": 80.00330352783203,
+          "vertical_reference": "synthetic local orthometric datum (not real Seoul)"
+        },
+        "timings": {
+          "total_s": 0.09974886200507171
+        }
+      },
+      "observers": 16,
+      "radius_m": 3000.0,
+      "resolution_m": 5,
+      "state_counts": [
+        10,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "elapsed_s": 0.2298582679941319,
+      "implementation": "Independent Python column-intersection LOS; no JIT compilation",
+      "jit_startup_s": 0.0,
+      "metadata": {
+        "backend": "independent Python closed-column reference",
+        "curvature_coefficient": 0.8571428571428571,
+        "eye_height_m": 1.7,
+        "limitations": [
+          "Point visibility only; raster-model screening, not exact footprint geometry.",
+          "Observer output is open ground; public access is unverified.",
+          "Pixel-center target quantization; projected planar distances in metres.",
+          "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+          "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+          "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+          "Curvature/refraction coefficient is an assumed model setting, not a weather measurement."
+        ],
+        "observer_coordinates": "requested XY, DTM from containing cell",
+        "source_data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+        "target": {
+          "absolute_elevation_m": 200.00330352783203,
+          "effective": {
+            "col": 2400,
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "row": 2400,
+            "x": 200002.5,
+            "y": 550002.5
+          },
+          "quantization": "containing half-open cell, then cell center; no subpixel dense precision",
+          "requested": {
+            "height_m": 120.0,
+            "height_reference": "agl",
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "vertical_reference": null,
+            "x": 200002.50000000012,
+            "y": 550002.5
+          },
+          "source_dtm_m": 80.00330352783203,
+          "source_surface_m": 80.00330352783203,
+          "vertical_reference": "synthetic local orthometric datum (not real Seoul)"
+        },
+        "timings": {
+          "total_s": 0.22979199601104483
+        }
+      },
+      "observers": 16,
+      "radius_m": 5000.0,
+      "resolution_m": 5,
+      "state_counts": [
+        12,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "elapsed_s": 1.301526841998566,
+      "implementation": "Independent Python column-intersection LOS; no JIT compilation",
+      "jit_startup_s": 0.0,
+      "metadata": {
+        "backend": "independent Python closed-column reference",
+        "curvature_coefficient": 0.8571428571428571,
+        "eye_height_m": 1.7,
+        "limitations": [
+          "Point visibility only; raster-model screening, not exact footprint geometry.",
+          "Observer output is open ground; public access is unverified.",
+          "Pixel-center target quantization; projected planar distances in metres.",
+          "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+          "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+          "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+          "Curvature/refraction coefficient is an assumed model setting, not a weather measurement."
+        ],
+        "observer_coordinates": "requested XY, DTM from containing cell",
+        "source_data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+        "target": {
+          "absolute_elevation_m": 200.00330352783203,
+          "effective": {
+            "col": 2400,
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "row": 2400,
+            "x": 200002.5,
+            "y": 550002.5
+          },
+          "quantization": "containing half-open cell, then cell center; no subpixel dense precision",
+          "requested": {
+            "height_m": 120.0,
+            "height_reference": "agl",
+            "lat": 37.54954050092772,
+            "lon": 127.00002829110686,
+            "vertical_reference": null,
+            "x": 200002.50000000012,
+            "y": 550002.5
+          },
+          "source_dtm_m": 80.00330352783203,
+          "source_surface_m": 80.00330352783203,
+          "vertical_reference": "synthetic local orthometric datum (not real Seoul)"
+        },
+        "timings": {
+          "total_s": 1.3014655300066806
+        }
+      },
+      "observers": 16,
+      "radius_m": 10000.0,
+      "resolution_m": 5,
+      "state_counts": [
+        9,
+        7,
+        0,
+        0
+      ]
+    }
+  ],
+  "startup": {
+    "package_import_s": 0.48094497399870306,
+    "process_launch_and_import_s": 0.7781850190076511
+  },
+  "targets": [
+    {
+      "height_agl_m": 120.0,
+      "id": 0,
+      "lat": 37.54954050092772,
+      "lon": 127.00002829110686,
+      "requested_xy": [
+        200002.5,
+        550002.5
+      ],
+      "resolution_m": 5
+    },
+    {
+      "height_agl_m": 120.0,
+      "id": 1,
+      "lat": 37.545311527271124,
+      "lon": 126.99524311420606,
+      "requested_xy": [
+        199579.62456500824,
+        549533.1456005793
+      ],
+      "resolution_m": 5
+    },
+    {
+      "height_agl_m": 120.0,
+      "id": 2,
+      "lat": 37.55500928397593,
+      "lon": 126.99423715263802,
+      "requested_xy": [
+        199490.79172412222,
+        550609.485019575
+      ],
+      "resolution_m": 5
+    },
+    {
+      "height_agl_m": 120.0,
+      "id": 3,
+      "lat": 37.54285464789781,
+      "lon": 127.00779831866396,
+      "requested_xy": [
+        200689.17550830008,
+        549260.4797438203
+      ],
+      "resolution_m": 5
+    },
+    {
+      "height_agl_m": 120.0,
+      "id": 4,
+      "lat": 37.55369503682594,
+      "lon": 127.0064726628693,
+      "requested_xy": [
+        200571.9379976804,
+        550463.6233587101
+      ],
+      "resolution_m": 5
+    }
+  ]
+}

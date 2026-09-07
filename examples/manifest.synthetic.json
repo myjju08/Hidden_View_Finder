@@ -1,0 +1,62 @@
+{
+  "crs": "EPSG:5186",
+  "data_version": "62be092e6fad42adceb44c307c809f2570962c46cb7f874339c7e8186bd77453",
+  "processing": {
+    "coverage": "Complete fictional terrain and buildings throughout the rectangular raster.",
+    "generator": "fictional-seoul-grid-v1",
+    "output_mask": "No Seoul administrative mask: fixture is not real Seoul geography.",
+    "preparation_s": 6.434513251006138,
+    "quality_bits": {
+      "building_coverage_valid": 2,
+      "height_estimated": 4,
+      "height_unresolved": 8,
+      "roof_conflict": 16,
+      "terrain_valid": 1
+    },
+    "resolution_m": 5,
+    "seed": 1729,
+    "surface_model": "Fictional smooth terrain plus constant synthetic roof columns; no Seoul source data.",
+    "width": 4801
+  },
+  "products": {
+    "5": {
+      "bounds": [
+        188000.0,
+        538000.0,
+        212005.0,
+        562005.0
+      ],
+      "dtm": "../data/benchmark/dtm.tif",
+      "height": 4801,
+      "occupancy": "../data/benchmark/occupancy.tif",
+      "quality": "../data/benchmark/quality.tif",
+      "resolution_m": 5,
+      "surface": "../data/benchmark/surface.tif",
+      "transform": [
+        188000.0,
+        5,
+        0.0,
+        562005.0,
+        0.0,
+        -5
+      ],
+      "width": 4801
+    }
+  },
+  "schema_version": 1,
+  "source_kind": "synthetic",
+  "sources": [],
+  "status": "ready",
+  "vertical_reference": "synthetic local orthometric datum (not real Seoul)",
+  "storage": {
+    "data_root": "../data",
+    "policy": {
+      "total_budget_bytes": 21474836480,
+      "minimum_free_bytes": 8589934592,
+      "disk_cache_bytes": 1073741824,
+      "temporary_budget_bytes": 4294967296
+    },
+    "external_source_bytes": 0
+  },
+  "example_note": "Actual synthetic benchmark grid. Generate data/benchmark with size_m=24000, resolution_m=5, seed=1729 first. This lightweight manifest references those rasters; it contains no Seoul measurements."
+}

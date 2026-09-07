@@ -1,0 +1,693 @@
+{
+  "source_kind": "synthetic",
+  "source_region": "Fictional 1500 x 1500 m rectangle in EPSG:5186; no measured Seoul inputs",
+  "warning": "Pipeline functionality and analytic fixture checks only; no real-world elevation or visibility accuracy claim.",
+  "os": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+  "python": "3.12.14 | packaged by conda-forge | (main, Aug 21 2026, 22:48:28) [GCC 14.4.0]",
+  "gdal": "3.8.4",
+  "generation_s_observed": 0.19334790500579402,
+  "commands": [
+    {
+      "command": [
+        "/workspace/Hidden_View_Finder/.venv/bin/python",
+        "-m",
+        "seoul_visibility.cli",
+        "inspect",
+        "data/raw-example/fictional-terrain.gpkg",
+        "data/raw-example/fictional-buildings.shp",
+        "--encoding",
+        "CP949"
+      ],
+      "process_inclusive_s": 0.7887239700066857,
+      "returncode": 0,
+      "result": {
+        "sources": [
+          {
+            "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-terrain.gpkg",
+            "files": [
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-terrain.gpkg",
+                "size_bytes": 163840,
+                "modified_ns": 1788772885737944533
+              }
+            ],
+            "kind": "vector",
+            "driver": "GPKG",
+            "layers": [
+              {
+                "name": "fictional_contours",
+                "feature_count": 18,
+                "bounds": [
+                  199150.0,
+                  549150.0,
+                  200850.0,
+                  550850.0
+                ],
+                "crs": {
+                  "wkt": "PROJCS[\"KGD2002 / Central Belt 2010\",GEOGCS[\"KGD2002\",DATUM[\"Korean_Geodetic_Datum_2002\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6737\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4737\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",38],PARAMETER[\"central_meridian\",127],PARAMETER[\"scale_factor\",1],PARAMETER[\"false_easting\",200000],PARAMETER[\"false_northing\",600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"5186\"]]",
+                  "authority": "EPSG",
+                  "code": "5186",
+                  "linear_units": "metre",
+                  "vertical_reference": "not verified; supply documented reference in configuration"
+                },
+                "geometry_types": {
+                  "LINESTRING": 18
+                },
+                "empty_geometries": 0,
+                "fields": {
+                  "SYN_Z_M": {
+                    "type": "Real",
+                    "missing": 0,
+                    "nonfinite": 0,
+                    "zero": 0,
+                    "min": 99.0,
+                    "max": 116.0,
+                    "suggestions": []
+                  }
+                },
+                "geometry_z": {
+                  "finite_vertices": 0,
+                  "nonzero_vertices": 0,
+                  "min": null,
+                  "max": null
+                },
+                "dxf_entity_layers": null,
+                "encoding_metadata": {}
+              },
+              {
+                "name": "fictional_spots",
+                "feature_count": 225,
+                "bounds": [
+                  199287.5,
+                  549312.5,
+                  200687.5,
+                  550712.5
+                ],
+                "crs": {
+                  "wkt": "PROJCS[\"KGD2002 / Central Belt 2010\",GEOGCS[\"KGD2002\",DATUM[\"Korean_Geodetic_Datum_2002\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6737\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4737\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",38],PARAMETER[\"central_meridian\",127],PARAMETER[\"scale_factor\",1],PARAMETER[\"false_easting\",200000],PARAMETER[\"false_northing\",600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"5186\"]]",
+                  "authority": "EPSG",
+                  "code": "5186",
+                  "linear_units": "metre",
+                  "vertical_reference": "not verified; supply documented reference in configuration"
+                },
+                "geometry_types": {
+                  "POINT": 225
+                },
+                "empty_geometries": 0,
+                "fields": {
+                  "SYN_Z_M": {
+                    "type": "Real",
+                    "missing": 0,
+                    "nonfinite": 0,
+                    "zero": 0,
+                    "min": 100.625,
+                    "max": 114.625,
+                    "suggestions": []
+                  }
+                },
+                "geometry_z": {
+                  "finite_vertices": 225,
+                  "nonzero_vertices": 225,
+                  "min": 100.625,
+                  "max": 114.625
+                },
+                "dxf_entity_layers": null,
+                "encoding_metadata": {}
+              },
+              {
+                "name": "fictional_output_boundary",
+                "feature_count": 1,
+                "bounds": [
+                  199300.0,
+                  549300.0,
+                  200700.0,
+                  550700.0
+                ],
+                "crs": {
+                  "wkt": "PROJCS[\"KGD2002 / Central Belt 2010\",GEOGCS[\"KGD2002\",DATUM[\"Korean_Geodetic_Datum_2002\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6737\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4737\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",38],PARAMETER[\"central_meridian\",127],PARAMETER[\"scale_factor\",1],PARAMETER[\"false_easting\",200000],PARAMETER[\"false_northing\",600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"5186\"]]",
+                  "authority": "EPSG",
+                  "code": "5186",
+                  "linear_units": "metre",
+                  "vertical_reference": "not verified; supply documented reference in configuration"
+                },
+                "geometry_types": {
+                  "POLYGON": 1
+                },
+                "empty_geometries": 0,
+                "fields": {},
+                "geometry_z": {
+                  "finite_vertices": 0,
+                  "nonzero_vertices": 0,
+                  "min": null,
+                  "max": null
+                },
+                "dxf_entity_layers": null,
+                "encoding_metadata": {}
+              }
+            ],
+            "encoding_cpg": null,
+            "encoding_override": "CP949",
+            "filesystem_modified_utc": "2026-09-07T09:21:25.737945+00:00",
+            "source_date": null,
+            "notes": [
+              "Filesystem date is not survey/publication date.",
+              "Verify vertical datum, height units, field semantics and coverage before prepare."
+            ]
+          },
+          {
+            "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.shp",
+            "files": [
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.cpg",
+                "size_bytes": 5,
+                "modified_ns": 1788772885742944591
+              },
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.dbf",
+                "size_bytes": 632,
+                "modified_ns": 1788772885750944685
+              },
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.prj",
+                "size_bytes": 425,
+                "modified_ns": 1788772885748944661
+              },
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.shp",
+                "size_bytes": 1000,
+                "modified_ns": 1788772885750944685
+              },
+              {
+                "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.shx",
+                "size_bytes": 148,
+                "modified_ns": 1788772885750944685
+              }
+            ],
+            "kind": "vector",
+            "driver": "ESRI Shapefile",
+            "layers": [
+              {
+                "name": "fictional-buildings",
+                "feature_count": 6,
+                "bounds": [
+                  199600.0,
+                  549550.0,
+                  200170.0,
+                  550500.0
+                ],
+                "crs": {
+                  "wkt": "PROJCS[\"KGD2002 / Central Belt 2010\",GEOGCS[\"KGD2002\",DATUM[\"Korean_Geodetic_Datum_2002\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],AUTHORITY[\"EPSG\",\"6737\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4737\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",38],PARAMETER[\"central_meridian\",127],PARAMETER[\"scale_factor\",1],PARAMETER[\"false_easting\",200000],PARAMETER[\"false_northing\",600000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Northing\",NORTH],AXIS[\"Easting\",EAST],AUTHORITY[\"EPSG\",\"5186\"]]",
+                  "authority": "EPSG",
+                  "code": "5186",
+                  "linear_units": "metre",
+                  "vertical_reference": "not verified; supply documented reference in configuration"
+                },
+                "geometry_types": {
+                  "POLYGON": 6
+                },
+                "empty_geometries": 0,
+                "fields": {
+                  "SYN_H_M": {
+                    "type": "Real",
+                    "missing": 0,
+                    "nonfinite": 0,
+                    "zero": 0,
+                    "min": 12.0,
+                    "max": 65.0,
+                    "suggestions": []
+                  },
+                  "SYN_NAME": {
+                    "type": "String",
+                    "missing": 0,
+                    "nonfinite": 0,
+                    "zero": 0,
+                    "min": null,
+                    "max": null,
+                    "suggestions": []
+                  }
+                },
+                "geometry_z": {
+                  "finite_vertices": 0,
+                  "nonzero_vertices": 0,
+                  "min": null,
+                  "max": null
+                },
+                "dxf_entity_layers": null,
+                "encoding_metadata": {
+                  "CPG_VALUE": "CP949",
+                  "ENCODING_FROM_CPG": "CP949",
+                  "SOURCE_ENCODING": "CP949"
+                }
+              }
+            ],
+            "encoding_cpg": "CP949",
+            "encoding_override": "CP949",
+            "filesystem_modified_utc": "2026-09-07T09:21:25.750945+00:00",
+            "source_date": null,
+            "notes": [
+              "Filesystem date is not survey/publication date.",
+              "Verify vertical datum, height units, field semantics and coverage before prepare."
+            ]
+          }
+        ],
+        "schema_version": 1,
+        "mapping_policy": "Suggestions only; configure every ambiguous field explicitly. For Korean SHP without a correct CPG, specify encoding (e.g. CP949) in source config."
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/Hidden_View_Finder/.venv/bin/python",
+        "-m",
+        "seoul_visibility.cli",
+        "plan",
+        "data/fixture-config.json"
+      ],
+      "process_inclusive_s": 0.8859443420078605,
+      "returncode": 0,
+      "result": {
+        "grid": {
+          "crs": "EPSG:5186",
+          "resolution_m": 5,
+          "width": 300,
+          "height": 300,
+          "bounds": [
+            199250,
+            549250,
+            200750,
+            550750
+          ],
+          "transform": [
+            199250,
+            5,
+            0,
+            550750,
+            0,
+            -5
+          ]
+        },
+        "estimates": {
+          "source_bytes": 166050,
+          "external_source_bytes": 0,
+          "estimated_derived_bytes": 15770062,
+          "estimated_temporary_bytes": 16026112,
+          "environment_installation_bytes": 0
+        },
+        "resources": {
+          "current_bytes": 6937748,
+          "free_bytes": 44467535872,
+          "additional_bytes": 15770062,
+          "temporary_bytes": 16026112,
+          "peak_project_bytes": 38733922,
+          "policy": {
+            "total_budget_bytes": 21474836480,
+            "minimum_free_bytes": 8589934592,
+            "disk_cache_bytes": 1073741824,
+            "temporary_budget_bytes": 4294967296
+          }
+        },
+        "steps": [
+          "Fingerprint inputs and verify heights/CRS",
+          "Prepare bounded terrain raster",
+          "Normalize and index footprints",
+          "Burn maximum absolute roofs and quality masks",
+          "Publish ready manifest atomically"
+        ],
+        "notes": [
+          "Estimates reserve both final products and staging; compression savings are not assumed.",
+          "Coverage is rectangular and includes surrounding occluders. Output boundary is a separate final mask.",
+          "No vertical-datum conversion is performed. 2 m requires independently suitable source data."
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/Hidden_View_Finder/.venv/bin/python",
+        "-m",
+        "seoul_visibility.cli",
+        "prepare",
+        "data/fixture-config.json"
+      ],
+      "process_inclusive_s": 2.244352195004467,
+      "returncode": 0,
+      "result": {
+        "manifest": "/workspace/Hidden_View_Finder/data/prepared-example/manifest.json"
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/Hidden_View_Finder/.venv/bin/python",
+        "-m",
+        "seoul_visibility.cli",
+        "query",
+        "data/prepared-example/manifest.json",
+        "--lon",
+        "127.00002829110686",
+        "--lat",
+        "37.54954050092772",
+        "--height",
+        "25",
+        "--height-reference",
+        "agl",
+        "--radius",
+        "500",
+        "--no-cache",
+        "--output",
+        "data/prepared-example/fixture-visible.tif"
+      ],
+      "process_inclusive_s": 0.8631741439749021,
+      "returncode": 0,
+      "result": {
+        "metadata": {
+          "target": {
+            "requested": {
+              "lon": 127.00002829110686,
+              "lat": 37.54954050092772,
+              "height_m": 25.0,
+              "height_reference": "agl",
+              "vertical_reference": null,
+              "x": 200002.50000000012,
+              "y": 550002.5
+            },
+            "effective": {
+              "x": 200002.5,
+              "y": 550002.5,
+              "lon": 127.00002829110686,
+              "lat": 37.54954050092772,
+              "row": 149,
+              "col": 150
+            },
+            "absolute_elevation_m": 132.5250015258789,
+            "source_surface_m": 107.5250015258789,
+            "source_dtm_m": 107.5250015258789,
+            "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations",
+            "quantization": "containing half-open cell, then cell center; no subpixel dense precision"
+          },
+          "eye_height_m": 1.7,
+          "radius_m": 500.0,
+          "distance_origin": "effective target cell center",
+          "curvature_coefficient": 0.8571428571428571,
+          "earth_diameter_m": 12756274.0,
+          "backend": "GDAL/3.8.4/GVM_Edge/GVOT_NORMAL/pixel-center-v1",
+          "backend_version": "3.8.4",
+          "backend_mode": "GVM_Edge/GVOT_NORMAL",
+          "source_data_version": "29a2a51a757c70188b04b93ad576ae8e6616c4897ef425d9af3513c21db2b0c1",
+          "source_kind": "synthetic",
+          "cache_status": "disabled",
+          "candidate_mask_sha256": null,
+          "quality_policy": "strict",
+          "quality": {
+            "classification": "RASTER_MODEL_SCREENING",
+            "estimated_height_cells_in_computational_window": 0,
+            "unknown_cells": 0
+          },
+          "limitations": [
+            "Point visibility only; raster-model screening, not exact footprint geometry.",
+            "Observer output is open ground; public access is unverified.",
+            "Pixel-center target quantization; projected planar distances in metres.",
+            "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+            "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+            "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+            "Curvature/refraction coefficient is an assumed model setting, not a weather measurement."
+          ],
+          "output_boundary_applied": true,
+          "public_access": "unverified",
+          "computational_window": [
+            49,
+            48,
+            203,
+            203
+          ],
+          "numerical_tolerance_m_for_source_validation": 1e-06,
+          "native_endpoint_contact": "native GDAL comparison; reference allows contact within 1e-6 m",
+          "resources": {
+            "estimated_working_bytes": 69086896,
+            "available_memory_bytes": 234216562688,
+            "concurrent_jobs": 1,
+            "cpu_affinity_count": 32
+          },
+          "storage": {
+            "data_root": "/workspace/Hidden_View_Finder/data",
+            "external_source_bytes": 0,
+            "policy": {
+              "disk_cache_bytes": 1073741824,
+              "minimum_free_bytes": 8589934592,
+              "temporary_budget_bytes": 4294967296,
+              "total_budget_bytes": 21474836480
+            }
+          }
+        },
+        "timings": {
+          "cache_lookup_s": 0.0036593610129784793,
+          "read_s": 0.0014864059921819717,
+          "dense_s": 0.0025492679851595312,
+          "mask_s": 0.0012030230136588216,
+          "total_s": 0.008898828004021198
+        },
+        "shape": [
+          201,
+          201
+        ],
+        "state_counts": {
+          "blocked": 10648,
+          "visible": 19148,
+          "excluded": 10605,
+          "unknown": 0
+        },
+        "export": "data/prepared-example/fixture-visible.tif"
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/Hidden_View_Finder/.venv/bin/python",
+        "-m",
+        "seoul_visibility.cli",
+        "prepare",
+        "data/fixture-config.json"
+      ],
+      "process_inclusive_s": 0.8585144340177067,
+      "returncode": 0,
+      "result": {
+        "manifest": "/workspace/Hidden_View_Finder/data/prepared-example/manifest.json"
+      },
+      "stderr": ""
+    }
+  ],
+  "all_commands_succeeded": true,
+  "raw_sha256_before": {
+    "data/raw-example/PROVENANCE.json": "43db53170cc0f9a68a7a2c09fc45bcbb11c45aabc9746b73ebfc57657ccf4e93",
+    "data/raw-example/fictional-buildings.cpg": "0088cfe46fb45f0065a5b92b3748f639082706478cf9118ad252f17732b617a5",
+    "data/raw-example/fictional-buildings.dbf": "14785fb0e578882b3176c6cc6066a10782fbc81959bbd47746c0675346ac34e5",
+    "data/raw-example/fictional-buildings.prj": "d1e193c7d79d44da8888b37d42dbee5d772c92f0af76a4190ea096debcdd99ec",
+    "data/raw-example/fictional-buildings.shp": "c15567f006bbfaba2fedadce36ac3009e7d7220228b9bedcbced6655dd1dce49",
+    "data/raw-example/fictional-buildings.shx": "dc5aba3dc8c131c5eb6c833ba4843cb199dbad88a137e1ca06f4018923c43fa1",
+    "data/raw-example/fictional-terrain.gpkg": "abe2a97f6c3830cbbf16e3e475cc4bce4b594cd9e134f3c2e264f1bde838fab3"
+  },
+  "raw_sha256_after": {
+    "data/raw-example/PROVENANCE.json": "43db53170cc0f9a68a7a2c09fc45bcbb11c45aabc9746b73ebfc57657ccf4e93",
+    "data/raw-example/fictional-buildings.cpg": "0088cfe46fb45f0065a5b92b3748f639082706478cf9118ad252f17732b617a5",
+    "data/raw-example/fictional-buildings.dbf": "14785fb0e578882b3176c6cc6066a10782fbc81959bbd47746c0675346ac34e5",
+    "data/raw-example/fictional-buildings.prj": "d1e193c7d79d44da8888b37d42dbee5d772c92f0af76a4190ea096debcdd99ec",
+    "data/raw-example/fictional-buildings.shp": "c15567f006bbfaba2fedadce36ac3009e7d7220228b9bedcbced6655dd1dce49",
+    "data/raw-example/fictional-buildings.shx": "dc5aba3dc8c131c5eb6c833ba4843cb199dbad88a137e1ca06f4018923c43fa1",
+    "data/raw-example/fictional-terrain.gpkg": "abe2a97f6c3830cbbf16e3e475cc4bce4b594cd9e134f3c2e264f1bde838fab3"
+  },
+  "sources_unchanged": true,
+  "raw_bytes": 167069,
+  "prepared_bytes": 288647,
+  "manifest_processing": {
+    "buildings": {
+      "base_method": "reliable configured absolute base; otherwise median valid all-touched DTM cells",
+      "duplicates_removed": 1,
+      "estimated_heights": 0,
+      "features_read": 6,
+      "features_retained": 5,
+      "footprint_policy": "all_touched screening; holes retained but subcell holes/gaps can close",
+      "invalid_repaired": 1,
+      "outside_grid": 0,
+      "overlap_policy": "maximum absolute roof; unknown overlapping height remains unresolved",
+      "partly_outside_grid": 0,
+      "roof_conflicts": 0,
+      "slope_conflict_m": 20,
+      "unresolved_heights": 0
+    },
+    "footprint_index": "buildings.gpkg",
+    "limitations": [
+      "2.5D columns; grid spacing is not guaranteed physical accuracy",
+      "All-touched footprints can close narrow gaps; no trees/overhangs unless supplied",
+      "Absolute roofs use approximate terrain base; vertical conversions are not performed"
+    ],
+    "parameters": {
+      "bounds": [
+        199250,
+        549250,
+        200750,
+        550750
+      ],
+      "buildings": {
+        "coverage_bounds": [
+          199150,
+          549150,
+          200850,
+          550850
+        ],
+        "encoding": "CP949",
+        "height_field": "SYN_H_M",
+        "height_is_agl": true,
+        "invalid_geometry": "repair",
+        "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-buildings.shp",
+        "units": "m",
+        "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations"
+      },
+      "crs": "EPSG:5186",
+      "data_root": "/workspace/Hidden_View_Finder/data",
+      "output_boundary": {
+        "layer": "fictional_output_boundary",
+        "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-terrain.gpkg"
+      },
+      "output_dir": "/workspace/Hidden_View_Finder/data/prepared-example",
+      "resolution_m": 5,
+      "source_kind": "synthetic",
+      "storage_policy": {
+        "disk_cache_bytes": 1073741824,
+        "minimum_free_bytes": 8589934592,
+        "temporary_budget_bytes": 4294967296,
+        "total_budget_bytes": 21474836480
+      },
+      "terrain": {
+        "duplicate_elevation_tolerance_m": 0.001,
+        "halo_m": 250,
+        "kind": "samples",
+        "max_points_per_tile": 10000,
+        "max_sample_points": 10000,
+        "max_triangle_edge_m": 180,
+        "sample_spacing_m": 25,
+        "sources": [
+          {
+            "elevation_field": "SYN_Z_M",
+            "layer": "fictional_contours",
+            "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-terrain.gpkg",
+            "units": "m",
+            "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations"
+          },
+          {
+            "elevation_from_z": true,
+            "layer": "fictional_spots",
+            "path": "/workspace/Hidden_View_Finder/data/raw-example/fictional-terrain.gpkg",
+            "units": "m",
+            "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations"
+          }
+        ],
+        "tile_size": 128,
+        "units": "m",
+        "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations"
+      },
+      "vertical_reference": "fictional fixture local orthometric datum; not measured Seoul elevations"
+    },
+    "pixel_convention": "fixed origin (0,0), north-up; samples at centres",
+    "preparation_s": 1.387966796028195,
+    "quality": {
+      "coverage_policy": "Terrain finite and full-cell building survey coverage; unknown roofs flagged, never assumed absent",
+      "pixel_counts": {
+        "building_coverage_valid": 90000,
+        "height_estimated": 0,
+        "height_unresolved": 0,
+        "roof_conflict": 0,
+        "terrain_valid": 90000
+      },
+      "quality_bits": {
+        "building_coverage_valid": 2,
+        "height_estimated": 4,
+        "height_unresolved": 8,
+        "roof_conflict": 16,
+        "terrain_valid": 1
+      }
+    },
+    "storage_plan": {
+      "estimates": {
+        "environment_installation_bytes": 0,
+        "estimated_derived_bytes": 15770062,
+        "estimated_temporary_bytes": 16026112,
+        "external_source_bytes": 0,
+        "source_bytes": 166050
+      },
+      "grid": {
+        "bounds": [
+          199250,
+          549250,
+          200750,
+          550750
+        ],
+        "crs": "EPSG:5186",
+        "height": 300,
+        "resolution_m": 5,
+        "transform": [
+          199250,
+          5,
+          0,
+          550750,
+          0,
+          -5
+        ],
+        "width": 300
+      },
+      "notes": [
+        "Estimates reserve both final products and staging; compression savings are not assumed.",
+        "Coverage is rectangular and includes surrounding occluders. Output boundary is a separate final mask.",
+        "No vertical-datum conversion is performed. 2 m requires independently suitable source data."
+      ],
+      "resources": {
+        "additional_bytes": 15770062,
+        "current_bytes": 6937748,
+        "free_bytes": 44467535872,
+        "peak_project_bytes": 38733922,
+        "policy": {
+          "disk_cache_bytes": 1073741824,
+          "minimum_free_bytes": 8589934592,
+          "temporary_budget_bytes": 4294967296,
+          "total_budget_bytes": 21474836480
+        },
+        "temporary_bytes": 16026112
+      },
+      "steps": [
+        "Fingerprint inputs and verify heights/CRS",
+        "Prepare bounded terrain raster",
+        "Normalize and index footprints",
+        "Burn maximum absolute roofs and quality masks",
+        "Publish ready manifest atomically"
+      ]
+    },
+    "terrain": {
+      "coordinate_quantization_m": 1e-06,
+      "duplicate_samples_retained_first_within_tolerance": 0,
+      "edge_policy": "NoData outside local convex hull or triangles with any edge exceeding support",
+      "elevation_max_m": 116.0,
+      "elevation_min_m": 99.0,
+      "halo_m": 250.0,
+      "heldout_spots": {
+        "bias_m": 0.0,
+        "evaluated": 45,
+        "rmse_m": 0.0,
+        "strategy": "every fifth unique spot excluded from validation TIN only",
+        "unsupported": 0
+      },
+      "max_points_per_tile": 10000,
+      "max_triangle_edge_m": 180.0,
+      "method": "unconstrained sampled-contour local linear TIN",
+      "sample_count": 1467,
+      "sample_spacing_m": 25.0,
+      "seam_check": {
+        "horizontal_edges_compared": 6,
+        "max_same_point_difference_m": 2.842170943040401e-14,
+        "vertical_edges_compared": 6
+      },
+      "spot_count": 225,
+      "valid_pixels": 90000
+    },
+    "version": "seoul-prepare-v1"
+  },
+  "interpretation": "Per-command elapsed times include Python startup and imports. Query core timings are reported separately by the query result. Repeated prepare checks resumability, not a repeated interpolation benchmark."
+}

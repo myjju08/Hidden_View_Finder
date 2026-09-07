@@ -1,0 +1,9 @@
+# Validated on Python 3.12 / Ubuntu 24.04, libgdal 3.8.4.
+# Install NumPy first, then GDAL using the matching system gdal-config.
+GDAL==3.8.4
+numpy==2.5.2
+scipy==1.18.1
+shapely==2.1.2
+pyproj==3.7.2
+psutil==7.2.2
+pytest==9.1.1
