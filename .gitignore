@@ -3,8 +3,15 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 .venv/
+.venv-demo-tests/
 data/
 .coverage
+.DS_Store
+.ruff_cache/
+htmlcov/
+node_modules/
+playwright-report/
+test-results/
 
 # Local datasets, exports, generated configurations and environments.
 README.ko.md
@@ -64,3 +71,7 @@ reports/seoul-real-benchmark/*
 reports/gdal-radial-dependencies/*
 !reports/gdal-radial-dependencies/probe.md
 !reports/gdal-radial-dependencies/probe.json
+!reports/demo/
+reports/demo/*
+!reports/demo/validation.json
+!reports/demo/browser-checks.json

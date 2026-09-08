@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="내가 갈 수 있는 장소에서, 내가 보고 싶은 풍경을. 근거를 확인하는 서울 조망 추천 데모.">
+  <title>Hidden View Finder · 나의 다음 풍경</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">추천 결과로 건너뛰기</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Hidden View Finder 홈"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23 14 7l5 9 3-5 6 12H5Z"/><path d="M5 27h23"/></svg><span>hidden view <b>finder</b><small>SEOUL, FROM YOUR POINT OF VIEW</small></span></a>
+    <nav aria-label="주요 메뉴"><a href="#workspace" class="nav-active">풍경 찾기</a><button class="text-button" id="about-button" type="button">추천의 근거</button><a class="github-link" href="https://github.com/myjju08/Hidden_View_Finder" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow"><span class="tiny-spark">✳</span> A DIFFERENT VIEW OF SEOUL</p><h1>어디를 갈지보다,<br><em>어떤 풍경을 볼지.</em></h1><p class="intro-copy">당신의 시간과 취향에 맞춰, 실제로 서서 바라볼 곳을 찾습니다.<br class="desktop-break"> 보이는 풍경과 아직 확인할 내용을 함께 살펴보세요.</p></div>
+      <div class="intro-mark" aria-hidden="true"><svg viewBox="0 0 290 160"><defs><pattern id="contour" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M0 16 16 0" fill="none" stroke="#dde3d7" stroke-width=".7"/></pattern></defs><ellipse cx="148" cy="138" rx="109" ry="9" fill="#e4e7de"/><path d="M32 135 101 45l41 57 38-42 80 75Z" fill="url(#contour)" stroke="#9aa990"/><path d="m32 135 69-90 41 57 38-42 80 75" fill="none" stroke="#405e48" stroke-width="1.5"/><path d="M37 132 98 76l41 45 44-26 68 37M50 135l47-37 40 35 47-17 38 19" fill="none" stroke="#afbc9d"/><circle cx="216" cy="30" r="17" fill="#ebbc70"/><path d="M152 135V24m-5 8h10m-11 9h12m-6-27v10" fill="none" stroke="#35583e" stroke-width="2"/><circle cx="152" cy="47" r="5" fill="#f6f5f0" stroke="#35583e"/><path d="M145 134 148 55h8l3 79" fill="#d5decb" stroke="#35583e"/></svg><span>한 걸음 밖의 새로운 시선</span></div>
+    </section>
+
+    <section class="workspace" id="workspace" aria-label="맞춤 조망 추천">
+      <aside class="planner">
+        <div class="planner-title"><span class="section-number">01</span><h2>오늘의 여정</h2><button id="reset-button" class="text-button muted" type="button">초기화</button></div>
+        <form id="planner-form">
+          <label class="field-label" for="mode">탐색 모드 <span class="field-hint">데이터 범위</span></label>
+          <select id="mode" name="mode"><option value="scenario">시나리오 데모 · 합성 데이터</option><option value="seoul">서울 실제 데이터 · 검증 우선</option></select>
+          <p id="mode-note" class="field-note mode-note">합성 지형과 예시 방문 조건으로 추천 과정을 체험합니다. 실제 방문 추천이 아닙니다.</p>
+
+          <div class="form-divider"></div>
+          <label class="field-label" for="start-preset">어디에서 출발하나요?</label>
+          <select id="start-preset"><option value="scenario">가상 출발점 · 데모 좌표</option><option value="gwanghwamun">광화문광장</option><option value="cityhall">서울시청</option><option value="gyeongbokgung">경복궁역</option><option value="custom">좌표 직접 입력</option></select>
+          <div class="field-row coordinates"><label>경도<input id="lon" name="lon" type="number" min="124" max="132" step="any" value="126.9777" required></label><label>위도<input id="lat" name="lat" type="number" min="33" max="39" step="any" value="37.578" required></label></div>
+          <label class="field-label" for="visit-time">언제 출발할까요? <span class="field-hint">한국 시간</span></label>
+          <input id="visit-time" name="visit_time" type="datetime-local" required>
+          <div class="field-row"><label class="field-label" for="available-until">일정 종료 시간<input id="available-until" type="datetime-local" required></label><label class="field-label" for="stay-minutes">머무는 시간<div class="input-suffix"><input id="stay-minutes" type="number" min="1" max="240" value="30" required><span>분</span></div></label></div>
+          <div class="field-row"><label class="field-label" for="purpose">방문 목적<select id="purpose"><option value="산책">가볍게 산책</option><option value="사진 촬영">사진 촬영</option><option value="휴식">조용히 쉬기</option></select></label><label class="field-label" for="group">누구와 함께<select id="group"><option value="혼자">혼자</option><option value="친구 또는 연인">친구 · 연인</option><option value="가족">가족</option></select></label></div>
+          <fieldset class="preference-field"><legend class="field-label">마음이 향하는 풍경 <span class="field-hint">여러 개 선택</span></legend><div class="choice-chips" id="preferences"><label><input type="checkbox" value="mountain" checked><span>↟ 산과 능선</span></label><label><input type="checkbox" value="city" checked><span>▥ 도시</span></label><label><input type="checkbox" value="river"><span>≈ 강</span></label><label><input type="checkbox" value="nature"><span>❧ 녹음</span></label><label><input type="checkbox" value="skyline"><span>⌁ 스카이라인</span></label><label><input type="checkbox" value="sunset"><span>◒ 노을</span></label><label><input type="checkbox" value="night"><span>☾ 야경</span></label></div></fieldset>
+          <label class="field-label" for="crowd">어느 정도의 북적임이 괜찮나요?</label><select id="crowd"><option value="quiet">한적한 곳을 선호해요</option><option value="balanced">적당한 활기도 좋아요</option><option value="lively">활기찬 곳을 선호해요</option><option value="any">혼잡도는 상관없어요</option></select>
+
+          <details class="access-options" open><summary>이동 · 접근성 조건 <span class="required-tag">필수 조건</span></summary><div class="field-row"><label class="field-label" for="transport">이동 수단<select id="transport"><option value="walking">도보</option><option value="transit">대중교통</option><option value="driving">자동차</option></select></label><label class="field-label" for="max-travel">최대 이동 시간<div class="input-suffix"><input id="max-travel" type="number" min="1" max="240" value="40" required><span>분</span></div></label></div><label class="field-label" for="max-walk">최대 걷는 거리<div class="input-suffix"><input id="max-walk" type="number" min="0" max="20000" step="100" value="2500" required><span>m</span></div></label><div class="check-list"><label><input id="no-stairs" type="checkbox">계단 없는 경로가 필요해요</label><label><input id="wheelchair" type="checkbox">휠체어 접근이 필요해요</label><label><input id="stroller" type="checkbox">유모차와 함께해요</label></div></details>
+          <label class="field-label" for="max-slope">허용 경사도 <span class="field-hint">선택 · 비워두면 제한 없음</span><div class="input-suffix"><input id="max-slope" type="number" min="0" max="100" step="1" placeholder="제한 없음"><span>%</span></div></label>
+          <div class="count-row"><label class="field-label" for="k">추천 개수</label><select id="k"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+          <button class="primary-button" id="recommend-button" type="submit"><span>나에게 맞는 풍경 찾기</span><span aria-hidden="true">↗</span></button><p class="submit-note">필수 조건을 먼저 확인하고, 취향으로 순위를 매깁니다.</p>
+        </form>
+      </aside>
+
+      <div class="results" id="results" tabindex="-1">
+        <div class="results-top"><div><p class="eyebrow">YOUR VIEW, WITH EVIDENCE</p><h2 id="results-title">시선이 머무를 곳을 찾아볼까요?</h2></div><span class="live-badge" id="data-badge"><i></i> 시나리오 데모</span></div>
+        <div class="context-banner" id="context-banner"><span aria-hidden="true">ⓘ</span><p>예시 조건이 준비되어 있어요. 취향을 고른 뒤 <strong>풍경 찾기</strong>를 눌러 추천 과정을 살펴보세요.</p></div>
+        <ol class="pipeline" aria-label="추천 과정"><li data-step="0"><span>1</span>방문 조건</li><li data-step="1"><span>2</span>볼거리</li><li data-step="2"><span>3</span>서 있을 곳</li><li data-step="3"><span>4</span>비교 · 선택</li><li data-step="4"><span>5</span>풍경 카드</li></ol>
+        <div id="error-box" class="error-box" role="alert" hidden></div>
+        <section class="map-panel" aria-label="조망 후보 위치">
+          <div class="map-heading"><span><span class="map-dot"></span> VIEWPOINT EXPLORER</span><span id="map-caption">추천 결과의 좌표가 여기에 표시됩니다</span></div>
+          <div id="map-stage" class="map-stage"><svg viewBox="0 0 900 390" role="img" aria-label="추천 전, 빈 좌표 탐색 화면"><defs><pattern id="emptygrid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0V45" fill="none" stroke="#dae1d4" stroke-width=".8"/></pattern></defs><rect width="900" height="390" fill="#edf0e7"/><rect width="900" height="390" fill="url(#emptygrid)"/><circle cx="450" cy="176" r="70" fill="none" stroke="#bfccb6"/><circle cx="450" cy="176" r="120" fill="none" stroke="#d4decb" stroke-dasharray="4 7"/><path d="m428 182 22-36 22 36h-44Z" fill="none" stroke="#526e4c" stroke-width="2"/><circle cx="450" cy="176" r="3" fill="#526e4c"/><text x="450" y="224" text-anchor="middle" fill="#63765c" font-size="13" font-family="sans-serif">당신의 다음 시선을 찾는 중</text></svg></div>
+          <div class="map-footer"><div class="legend"><span><i class="legend-spot"></i>서 있을 곳</span><span><i class="legend-target"></i>바라볼 대상</span><span><i class="legend-start"></i>출발점</span></div><span id="map-disclaimer">좌표 개요 · 내비게이션용 지도가 아닙니다</span></div>
+        </section>
+        <section class="summary-panel" id="request-summary" hidden></section>
+        <section class="landmark-panel" id="landmark-panel" hidden><div class="small-section-head"><h3>먼저, 바라볼 대상을 고릅니다</h3><span>LANDMARKS</span></div><div id="landmark-list"></div></section>
+        <div class="recommendation-heading"><div><span class="section-number">02</span><h2 id="recommendation-title">추천 조망점</h2><span id="result-count" class="count-badge">—</span></div><div class="view-switch" role="group" aria-label="결과 표시 방식"><button type="button" class="active" id="cards-tab" aria-pressed="true">카드</button><button type="button" id="table-tab" aria-pressed="false">비교표</button></div></div>
+        <div id="loading-panel" class="loading-panel" role="status" hidden><div class="spinner"></div><h3>도착할 수 있는 풍경을 찾고 있어요</h3><p id="loading-message">방문 조건과 조망 데이터를 확인하고 있습니다.</p></div>
+        <div id="empty-panel" class="empty-panel"><span class="empty-icon" aria-hidden="true">↗</span><h3>목적지보다 중요한, 당신의 시선</h3><p>어디서 출발하는지, 무엇을 보고 싶은지 알려주세요.<br>확인된 조건과 불확실한 정보를 구분해서 보여드릴게요.</p><div class="empty-features"><span>01&nbsp; 실제 조망 계산</span><span>02&nbsp; 이동 조건 확인</span><span>03&nbsp; 근거 있는 비교</span></div></div>
+        <div id="cards-list" class="cards-list"></div>
+        <div id="comparison-panel" class="comparison-panel" hidden></div>
+        <section id="unverified-panel" class="secondary-results" hidden><div class="small-section-head"><h3>확인 후 고려할 후보</h3><span class="status-badge unknown">필수 조건 미확인</span></div><p class="section-copy">아직 확인하지 못한 필수 조건이 있어 확정 추천에 포함하지 않았습니다.</p><div id="unverified-list"></div><button id="more-unverified" class="outline-button" type="button" hidden>확인 필요 후보 더 보기</button></section>
+        <details id="excluded-panel" class="excluded-panel" hidden><summary>조건에 맞지 않아 제외한 후보 <span id="excluded-count"></span></summary><div id="excluded-list"></div></details>
+        <section class="evidence-footer" id="evidence-footer"><div><span class="evidence-symbol" aria-hidden="true">⌕</span><h3>좋은 추천은, 근거가 보입니다.</h3><p>점 가시성은 풍경 전체의 가시성을 보장하지 않습니다.<br>접근 가능 여부와 현장 장애물은 별도로 확인합니다.</p></div><button class="outline-button" id="evidence-button" type="button">데이터와 한계 살펴보기 <span aria-hidden="true">↗</span></button></section>
+        <div id="visible-sources" class="visible-sources"></div>
+        <button id="download-button" class="text-button download-button" type="button" hidden>추천 결과 JSON 내려받기 ↓</button>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a href="/" class="footer-brand">hidden view finder</a><p>더 나은 풍경을 찾는 실험. <span>서울 조망 추천 데모 · 2026</span></p><a href="https://github.com/myjju08/Hidden_View_Finder" target="_blank" rel="noopener noreferrer">코드와 데이터 출처 ↗</a></footer>
+
+  <button id="mobile-results" class="mobile-results" type="button" hidden>추천 결과 보기 ↓</button>
+  <dialog id="evidence-dialog" class="evidence-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><div><p class="eyebrow">TRANSPARENT BY DESIGN</p><h2 id="dialog-title">이 추천은 무엇을 알고 있나요?</h2></div><button id="close-dialog" class="icon-button" type="button" aria-label="닫기">×</button></div><div id="dialog-body"></div></dialog>
+</body>
+</html>

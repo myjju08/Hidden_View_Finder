@@ -1,0 +1,48 @@
+{
+  "url": "http://127.0.0.1:8000",
+  "started_at": "2026-09-08T09:57:02.361279+00:00",
+  "playwright_version": "1.58.0",
+  "desktop_viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "mobile_viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": [
+    "desktop_default_three_recommendations_and_labeled_loaded_images",
+    "desktop_no_overflow_or_undefined",
+    "comparison_table_three_rows",
+    "evidence_dialog_open_and_close",
+    "card_details_criteria_uncertainties_and_solar_scope",
+    "download_structured_json",
+    "hard_travel_constraint_empty_and_excluded_states",
+    "reset_restores_default_and_preset_images",
+    "slope_constraint_and_reset",
+    "changed_request_does_not_reuse_exact_preset_images",
+    "seoul_real_paths_unverified_groups_and_load_more",
+    "mobile_three_images_no_overflow_and_jump_to_results",
+    "no_page_or_console_errors"
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "seoul": {
+    "status": "passed",
+    "confirmed": 0,
+    "unverified": 15,
+    "map_paths": 6011
+  },
+  "browser_version": "145.0.7632.6",
+  "status": "passed",
+  "elapsed_s": 23.195,
+  "finished_at": "2026-09-08T09:57:25.556342+00:00",
+  "artifacts": [
+    "scenario-result.json",
+    "ui-desktop.png",
+    "ui-mobile.png",
+    "ui-overview.png",
+    "ui-recommendation-card.png",
+    "ui-seoul.png"
+  ]
+}

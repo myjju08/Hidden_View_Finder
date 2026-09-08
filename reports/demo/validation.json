@@ -1,0 +1,227 @@
+{
+  "created_at": "2026-09-08T09:59:25.055519+00:00",
+  "environment": {
+    "os": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "cpu": "x86_64",
+    "logical_cpus": 32,
+    "storage_type": "unknown container overlay"
+  },
+  "packages": {
+    "numpy": "2.5.2",
+    "GDAL": "3.8.4",
+    "pyproj": "3.7.2",
+    "pytest": "9.1.1"
+  },
+  "module_import_seconds": 0.046760739001911134,
+  "service_initialization_seconds": 0.00011391995940357447,
+  "timing_policy": "In-process service including evidence ranking/presentation. No HTTP, browser, export or network forecast. No OS cache flushing. No recommendation result cache exists.",
+  "scenario_first": {
+    "counts": {
+      "recommendations": 3,
+      "unverified": 1,
+      "excluded": 3,
+      "duplicates": 1
+    },
+    "top_k": [
+      {
+        "id": "river_steps",
+        "score": 92.13,
+        "evidence_coverage": 1.0,
+        "image_status": "generated"
+      },
+      {
+        "id": "forest_window",
+        "score": 74.68,
+        "evidence_coverage": 1.0,
+        "image_status": "generated"
+      },
+      {
+        "id": "garden_frame",
+        "score": 70.7,
+        "evidence_coverage": 0.9,
+        "image_status": "generated"
+      }
+    ],
+    "service_seconds": 0.003913,
+    "visibility_summary": null
+  },
+  "scenario_warm": {
+    "run_count": 30,
+    "seconds": [
+      0.004198651993647218,
+      0.0029667889466509223,
+      0.0025801179581321776,
+      0.005964487965684384,
+      0.002759947965387255,
+      0.002626998000778258,
+      0.002612668031360954,
+      0.00268941797548905,
+      0.002651298011187464,
+      0.0026218080311082304,
+      0.002549317025113851,
+      0.002578518004156649,
+      0.004211652034427971,
+      0.0028184689581394196,
+      0.0026142579736188054,
+      0.0024909069761633873,
+      0.005087026045657694,
+      0.0026729170349426568,
+      0.0026355080190114677,
+      0.0026961390394717455,
+      0.0025544670061208308,
+      0.005912118009291589,
+      0.0027354679768905044,
+      0.0026670380029827356,
+      0.002654657990206033,
+      0.0026786180096678436,
+      0.0025466069928370416,
+      0.002183726988732815,
+      0.0019410859677009284,
+      0.001893316046334803
+    ],
+    "median_s": 0.0026529780006967485,
+    "p95_s": 0.005912118009291589,
+    "sampling": "Fixed fictional scene; deterministic travel-limit perturbation by index/100 min. Not spatial target sampling."
+  },
+  "seoul_first": {
+    "counts": {
+      "recommendations": 0,
+      "unverified": 15,
+      "excluded": 85,
+      "duplicates": 20
+    },
+    "top_k": [],
+    "service_seconds": 3.768247,
+    "visibility_summary": {
+      "backend_timings": {
+        "cache_lookup_s": 0.007402492978144437,
+        "read_s": 0.31986070598941296,
+        "dense_s": 0.0335000500199385,
+        "mask_s": 0.025658836995717138,
+        "total_s": 0.3864226959994994
+      },
+      "sampled_candidates": 120,
+      "cache_status": "miss",
+      "backend": "GDAL/3.8.4/GVM_Edge/GVOT_NORMAL/pixel-center-v2",
+      "pedestrian_node_states": {
+        "blocked": 1543,
+        "visible": 3174,
+        "excluded": 1578,
+        "unknown": 0
+      },
+      "target": {
+        "requested": {
+          "lon": 126.98822189457199,
+          "lat": 37.55119833736254,
+          "height_m": 236.7,
+          "height_reference": "agl",
+          "vertical_reference": null,
+          "x": 198959.22730718154,
+          "y": 550186.5651236734
+        },
+        "effective": {
+          "x": 198957.5,
+          "y": 550187.5,
+          "lon": 126.98820234583897,
+          "lat": 37.55120675863067,
+          "row": 1762,
+          "col": 1291
+        },
+        "absolute_elevation_m": 489.06618041992186,
+        "source_surface_m": 269.12347412109375,
+        "source_dtm_m": 252.36618041992188,
+        "vertical_reference": "Incheon mean sea level (NGII national map elevation convention)",
+        "quantization": "containing half-open cell, then cell center; no subpixel dense precision"
+      },
+      "limitations": [
+        "Point visibility only; raster-model screening, not exact footprint geometry.",
+        "Observer output is open ground; public access is unverified.",
+        "Pixel-center target quantization; projected planar distances in metres.",
+        "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+        "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+        "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+        "Curvature/refraction coefficient is an assumed model setting, not a weather measurement.",
+        "REAL INPUTS / APPROXIMATE: 2023 contours plus estimated building heights; not a current measured-height survey.",
+        "GBA heights mostly use 2019 imagery with 2018 fallback; footprints have mixed vintages. Omitted buildings and height errors can cause false visibility.",
+        "Sub-metre positive GBA heights are retained as supplied and flagged estimated; no claim that they are plausible measured heights.",
+        "NGII/Incheon mean-sea-level height convention is documented via the source agency; SHP has no embedded vertical CRS. No vertical-datum conversion performed.",
+        "Sampled contour TIN is unconstrained and approximate; interpolation support and held-out checks are recorded separately. 5 m spacing is not 5 m physical accuracy.",
+        "Only the prepared central Seoul domain is supported. Complete computational windows are required; no surrounding missing terrain is assumed absent.",
+        "GBA height estimates and some footprints have CC BY-NC 4.0 terms; OSM/Microsoft footprints have ODbL terms. Retain source-specific attribution and licences.",
+        "Explicit screening approximation after median-ground roof conflicts were measured: use highest DTM under the full all-touched footprint plus the unchanged supplied AGL estimate. This overestimates roof elevation relative to a median base and can falsely block rays; no guaranteed visibility bound."
+      ],
+      "elapsed_s": 1.2591502949944697
+    }
+  },
+  "seoul_repeated": {
+    "counts": {
+      "recommendations": 0,
+      "unverified": 15,
+      "excluded": 85,
+      "duplicates": 20
+    },
+    "top_k": [],
+    "service_seconds": 1.309828,
+    "visibility_summary": {
+      "backend_timings": {
+        "cache_lookup_s": 0.0009739130036905408,
+        "total_s": 0.0011571140494197607
+      },
+      "sampled_candidates": 120,
+      "cache_status": "memory_hit",
+      "backend": "GDAL/3.8.4/GVM_Edge/GVOT_NORMAL/pixel-center-v2",
+      "pedestrian_node_states": {
+        "blocked": 1543,
+        "visible": 3174,
+        "excluded": 1578,
+        "unknown": 0
+      },
+      "target": {
+        "requested": {
+          "lon": 126.98822189457199,
+          "lat": 37.55119833736254,
+          "height_m": 236.7,
+          "height_reference": "agl",
+          "vertical_reference": null,
+          "x": 198959.22730718154,
+          "y": 550186.5651236734
+        },
+        "effective": {
+          "x": 198957.5,
+          "y": 550187.5,
+          "lon": 126.98820234583897,
+          "lat": 37.55120675863067,
+          "row": 1762,
+          "col": 1291
+        },
+        "absolute_elevation_m": 489.06618041992186,
+        "source_surface_m": 269.12347412109375,
+        "source_dtm_m": 252.36618041992188,
+        "vertical_reference": "Incheon mean sea level (NGII national map elevation convention)",
+        "quantization": "containing half-open cell, then cell center; no subpixel dense precision"
+      },
+      "limitations": [
+        "Point visibility only; raster-model screening, not exact footprint geometry.",
+        "Observer output is open ground; public access is unverified.",
+        "Pixel-center target quantization; projected planar distances in metres.",
+        "GDAL GVM_Edge interpolates a raster horizon; it differs from closed column reference LOS.",
+        "5 m data cannot resolve every alley or foreground obstacle; all_touched may close narrow gaps.",
+        "No trees, balconies, signs, temporary objects, atmosphere, overhangs, or indoor viewpoints unless represented.",
+        "Curvature/refraction coefficient is an assumed model setting, not a weather measurement.",
+        "REAL INPUTS / APPROXIMATE: 2023 contours plus estimated building heights; not a current measured-height survey.",
+        "GBA heights mostly use 2019 imagery with 2018 fallback; footprints have mixed vintages. Omitted buildings and height errors can cause false visibility.",
+        "Sub-metre positive GBA heights are retained as supplied and flagged estimated; no claim that they are plausible measured heights.",
+        "NGII/Incheon mean-sea-level height convention is documented via the source agency; SHP has no embedded vertical CRS. No vertical-datum conversion performed.",
+        "Sampled contour TIN is unconstrained and approximate; interpolation support and held-out checks are recorded separately. 5 m spacing is not 5 m physical accuracy.",
+        "Only the prepared central Seoul domain is supported. Complete computational windows are required; no surrounding missing terrain is assumed absent.",
+        "GBA height estimates and some footprints have CC BY-NC 4.0 terms; OSM/Microsoft footprints have ODbL terms. Retain source-specific attribution and licences.",
+        "Explicit screening approximation after median-ground roof conflicts were measured: use highest DTM under the full all-touched footprint plus the unchanged supplied AGL estimate. This overestimates roof elevation relative to a median base and can falsely block rays; no guaranteed visibility bound."
+      ],
+      "elapsed_s": 0.6087809309829026
+    }
+  },
+  "seoul_timing_policy": "Two integration smoke runs, not a median/p95 benchmark. Fixed approximate N Seoul Tower point, 1.8 km radius / 5 m; repeated run may reuse the native result cache. Weather disabled.",
+  "peak_rss_mib": 346.140625,
+  "generated_asset_bytes": 9070551
+}

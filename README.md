@@ -1,130 +1,106 @@
-# Hidden View Finder · 서울 한 점 가시성 엔진
+# Hidden View Finder
 
-서울의 **높이가 명시된 3D 목표점 하나를 지상 어디에서 볼 수 있는지** 계산하는 Python 패키지입니다. 지형과 높이 속성이 있는 2D 건물을 2.5D 표면으로 준비하고, 목표점 중심의 GDAL viewshed 한 번으로 주변 관측 위치를 판정합니다.
+**내 조건에 맞는 풍경을, 실제로 서서 볼 수 있는 위치에서.**
 
-**실제 서울 자료로 5 km / 5 m 계산을 실행·검증했습니다.** 개발 환경의 warm uncached 중앙값 **0.544초**, p95 **0.599초**, 자동 테스트 **173개 통과**입니다. 현재 검증 범위는 중앙 서울 11.5 × 11.5 km이며 건물 높이는 추정값이므로 결과는 **APPROXIMATE**입니다.
+방문 시간·풍경 취향·혼잡 선호·이동 및 접근성 조건을 입력하면, 랜드마크와 관측 위치를 구분해 평가하는 추천 데모입니다. **사용자 조건 → 랜드마크 → 관측 위치·근거 → Top K → 설명·예상 이미지** 순서를 따릅니다.
 
-이 GitHub 저장소에는 **코드·테스트·설정 예제·취득 스크립트·집계 성능 보고서**를 올렸습니다. 원본 SHP, 건물 도형, 가공 래스터, 공간 인덱스, 지도 결과 등 **데이터 파일은 포함하지 않습니다.**
+[데모 실행·API](docs/demo.md) · [실제 장소·경로 출처](docs/demo-sources.md) · [가시성 엔진](docs/engine.md) · [지형·건물 데이터](docs/data-sources.md)
 
-[데이터 상세](docs/data-sources.md) · [실측 성능·검증](docs/benchmarks.md) · [English technical guide](README.en.md)
+## 바로 실행
 
-## 어떤 데이터를 사용했나요?
-
-| 용도 | 실제 사용한 자료 | 시점·규모 | 처리와 한계 |
-| --- | --- | --- | --- |
-| 지형 | [서울 열린데이터광장 / 국토지리정보원 등고선·표고점](https://data.seoul.go.kr/dataList/OA-22241/F/1/datasetView.do) | 2023년 자료, 등고선 8,570개 + 표고점 45,870개 | 실제 `CONT`·`NUME` 표고 필드(m), EPSG:5174 / CP949. 타일별 TIN으로 5 m DTM 생성 |
-| 건물 장애물 | [GlobalBuildingAtlas](https://github.com/zhu-xlab/GlobalBuildingAtlas)의 [Source Cooperative 변환본](https://source.coop/tge-labs/globalbuildingatlas-lod1) | 2025년 공개본, 높이 영상은 주로 2019년·일부 2018년. 주변 294,919개 취득, 준비 격자에 62,482개 사용 | 2D 도형 + `height_m` AGL **추정 높이**. 2025년 실측 건물 높이가 아님 |
-| 서울 출력 경계 | [OpenStreetMap relation 2297418](https://www.openstreetmap.org/relation/2297418) | 2026-09-07 취득 | 장애물 계산 후 출력 마스크로 적용. 출입 가능 여부는 판단하지 않음 |
-| 과거 건물 비교 | [서울시 2015년 건물 SHP](https://data.seoul.go.kr/dataList/mapView.do?infId=OA-13224&srvType=M) | 원본 659,187개 | 지상층수 `GRO_FLO_CO` 검사·비교용. 실측 높이 필드가 없어 계산용 높이로 혼합하지 않음 |
-
-지형은 공공누리 1유형, OSM 경계는 © OpenStreetMap contributors / ODbL입니다. GBA는 원 출처에 따라 ODbL 및 **CC BY-NC 4.0** 조건이 적용됩니다. 데이터의 이용 조건은 코드 배포와 별개입니다. 정확한 필드, 좌표계, 수직 기준, 높이 추정, 출처별 이용 조건은 [데이터 문서](docs/data-sources.md)에 정리했습니다.
-
-최신 공식 실측 높이 자료는 당시 다운로드 접근 오류로 확보·검증하지 못했습니다. 지형과 건물의 시점 차이, 누락 건물, 추정 높이 오차가 남아 있으며 **서울 전역의 최신 현황이나 현장 가시성 정확도를 보장하지 않습니다.**
-
-## 계산 결과의 의미
-
-- 목표점은 WGS84 **경도, 위도** 순서와 명시적인 높이를 받습니다. `agl`은 **맨땅 DTM 위 높이**이고 건물 지붕 위 높이가 아닙니다. `absolute`는 DTM과 같은 수직 기준 선언이 필요합니다.
-- 관측자는 열린 지면의 `DTM + 눈높이`에 있습니다. 건물 셀은 관측 위치에서 제외하지만 모든 건물은 장애물로 유지합니다. 지붕 아래에 묻힌 목표점은 오류로 거부합니다.
-- 기본 반경은 5 km, 격자는 5 m, 눈높이는 1.7 m, 곡률 계수는 6/7입니다. 목표점은 포함 셀 중심으로 정렬되며 요청·유효 좌표를 모두 반환합니다.
-- 필요한 지형·건물 높이가 누락되면 `IncompleteCoverageError`로 거부합니다. 미지 영역을 높이 0으로 채우지 않습니다.
-- 출력은 `blocked=0`, `visible=1`, `excluded=2`, `unknown=3`인 작은 `uint8` 래스터입니다. `excluded`와 `unknown`은 차폐 판정이 아닙니다.
-
-5 m 격자는 모든 골목·전경 장애물을 구분하지 못합니다. 건물의 보수적 `all_touched` rasterization과 최고 지형 기반 지붕 추정은 좁은 틈을 닫거나 차폐를 과대평가할 수 있습니다. 수목·간판·발코니·교량 하부·대기 상태는 포함하지 않으며, 결과는 건물 전체의 가시성·경관의 매력·공공 출입 가능성을 뜻하지 않습니다.
-
-## 데이터 없이 바로 실행하기
-
-검증 환경은 **Ubuntu 24.04 / Python 3.12 / GDAL 3.8.4**입니다. 시스템 GDAL과 Python 바인딩 버전을 맞춰야 합니다. 고정 버전은 [requirements.lock](requirements.lock), 설치·자원 검사는 [scripts/install.sh](scripts/install.sh)에 있습니다.
+**Python 3.11+로 가상 시나리오 데모를 실행합니다.** Linux의 시간대 DB가 있는 환경에서는 패키지 설치·GIS 데이터·API 키가 필요하지 않습니다.
 
 ```bash
 git clone https://github.com/myjju08/Hidden_View_Finder.git
 cd Hidden_View_Finder
+python3 scripts/demo/run.py
+```
 
-# Ubuntu 24.04: Python·venv·컴파일러와 시스템 GDAL 개발 라이브러리 설치
-sudo apt-get install --no-install-recommends \
-  python-is-python3 python3-venv python3-dev build-essential libgdal-dev
-bash scripts/install.sh
+브라우저에서 **http://127.0.0.1:8000** 을 엽니다. 조건을 바꾸고 추천 카드·비교표·지도상 관계·근거 상세·JSON 내보내기를 확인할 수 있습니다.
+
+Windows 등 IANA 시간대 DB가 없는 환경은 먼저 `python -m pip install tzdata`를 실행하세요. 검증 환경은 Linux/Python 3.12입니다.
+
+![가상 시나리오 추천 데모 화면](docs/assets/demo-desktop.png)
+
+<details>
+<summary>추천 카드와 AI 분위기 참고 이미지 보기</summary>
+
+![가상 장소 추천 카드 — 실제 장소 재현 아님](docs/assets/demo-card.png)
+
+</details>
+
+## 두 가지 데모 모드
+
+| 모드 | 실행하는 것 | 결과의 의미 |
+| --- | --- | --- |
+| **가상 시나리오** | 결정적인 가상 장소·동선·가시성·기상 fixture로 조건 필터, 점수 계산, Top K 다양화, 설명·이미지 흐름 검증 | 실제 서울 여행 추천이 아닙니다. 기본 시각은 고정된 2026-09-08 시나리오입니다 |
+| **서울 실제 자료** | 기존 5 m 지형·건물 표면으로 N서울타워의 대표 상단 점을 계산하고, 남산 주변 OSM 보행 노드·경로와 교차 | 실제 자료에 기반한 **근사 후보 탐색**입니다. 이동·개방·접근성 미확인 후보는 확정 Top K와 분리합니다 |
+
+추천에 필요한 필수 조건이 확인되지 않으면 수를 채우려고 임의의 장소를 넣지 않습니다. 현재 실제 서울 자료에서는 전체 경로 접근성과 개방 시간을 확인하지 못해 **확정 추천은 없고 확인 필요 후보를 반환**합니다. UI에서 그 이유와 가시성 상태를 볼 수 있습니다.
+
+## 구현한 추천 규칙
+
+- 이동 시간·보행 거리·방문 가능 시간·체류 시간·휠체어·유모차·계단·경사 제한을 먼저 검사합니다. `visible / blocked / excluded / unknown`을 유지합니다.
+- 풍경 30%, 가시성·구도 25%, 시간·기상 20%, 이동 15%, 혼잡 10%의 가중 합을 계산합니다. **미확인 항목은 중간 점수로 채우지 않고**, 알려진 가중치를 재정규화해 점수와 **근거 비중**을 함께 표시합니다.
+- 인접 위치이면서 목표·시선 방향·구도가 유사한 후보를 묶어 다양한 Top K를 고릅니다. 점수는 만족 확률이 아닌 비교용 휴리스틱입니다.
+- 기상·혼잡의 관측·예보·추정·미확인 및 기준 시점을 구분합니다. 주거 인구로 방문 시점의 혼잡을 추정하지 않습니다.
+- 태양 위치는 날짜·시각·좌표에 따른 근사 계산입니다. 실제 일몰 색, 빛 가림, 야간 조명은 보장하지 않습니다.
+- 순위를 확정한 뒤 설명과 이미지 프롬프트를 만듭니다. 기본 가상 Top 3의 **AI 분위기 참고 이미지 3장**을 포함하며, 다른 입력에는 `not_generated` 상태와 프롬프트를 반환합니다. 실행 중 이미지 생성 서비스는 연결하지 않았습니다.
+
+모든 생성 이미지의 표기: **“AI-generated anticipated view — actual scenery may differ.”** 이미지는 실제 장소 확인이나 재순위 계산에 사용하지 않습니다. [원본 생성 프롬프트](docs/image-prompts.md)를 보존합니다.
+
+## 실제 사용 데이터
+
+**원본·가공 GIS 데이터는 Git에 포함하지 않습니다.** 취득·준비 스크립트와 출처, 집계 검증 결과를 제공합니다. 작은 가상 fixture와 데모 UI 이미지는 코드·화면 자산입니다.
+
+| 자료 | 실제 사용 범위·시점 | 주의점 |
+| --- | --- | --- |
+| [서울시 / NGII 등고선·표고점](https://data.seoul.go.kr/dataList/OA-22241/F/1/datasetView.do) | 2023년 등고선 8,570개·표고점 45,870개, EPSG:5174 → 5186 | 표본 TIN 보간한 5 m DTM. 격자 간격이 지형 정확도를 뜻하지 않음 |
+| [GlobalBuildingAtlas](https://github.com/zhu-xlab/GlobalBuildingAtlas) | 2025 공개본, 높이 영상 주로 2019/일부 2018, 준비 격자 건물 62,482개 | `height_m`는 **AGL 추정 높이**. 출처별 ODbL / CC BY-NC 4.0 조건 |
+| [OpenStreetMap](https://www.openstreetmap.org/copyright) 보행 경로 | 남산·명동 약 3 km 범위, 13,982노드·15,255구간 | 2026-09-08 취득했으나 자료 기준일은 5–7월. 현재 개방·공사를 보장하지 않음 |
+| [N서울타워 운영사](https://www.nseoultower.co.kr/eng/global/intro2.asp) | 구조물 높이 236.7 m, OSM 기둥 평면 중심 좌표 | DTM + 구조물 높이의 근사 상단 점. 기초 수직 기준 미확인 |
+| OSM 서울 경계 | relation 2297418 | 장애물 계산 후 출력 마스크. 출입 허가의 근거가 아님 |
+
+실제 모드 준비:
+
+```bash
+# 먼저 docs/visibility-ko.md의 GDAL 설치·서울 지형/건물 준비 절차 실행
+.venv/bin/python scripts/demo/acquire_context.py
+.venv/bin/python scripts/demo/run.py --online-weather
+```
+
+`--online-weather`는 선택 사항입니다. Open-Meteo 예보를 방문 도착 시각에 맞춰 조회하며 서비스 실패·지원 기간 밖·누락 변수는 미확인으로 둡니다. 혼잡·대중교통·자동차·완전한 무장애 경로 제공자는 아직 연결하지 않았습니다.
+
+## 가시성 엔진과 검증
+
+재사용 가능한 `VisibilityEngine`은 한 목표점당 **native GDAL viewshed 한 번**을 실행합니다. 사람 눈높이는 관측점에만 더하고 건물은 장애물로 유지합니다. AGL은 지붕이 아닌 맨땅 위 높이이며, 필요한 입력 누락과 지붕 아래 목표점은 거부합니다.
+
+이전 중앙 서울 **5 km / 5 m** 엔진 벤치마크는 warm uncached 중앙값 **0.544초**, p95 **0.599초**였습니다. **추천 서비스 전체 지연 시간과는 다른 측정**입니다. [환경·실측 보고서](docs/benchmarks.md), [JSON](reports/seoul-real-benchmark/benchmark.json), [CSV](reports/seoul-real-benchmark/runs.csv)를 확인하세요.
+
+```bash
+# 전체 회귀 검사: 기존 엔진 개발 환경 필요
 .venv/bin/python -m pytest -q
 
-# 서울 원본 없이 작은 합성 지형을 만들고 dense/sparse/cache API 실행
-.venv/bin/python examples/usage.py
+# GIS 데이터 없이 추천 코어·API 검사만 실행
+python3 -m pip install pytest==8.4.2 numpy==2.2.6
+python3 -m pytest tests/test_recommendation.py tests/test_demo_service.py -q
 ```
 
-합성 예제는 가상의 지형·건물을 로컬 `data/usage/`에 생성합니다. 실제 서울 결과와 구분됩니다. GPU, 3D 메시, ML 학습, 데이터베이스 서버는 필요하지 않습니다.
+한 점이 보인다고 건물 전체·숲·강·스카이라인 전체가 보이는 것은 아닙니다. 열린 지면이 출입 가능한 장소라는 뜻도 아닙니다. 수목·벽·발코니·공사·대기·전경 구도의 누락을 명시합니다. [데모 검증 기록](docs/demo-validation.md)에서 실제 실행 범위와 남은 제약을 확인하세요.
 
-## 실제 서울 입력 취득·준비·질의
+## 저장소 구성
 
-아래 스크립트는 공개 출처에서 검증한 자료를 취득하고 로컬 `data/`에 보존합니다. 외부 서비스가 변경되거나 응답 해시가 달라지면 재검사를 요구하며 멈춥니다. 취득·보간·건물 rasterization은 **한 번만 수행**하고, 이후 질의는 준비 래스터의 필요한 창만 읽습니다.
-
-```bash
-.venv/bin/python -m pip install -r requirements-acquisition.txt
-.venv/bin/python scripts/acquire_terrain.py
-.venv/bin/python scripts/acquire_buildings.py
-.venv/bin/python scripts/acquire_seoul_boundary.py
-
-# 작은 영역과 중앙 서울 11.5 km 정방형 지형 준비
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
-  .venv/bin/python scripts/subset_seoul_terrain.py --prepare-pilot --prepare-full
-
-# 명시적으로 최고 지형 기반 건물 바닥 추정을 선택한 별도 근사 제품
-.venv/bin/python scripts/prepare_real_seoul.py --area pilot --base-method maximum --prepare
-.venv/bin/python scripts/prepare_real_seoul.py --area central --base-method maximum --prepare
-
-# 광화문 부근의 지면 위 100 m 가상 목표점, 반경 5 km
-.venv/bin/python examples/real_seoul.py
+```text
+src/
+  hidden_view_finder/   # 요청 모델, 추천 규칙, 경로·기상, 서울 연동, 웹 데모
+    static/            # HTML / CSS / JS / 생성 이미지
+  seoul_visibility/    # 독립적인 전처리·가시성 엔진
+scripts/
+  demo/                # 데모 실행과 작은 보행 맥락 취득
+  *.py                 # 기존 GIS 취득·준비·검증·벤치마크
+examples/              # 엔진 API와 명시적 설정 예제
+tests/                 # 엔진·추천·API 회귀 검사
+docs/                  # 실행, 데이터, 기하 계약, 검증 설명
+reports/               # 검토한 집계 JSON / CSV
+data/                 # 로컬 입력·가공·실행 산출물 (Git 제외)
 ```
-
-총 프로젝트 데이터 20 GiB, 최소 여유 공간 8 GiB, 임시 파일 4 GiB 정책을 검사합니다. 기존 소스나 다른 결과를 덮어쓰지 않습니다. 데이터·로컬 경로가 들어간 생성 설정은 `.gitignore`로 제외합니다. 과거 공식 건물 비교 자료는 선택적으로 `scripts/acquire_official_buildings.py`로 취득할 수 있습니다.
-
-```python
-from seoul_visibility import State, TargetPoint, VisibilityEngine
-
-with VisibilityEngine.from_manifest(
-    "data/seoul/processed/central-gba-maximum/manifest.json"
-) as engine:
-    # 특정 건축물의 실측 높이가 아닌, 명시적인 가상 점
-    target = TargetPoint(126.9777, 37.578, 100.0, "agl")
-    result = engine.visible_from_target(
-        target=target,
-        radius_m=5_000,
-        eye_height_m=1.7,
-        resolution_m=5,
-        curvature_coefficient=6 / 7,
-    )
-    visible = result.states == State.VISIBLE
-    print(result.timings, result.metadata["quality"])
-```
-
-다른 SHP/DXF/DTM에는 `inspect → plan → prepare → query` 명령과 [명시적 필드 설정 템플릿](examples/config.template.json)을 사용합니다. 좌표계·높이 단위·수직 기준을 모호하게 추정하지 않습니다. 후보 관측점 마스크와 소수 관측 좌표의 LOS 검사도 지원합니다. [API·전처리 상세](README.en.md)를 참고하세요.
-
-## 실제 측정 결과
-
-중앙 서울 5 m 준비 자료, Threadripper PRO 3955WX, GDAL 3.8.4에서 반경별 **30회 결과 캐시 없는 질의 + 30회 동일 결과 캐시 조회**를 측정했습니다. 파일시스템이 따뜻한 상태이며 cold-disk 성능이 아닙니다.
-
-| 반경 | 결과 캐시 없는 중앙값 | p95 | 동일 결과 캐시 중앙값 |
-| --- | ---: | ---: | ---: |
-| 1 km | 0.01693 s | 0.02257 s | 0.717 ms |
-| 3 km | 0.18628 s | 0.21253 s | 0.707 ms |
-| **5 km** | **0.54365 s** | **0.59854 s** | **0.721 ms** |
-| 10 km | 준비 범위 부족으로 미측정 | — | — |
-
-별도 2 m 실제 자료는 준비하지 않았으며 5 m 제품을 확대한 결과를 2 m로 부르지 않습니다. 자동 테스트 **173개 통과**, 실제 표본 100셀의 GDAL/reference 비교에서 **false-visible 3개 / false-blocked 0개**가 있었습니다. 이는 서로 다른 표면 교차 모델의 불일치이며 현장 정확도 측정이 아닙니다.
-
-[측정 환경·메모리·전처리·한계](docs/benchmarks.md) · [JSON](reports/seoul-real-benchmark/benchmark.json) · [180회 CSV](reports/seoul-real-benchmark/runs.csv) · [합성 1–10 km 벤치마크](reports/benchmark_report.md)
-
-```bash
-.venv/bin/seoul-visibility benchmark \
-  data/seoul/processed/central-gba-maximum/manifest.json \
-  --output reports/reproduced-seoul --runs 30 --radii 1000 3000 5000 10000
-```
-
-명령은 지원하지 않는 목표점·반경의 제외 사유도 기록합니다. 자세한 기하 계약, 곡률 수식, GDAL 셀 정렬 측정, 독립 LOS reference와 의존 영역 검증은 [기술 문서](README.en.md)에 있습니다.
-
-## 코드 구성
-
-| 경로 | 역할 |
-| --- | --- |
-| [src/seoul_visibility](src/seoul_visibility) | 타입·공개 API, GDAL adapter, 데이터 검사·전처리, LOS reference, 자원·캐시 관리 |
-| [scripts](scripts) | 실제 자료 취득, 지역 준비, 검증·프로파일 재현 |
-| [tests](tests) | 결정적인 합성 fixture와 기하·누락 입력·예산·재개 회귀 검사 |
-| [examples](examples) | 합성 및 실제 서울 API 예제, 입력 설정·manifest 예제 |
-| [docs](docs) / [reports](reports) | 출처 설명 및 데이터 자체를 제외한 집계 검증 결과 |
