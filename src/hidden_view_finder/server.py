@@ -103,9 +103,10 @@ def main() -> None:
     parser.add_argument('--port', type=int, default=8000)
     parser.add_argument('--data-root', type=Path, default=Path('data'))
     parser.add_argument('--manifest', type=Path)
+    parser.add_argument('--context', type=Path, help='Prepared local map context for the selected target/region')
     parser.add_argument('--online-weather', action='store_true', help='Enable bounded Open-Meteo forecasts; errors remain unknown')
     args = parser.parse_args()
-    service = DemoService(args.data_root, manifest=args.manifest, online_weather=args.online_weather)
+    service = DemoService(args.data_root, manifest=args.manifest, context=args.context, online_weather=args.online_weather)
     server = DemoHTTPServer((args.host, args.port), service)
     print(f'Hidden View Finder demo: http://{args.host}:{server.server_port}', flush=True)
     try:

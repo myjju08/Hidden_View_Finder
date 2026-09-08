@@ -22,6 +22,7 @@ class SeoulAdapter:
         self.context = None
         self.router = None
         self.signature = None
+        self.context_signature = None
 
     @property
     def available(self) -> bool:
@@ -33,12 +34,20 @@ class SeoulAdapter:
             self.engine.close()
             self.engine = None
 
+    def context_info(self) -> dict:
+        """Reuse the small local map context; do not open terrain for bootstrap."""
+        signature = self.context_path.stat().st_mtime_ns
+        if self.context is None or signature != self.context_signature:
+            self.context = load_context(self.context_path)
+            self.context_signature = signature
+        return self.context
+
     def _open(self) -> None:
         from seoul_visibility import VisibilityEngine
         signature = (self.context_path.stat().st_mtime_ns, self.manifest_path.stat().st_mtime_ns)
         if self.engine is None or signature != self.signature:
             self.close()
-            self.context = load_context(self.context_path)
+            self.context = self.context_info()
             self.router = WalkingRouter(self.context['graph'])
             self.engine = VisibilityEngine.from_manifest(self.manifest_path)
             self.signature = signature
@@ -50,9 +59,14 @@ class SeoulAdapter:
         assert self.context is not None and self.engine is not None and self.router is not None
         context = self.context
         landmark = context['landmarks'][0]
-        target = TargetPoint(landmark['lon'], landmark['lat'], landmark['height_m'], 'agl')
+        target = TargetPoint(landmark['lon'], landmark['lat'], landmark['height_m'],
+                             landmark.get('height_reference', 'agl'),
+                             vertical_reference=landmark.get('vertical_reference'))
+        radius = float(context.get('query_radius_m', 1800))
+        if not math.isfinite(radius) or not 0 < radius <= 10000:
+            raise ValueError('Context query_radius_m must be finite and within (0, 10000]')
         started = time.perf_counter()
-        result = self.engine.visible_from_target(target, radius_m=1800,
+        result = self.engine.visible_from_target(target, radius_m=radius,
             eye_height_m=request.get('eye_height_m', 1.7), resolution_m=5, curvature_coefficient=6/7)
         # Transform all map nodes in one array. Raster remains unchanged: only the
         # resulting states are intersected with candidate pedestrian nodes.
@@ -81,7 +95,7 @@ class SeoulAdapter:
         total_states = {s.name.lower(): 0 for s in State}
         for index in np.flatnonzero(inside):
             n = nodes[index]
-            if distance_m((n['lon'], n['lat']), (target.lon, target.lat)) > 1800:
+            if distance_m((n['lon'], n['lat']), (target.lon, target.lat)) > radius:
                 continue
             state = State(int(result.states[rows[index], cols[index]])).name.lower()
             total_states[state] += 1
@@ -108,13 +122,13 @@ class SeoulAdapter:
             route = self.router.route(str(n['id']), request['transport_mode'])
             arrival = visit + timedelta(minutes=route.get('travel_minutes') or 0)
             spot_weather = weather_at(arrival)
-            title = tags.get('name:ko') or tags.get('name') or '남산 주변 보행 경로'
+            title = tags.get('name:ko') or tags.get('name') or context.get('path_label', '주변 보행 경로')
             public = True if edge.get('access_status') == 'verified' else (
                 False if edge.get('access_status') == 'prohibited' else None)
             hours = edge.get('opening_hours')
             opening = [{'start': '00:00', 'end': '24:00'}] if hours == '24/7' else None
             source_time = next((s.get('reference_time') for s in context['sources']
-                                if s.get('id') == 'osm_namsan'), None)
+                                if s.get('id') == context.get('graph_source_id', 'osm_namsan')), None)
             effective_x = gt[0] + (col+.5)*gt[1]
             effective_y = gt[3] + (row+.5)*gt[5]
             effective_lon, effective_lat = self.engine.to_lonlat.transform(effective_x, effective_y)
@@ -142,8 +156,9 @@ class SeoulAdapter:
                 'uncertainties': ['5 m cell snapping may move the endpoint off the mapped path.',
                     'Trees, walls, railings and construction are absent from the obstruction model.',
                     'Path access, full journey accessibility and current closures require verification.',
-                    'Tower apex is DTM + 236.7 m; surveyed foundation datum is unresolved.',
-                    'Nearby mapped woods/water are not asserted to be visible.']}
+                    f"Target height is {landmark['height_m']} m {target.height_reference}; surveyed foundation datum is unresolved.",
+                    'Nearby mapped woods/water are not asserted to be visible.',
+                    *context.get('visibility_limitations', [])]}
             candidates.append(item)
         roads = [{'coordinates': e['geometry'], 'kind': e.get('tags', {}).get('highway', 'path')}
                  for e in context['graph']['edges'] if e.get('geometry')]
@@ -154,7 +169,7 @@ class SeoulAdapter:
         return {'landmarks': [target_summary, *broad],
             'candidates': candidates, 'sources': context['sources'], 'weather': forecast,
             'assumptions': ['Mapped walking time assumes 4 km/h; no traffic signals, gradients or crowd delays.',
-                'Only a 1,800 m circle around N Seoul Tower within the prepared coverage is searched.',
+                f"Only a {radius:,.0f} m circle around {landmark['name']} within prepared coverage is searched.",
                 'Real map records and old elevation products are not current on-site access observations.'],
             'map': {'kind': 'osm_geometry', 'bounds': context.get('bounds'), 'paths': roads[:6000],
                     'attribution': '© OpenStreetMap contributors · ODbL; snapshot date in sources'},

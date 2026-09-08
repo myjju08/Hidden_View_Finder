@@ -351,6 +351,30 @@ def test_seoul_adapter_keeps_source_nodes_and_reports_effective_cell_without_mut
     assert all(c['weather']['provenance'] == 'caller_provided_unverified' for c in supplied_bundle['candidates'])
     assert supplied_bundle['weather']['reference_time'] == payload['visit_time']
 
+    context['query_radius_m'] = 900
+    context['path_label'] = '석촌호수 보행 경로'
+    adapter.bundle(payload)
+    assert calls[-1]['radius_m'] == 900
+    context['query_radius_m'] = 0
+    with pytest.raises(ValueError, match='query_radius_m'):
+        adapter.bundle(payload)
+
+
+def test_custom_region_bootstrap_uses_mapped_origin_without_opening_raster(tmp_path, monkeypatch):
+    import hidden_view_finder.seoul as seoul_module
+    monkeypatch.setattr(seoul_module, 'find_spec', lambda name: object())
+    manifest, context = tmp_path/'manifest.json', tmp_path/'jamsil.json'
+    manifest.write_text('{}')
+    start = {'lon':127.10, 'lat':37.51, 'name':'Mapped Jamsil entry'}
+    context.write_text(json.dumps({'schema_version':1, 'graph':{'nodes':[{'id':'1'}]},
+        'landmarks':[{'name':'Lotte World Tower'}], 'default_start':start}))
+    service = DemoService(tmp_path, manifest=manifest, context=context)
+    bootstrap = service.bootstrap()
+    assert bootstrap['seoul_start'] == start
+    assert 'Lotte World Tower' in bootstrap['modes'][1]['description']
+    assert service.seoul.engine is None
+    service.close()
+
 
 @pytest.fixture
 def http_demo(tmp_path):

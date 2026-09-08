@@ -14,22 +14,27 @@ from .seoul import SeoulAdapter
 
 
 class DemoService:
-    def __init__(self, data_root: Path = Path('data'), *, manifest: Path | None = None, online_weather: bool = False):
+    def __init__(self, data_root: Path = Path('data'), *, manifest: Path | None = None,
+                 context: Path | None = None, online_weather: bool = False):
         self.data_root = data_root.resolve()
         self.weather = ForecastProvider(enabled=online_weather)
         self.seoul = SeoulAdapter(manifest or self.data_root/'seoul/processed/central-gba-maximum/manifest.json',
-                                  self.data_root/'demo/context.json', self.weather)
+                                  context or self.data_root/'demo/context.json', self.weather)
 
     def close(self) -> None:
         self.seoul.close()
 
     def bootstrap(self) -> dict:
+        info = self.seoul.context_info() if self.seoul.available else {}
+        start = info.get('default_start', {'lon':126.9854902,'lat':37.5607321,
+                                          'name':'명동역 3번 출구 · OSM 지도 좌표'})
+        target_name = (info.get('landmarks') or [{'name':'준비된 서울 목표점'}])[0]['name']
         return {'version': '0.2.0', 'defaults': default_request(),
             'modes': [{'id':'scenario','name':'가상 시나리오','available':True,
                        'description':'데이터 없이 실행하는 고정 가상 사례. 실제 장소·날씨·가시성 아님.'},
                       {'id':'seoul','name':'서울 실제 자료','available':self.seoul.available,
-                       'description':'남산 1.8 km · 실제 표면 계산과 OSM 보행 경로. 미검증 필수 조건은 별도 표시.'}],
-            'seoul_start': {'lon':126.9854902,'lat':37.5607321,'name':'명동역 3번 출구 · OSM 지도 좌표'},
+                       'description':f'{target_name} · 실제 표면과 OSM 보행 경로. 미검증 필수 조건은 별도 표시.'}],
+            'seoul_start': start,
             'weather_enabled': self.weather.enabled,
             'sources': [{'name':'데이터와 검증 방법','url':'/api/about'}]}
 
@@ -38,7 +43,7 @@ class DemoService:
         req = Request.from_dict(payload)
         canonical = req.to_dict()
         if req.mode == 'seoul' and not self.seoul.available:
-            raise FileNotFoundError('서울 모드에는 준비 manifest, data/demo/context.json, GDAL Python 환경이 필요합니다. docs/demo.md의 취득·준비 절차를 실행하고 .venv/bin/python을 사용하세요.')
+            raise FileNotFoundError('서울 모드에는 준비 manifest, 보행 context.json, GDAL Python 환경이 필요합니다. docs/demo.md의 취득·준비 절차를 실행하고 .venv/bin/python을 사용하세요.')
         bundle = scenario_bundle(req) if req.mode == 'scenario' else self.seoul.bundle(canonical)
         ranked = rank_candidates(req, bundle['candidates'])
         for group in ('recommendations','unverified','excluded'):
