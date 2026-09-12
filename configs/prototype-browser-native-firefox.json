@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dconf/libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+    "filename": "libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+    "bytes": 39588,
+    "md5": "18fa10000039421906eeb9e03fd8346e",
+    "package": "libdconf1",
+    "version": "0.40.0-4ubuntu0.1",
+    "sha256": "86bf3825fbaec0d5159c5e6bd88f10ade991a086c821aeef15631c510c6d9904"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/avahi/libavahi-common3_0.8-13ubuntu6.2_amd64.deb",
+    "filename": "libavahi-common3_0.8-13ubuntu6.2_amd64.deb",
+    "bytes": 23444,
+    "md5": "549bf701d2bb6e0a1f0c677e7c970774",
+    "package": "libavahi-common3",
+    "version": "0.8-13ubuntu6.2",
+    "sha256": "edd1f7a4a21e70504d0872c429600f2e13fdff7775c0952145f1afeacede1c82"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/avahi/libavahi-client3_0.8-13ubuntu6.2_amd64.deb",
+    "filename": "libavahi-client3_0.8-13ubuntu6.2_amd64.deb",
+    "bytes": 26810,
+    "md5": "9a92d13bb26f2b8ab036d84ffe9befb5",
+    "package": "libavahi-client3",
+    "version": "0.8-13ubuntu6.2",
+    "sha256": "00609b52ea5a1a9e35fcee4bfba03b6ff743a8015649026cb9109c356762f4d9"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/colord/libcolord2_1.4.7-1build2_amd64.deb",
+    "filename": "libcolord2_1.4.7-1build2_amd64.deb",
+    "bytes": 148960,
+    "md5": "41dcf2855c0a560608146bb6af559703",
+    "package": "libcolord2",
+    "version": "1.4.7-1build2",
+    "sha256": "ef148eb22d566506302a133516594e455e59307aa0dc9874c15a8618268e3355"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/cups/libcups2t64_2.4.7-1.2ubuntu7.14_amd64.deb",
+    "filename": "libcups2t64_2.4.7-1.2ubuntu7.14_amd64.deb",
+    "bytes": 274470,
+    "md5": "b5cbe4490f260c1a676859985c4e105b",
+    "package": "libcups2t64",
+    "version": "2.4.7-1.2ubuntu7.14",
+    "sha256": "b815a3d936718614e403035bb4a545e1323305ea624709bff2e9d94c214f9cc4"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus-glib/libdbus-glib-1-2_0.112-3build2_amd64.deb",
+    "filename": "libdbus-glib-1-2_0.112-3build2_amd64.deb",
+    "bytes": 64236,
+    "md5": "843d9c24f0e527d6f19953d4046bd671",
+    "package": "libdbus-glib-1-2",
+    "version": "0.112-3build2",
+    "sha256": "1fa4cbcfd7d01e4cbadd04e15631e02d41ce036e8eb7789cb7556deb104e077e"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/libe/libepoxy/libepoxy0_1.5.10-1build1_amd64.deb",
+    "filename": "libepoxy0_1.5.10-1build1_amd64.deb",
+    "bytes": 220408,
+    "md5": "ef4089532e1a8906814e74e6917570e1",
+    "package": "libepoxy0",
+    "version": "1.5.10-1build1",
+    "sha256": "e2e754da4e7fb89021476b093cb5ebe9b1859a688fa37739809e529627d39f1f"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxinerama/libxinerama1_1.1.4-3build1_amd64.deb",
+    "filename": "libxinerama1_2%3a1.1.4-3build1_amd64.deb",
+    "bytes": 6396,
+    "md5": "ddc8dafa00868e42db352df330177077",
+    "package": "libxinerama1",
+    "version": "2:1.1.4-3build1",
+    "sha256": "c8c93a3efdbb06e314f41bf48af4ca3652e4a3826bab5b9e00887660e619f239"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gtk%2b3.0/libgtk-3-0t64_3.24.41-4ubuntu1.3_amd64.deb",
+    "filename": "libgtk-3-0t64_3.24.41-4ubuntu1.3_amd64.deb",
+    "bytes": 2913080,
+    "md5": "554d77fba850a492091acd13d0410fc4",
+    "package": "libgtk-3-0t64",
+    "version": "3.24.41-4ubuntu1.3",
+    "sha256": "fd61e308234b12d243160798216d0efcb605d83af185bf3414ac99c2ed5166fc"
+  }
+]

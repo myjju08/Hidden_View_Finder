@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="서울의 지도와 지형 근거로 발견하는 나의 다음 풍경. 실험적 조망 탐색.">
+  <title>Hidden View Finder · 서울의 다음 풍경</title>
+  <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/static/prototype.css">
+  <script src="/static/vendor/leaflet/leaflet.js" defer></script>
+  <script src="/static/prototype.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">결과로 바로 가기</a>
+  <header class="header">
+    <a class="brand" href="/" aria-label="Hidden View Finder 홈"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 24 13 8l6 10 4-7 6 13H4Zm0 4h25"/></svg><span>hidden view <b>finder</b><small>SEOUL, FROM YOUR POINT OF VIEW</small></span></a>
+    <div class="header-actions"><span class="local-badge"><i></i> 서울 데이터 탐색</span><button id="data-button" class="text-button" type="button">데이터와 한계 <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <div class="experimental"><span aria-hidden="true">ⓘ</span><p><strong>실험 중 · 데이터 범위 불완전</strong><span> 지도·모델 추정이며 현장 검증이 아닙니다.</span></p><button id="coverage-toggle" type="button" aria-pressed="false">범위 보기</button></div>
+  <main class="workspace">
+    <aside class="planner" aria-label="풍경 탐색 조건">
+      <div class="intro"><p class="eyebrow">A DIFFERENT VIEW OF SEOUL</p><h1>나의 다음 <em>풍경.</em></h1><p>어디에 서서, 어느 쪽을 바라볼까요?<br>보이는 근거와 모르는 것을 함께 찾습니다.</p></div>
+      <form id="planner-form">
+        <div class="field-heading"><label for="place-search">01 <strong>어디를 중심으로 찾을까요?</strong></label><button id="location-button" class="text-button" type="button" title="브라우저 위치 권한 요청">⌖ 내 위치</button></div>
+        <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="place-search" type="search" placeholder="지도에서 선택하거나 장소 검색" autocomplete="off" maxlength="80" aria-controls="place-results" aria-expanded="false"><div id="place-results" class="place-results" hidden></div></div>
+        <div id="origin-label" class="origin-label">지도에서 탐색 중심을 선택하세요.</div>
+        <details class="coordinate-details"><summary>좌표 직접 입력</summary><div class="field-row"><label for="origin-lon">경도<input id="origin-lon" type="number" step="any" min="124" max="132" value="126.9780" required></label><label for="origin-lat">위도<input id="origin-lat" type="number" step="any" min="33" max="39" value="37.5665" required></label></div><button id="coordinates-button" class="text-button" type="button">이 좌표를 중심으로 설정 ↗</button></details>
+        <fieldset class="radius-field"><legend>직선거리 반경</legend><div class="segmented" id="radius-options"><label><input type="radio" name="radius" value="1000"><span>1 km</span></label><label><input type="radio" name="radius" value="3000" checked><span>3 km</span></label><label><input type="radio" name="radius" value="5000"><span>5 km</span></label><label><input type="radio" name="radius" value="10000"><span>10 km</span></label></div></fieldset>
+        <p class="field-note">서 있을 위치까지의 직선거리입니다.<br>이동 경로·소요 시간·경로 접근성은 확인하지 않습니다.</p>
+        <div class="form-divider"></div>
+        <label class="field-heading" for="view-at">02 <strong>언제 풍경을 볼까요?</strong><span>한국 시간</span></label>
+        <input id="view-at" type="datetime-local" required>
+        <p class="field-note">풍경을 바라볼 시각 · Asia/Seoul</p>
+        <fieldset class="preference-field"><legend class="field-heading">03 <strong>마음이 향하는 풍경</strong><span>여러 개 선택</span></legend><div class="choice-chips" id="preferences"><label><input type="checkbox" value="mountain" checked><span>↟ 산과 능선</span></label><label><input type="checkbox" value="city" checked><span>▥ 도시</span></label><label><input type="checkbox" value="river"><span>≈ 강</span></label><label><input type="checkbox" value="greenery"><span>❧ 녹음</span></label><label><input type="checkbox" value="skyline"><span>⌁ 스카이라인</span></label></div></fieldset>
+        <label class="field-label" for="composition">좋아하는 구도</label><select id="composition"><option value="any">다양한 구도</option><option value="open">넓게 열린 풍경</option><option value="framed">사이로 보이는 풍경</option></select>
+        <label class="field-label" for="crowd">혼잡 선호</label><select id="crowd"><option value="any">상관없어요</option><option value="quiet">한적한 곳을 선호해요</option></select><p class="field-note">혼잡 정보가 없으면 미확인으로 표시합니다.</p>
+        <button id="recommend-button" class="primary-button" type="submit"><span>나에게 맞는 풍경 찾기</span><span aria-hidden="true">↗</span></button>
+        <button id="cancel-button" class="cancel-button" type="button" hidden>이번 요청 취소</button>
+        <p class="submit-note">지도상 접근 근거와 지형을 확인한 후 비교합니다.</p>
+      </form>
+      <p class="planner-footer">HIDDEN VIEW ≠ UNKNOWN PLACE<br>지리적 관계로 발견하는 조망 · 한적함을 보장하지 않아요.</p>
+    </aside>
+    <section class="explorer" aria-label="서울 조망 지도와 탐색 결과">
+      <section class="map-panel" aria-label="실제 서울 좌표 지도">
+        <div class="map-heading"><span><i></i> SEOUL VIEW EXPLORER</span><span id="map-status" role="status">로컬 지도 불러오는 중</span></div>
+        <div id="map" tabindex="0" aria-label="서울 지도. 클릭해서 탐색 중심을 선택하세요."></div>
+        <div class="map-help" id="map-help">지도를 클릭해 탐색 중심을 정해보세요 <span aria-hidden="true">⌖</span></div>
+        <div class="map-legend"><span><i class="origin-dot"></i>탐색 중심</span><span><i class="view-dot"></i>서 있을 곳</span><span><i class="target-dot"></i>바라볼 대상</span><span id="coverage-legend" hidden><i class="coverage-dot"></i>지형 지원 구간 · 광선은 별도 검사</span></div>
+        <div class="map-footer"><span id="map-caption">간략화한 실제 지리 · 경로 안내용 지도가 아닙니다</span><span>© OpenStreetMap contributors · 서울특별시</span></div>
+      </section>
+      <section id="results" class="results" tabindex="-1">
+        <div class="results-heading"><div><p class="eyebrow">YOUR VIEW, WITH EVIDENCE</p><h2 id="results-title">어떤 풍경이 기다릴까요?</h2></div><span id="result-count" class="count-badge">—</span></div>
+        <div id="error-box" class="error-box" role="alert" hidden></div>
+        <div id="loading-panel" class="loading-panel" role="status" hidden><span class="spinner" aria-hidden="true"></span><div><strong>지도와 시선을 함께 살펴보고 있어요</strong><p>후보·접근 근거·개별 광선을 제한된 범위에서 계산합니다.</p></div></div>
+        <div id="request-summary" class="request-summary" hidden></div>
+        <div id="empty-panel" class="empty-panel"><div class="empty-mark" aria-hidden="true">↗</div><h3>목적지보다 중요한, 당신의 시선.</h3><p>지도의 한 지점에서 탐색을 시작하세요.<br>지원되는 풍경만 제안하고, 부족한 결과는 채워 넣지 않습니다.</p><div class="empty-points"><span>01 &nbsp; 실제 지리</span><span>02 &nbsp; 시선별 근거</span><span>03 &nbsp; 솔직한 한계</span></div></div>
+        <div id="cards-list" class="cards-list"></div>
+        <details id="search-evidence" class="search-evidence" hidden><summary>이번 탐색의 범위와 확인할 내용</summary><div id="search-evidence-body"></div></details>
+        <div class="evidence-footer"><span aria-hidden="true">⌕</span><div><h3>좋은 발견은, 근거가 보입니다.</h3><p>부분적으로 보이는 대상과 전체 파노라마는 다릅니다.<br>날씨·나무·실제 개방 여부는 추가 확인이 필요합니다.</p></div><button id="evidence-button" class="outline-button" type="button">데이터 살펴보기 ↗</button></div>
+      </section>
+    </section>
+  </main>
+  <footer class="footer"><span>hidden view finder</span><p>서울의 다른 시선을 찾는 실험.</p><button id="back-to-map" class="text-button" type="button">지도로 돌아가기 ↑</button></footer>
+  <dialog id="data-dialog" aria-labelledby="data-dialog-title"><div class="dialog-heading"><div><p class="eyebrow">TRANSPARENT BY DESIGN</p><h2 id="data-dialog-title">무엇을 알고 있나요?</h2></div><button class="icon-button dialog-close" type="button" aria-label="데이터 창 닫기">×</button></div><div id="data-dialog-body" class="dialog-body"></div></dialog>
+  <dialog id="view-dialog" aria-labelledby="view-dialog-title"><div class="dialog-heading"><div><p class="eyebrow">A VIEW OPPORTUNITY</p><h2 id="view-dialog-title">이 시선의 근거</h2></div><button class="icon-button dialog-close" type="button" aria-label="풍경 상세 닫기">×</button></div><div id="view-dialog-body" class="dialog-body"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

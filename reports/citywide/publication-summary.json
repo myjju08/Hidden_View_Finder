@@ -1,0 +1,135 @@
+{
+  "counts": {
+    "buildings": 435438,
+    "candidates": 582255,
+    "districts": 25,
+    "green_space": 12853,
+    "landmarks": 2248,
+    "paths": 239880,
+    "peaks_ridges": 639,
+    "water": 3055
+  },
+  "district_query_count": 25,
+  "district_query_status_counts": {
+    "empty": 2,
+    "http_error": 0,
+    "partial": 23
+  },
+  "field_verified": false,
+  "local_required_qa": [
+    "reports/prototype/osm-recovery.json",
+    "reports/citywide/raster-overlap-anomalies.json"
+  ],
+  "mandatory_total_storage_bytes": 20000000000,
+  "median_http_seconds": 6.6453,
+  "package_id": "seoul-20260911-v1-6abf3cc88682",
+  "pre_publication_test_date_utc": "2026-09-12",
+  "pre_publication_tests": {
+    "failed": 0,
+    "passed": 689,
+    "pytest_seconds": 26.63,
+    "skipped": 0,
+    "warnings": 4
+  },
+  "public_deployment_licence_review": "required; code publication is not clearance to publish GIS layers or scene derivatives",
+  "raster_collection_manifest_sha256": "abdd4797037ebc5d8717bb660926a3337cccd4a8777a16eb72b3d66ac414cff3",
+  "raster_tile_count": 109,
+  "recorded_total_accounted_bytes": 3627346311,
+  "scope": "Reviewed aggregate evidence only; source-feature data and detailed geometry QA remain local pending publication licence review",
+  "source_artifact_checksums": [
+    {
+      "ok": true,
+      "path": "extents.geojson",
+      "sha256": "49559c7f44033b95c825e42c9a54442cbb539cdc4c74aabc23033529d5b78009"
+    },
+    {
+      "ok": true,
+      "path": "buildings.gpkg",
+      "sha256": "fd080e4b09e8eeeffb68f5b3a77dd9a8b1404136a0dbe38d2436d787f4774ba8"
+    },
+    {
+      "ok": true,
+      "path": "candidates.gpkg",
+      "sha256": "8f23a5a6e6cb60071b894bf8452d8016d460ce671bb8a23f085d3f4a14b2b5c6"
+    },
+    {
+      "ok": true,
+      "path": "coverage.gpkg",
+      "sha256": "35bff33a9398836c081370fb11adbeebc3bc7fac77cb7cfa3a9251640bda29b8"
+    },
+    {
+      "ok": true,
+      "path": "osm.gpkg",
+      "sha256": "ea7c11eac09ad5c7c60a2e6caaa0d185ee0c1ef6b14a9ca2fc7bac6617eaba3e"
+    },
+    {
+      "ok": true,
+      "path": "terrain.gpkg",
+      "sha256": "28bdbed027a52cc9e811aa3b144735827835237e8ff7c3696e8150547a7cc372"
+    },
+    {
+      "ok": true,
+      "path": "south-korea.poly",
+      "sha256": "2d79a5bab097f4ef1272a5ac18d4bcd3b880ceca7b2c47eecc01f8d4e14bfed5"
+    },
+    {
+      "ok": true,
+      "path": "build-config.json",
+      "sha256": "162c388f45e62ebaba8b254a09204184afd7f302893979c6c08c11c30b41a7eb"
+    },
+    {
+      "ok": true,
+      "path": "buildings.source.json",
+      "sha256": "f65fbfc93d0a0099f1050264527fbb88c9911930dc7719f97dafd9e91f9be049"
+    },
+    {
+      "ok": true,
+      "path": "candidates.source.json",
+      "sha256": "db9d0dc68d197ca75c992604ac44491ad8b4830641e93a51b579b29906bdc626"
+    },
+    {
+      "ok": true,
+      "path": "coverage.json",
+      "sha256": "2942b6d9a934582afc55120eedd4e9144dcba38e8d553dc922b6ddc0b692a152"
+    },
+    {
+      "ok": true,
+      "path": "licences.json",
+      "sha256": "a30302ba2d0edd8e24a71ab4aca5fe45b163a8e63d11723983189dee735da741"
+    },
+    {
+      "ok": true,
+      "path": "osm.source.json",
+      "sha256": "f2bf7bd2f8664675c0473ca3d233e7873a6e97195bdbddf3f19448d07a6205fa"
+    },
+    {
+      "ok": true,
+      "path": "sources.json",
+      "sha256": "4cf3fd4ecaa1fec97406aafd7fb0534fb6e5b9c23a4f407caecb2ecb8b7386d1"
+    },
+    {
+      "ok": true,
+      "path": "terrain.source.json",
+      "sha256": "a0cfe3a380a6942ad64f5d6f27c610c296b2efb1c7865554ca9ce3a70b78e5a9"
+    }
+  ],
+  "source_readiness": {
+    "acquisition_ready": true,
+    "building_unrepaired_invalid_geometry_count": 7,
+    "deployment_licence_review": "required: older mixed GBA distribution, source-specific conditions and ODbL obligations",
+    "field_verified": false,
+    "normalized_artifacts_complete": true,
+    "normalized_ready": false,
+    "osm_incomplete_relation_count": 36,
+    "osm_incomplete_relation_scope": "Unknown geometry remains explicit; names or country-edge metadata do not prove exclusion from requested support",
+    "osm_relation_geometry_complete": false,
+    "readiness_definitions": {
+      "acquisition_ready": "All selected core source artifacts acquired and validated; this does not assert the terrain buffer is supplied",
+      "normalized_artifacts_complete": "All core normalized artifacts and quality reports published; recorded geographic gaps may remain",
+      "normalized_ready": "All core normalized artifacts and quality reports completed without unresolved geometry errors or unlocated incomplete relations",
+      "visibility_ready": "Requires supported terrain and obstruction surfaces over complete modeled windows; remains false for the missing surrounding terrain"
+    },
+    "support_area_terrain_complete": false,
+    "visibility_ready": false
+  }
+}

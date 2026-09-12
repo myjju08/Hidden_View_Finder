@@ -73,7 +73,7 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
 .venv/bin/python examples/real_seoul.py
 ```
 
-총 프로젝트 데이터 20 GiB, 최소 여유 공간 8 GiB, 임시 파일 4 GiB 정책을 검사합니다. 기존 소스나 다른 결과를 덮어쓰지 않습니다. 데이터·로컬 경로가 들어간 생성 설정은 `.gitignore`로 제외합니다. 과거 공식 건물 비교 자료는 선택적으로 `scripts/acquire_official_buildings.py`로 취득할 수 있습니다.
+총 프로젝트 데이터 20,000,000,000 bytes (20 GB), 최소 여유 공간 8 GiB, 임시 파일 4 GiB 정책을 검사합니다. 기존 소스나 다른 결과를 덮어쓰지 않습니다. 데이터·로컬 경로가 들어간 생성 설정은 `.gitignore`로 제외합니다. 과거 공식 건물 비교 자료는 선택적으로 `scripts/acquire_official_buildings.py`로 취득할 수 있습니다.
 
 ```python
 from seoul_visibility import State, TargetPoint, VisibilityEngine

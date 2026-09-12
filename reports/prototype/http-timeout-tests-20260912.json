@@ -1,0 +1,88 @@
+{
+  "artifact_usage": {
+    "allocated_bytes": 1806336,
+    "categories": {
+      "aggregate_reports": 573440,
+      "browser_profiles": 8343,
+      "runtime_artifacts": 1049222,
+      "staging_reports": 45056,
+      "staging_test_artifacts": 131239
+    },
+    "file_count": 72,
+    "headroom_bytes": 98192700,
+    "limit_bytes": 100000000,
+    "logical_bytes": 1624157,
+    "over_limit": false,
+    "used_bytes": 1807300
+  },
+  "command": [
+    "bash",
+    "scripts/prototype/python.sh",
+    "scripts/prototype/check.py",
+    "tests/test_prototype_http.py",
+    "tests/test_prototype_api.py"
+  ],
+  "command_environment": {
+    "PYTEST_ADDOPTS": "--junitxml=data/prototype/test-artifacts/http-api-20260912T0814.xml"
+  },
+  "elapsed_seconds": 4.303673456888646,
+  "junit_artifact": "data/prototype/test-artifacts/http-api-20260912T0814.xml",
+  "log_bytes": 0,
+  "log_path": "data/prototype/test-artifacts/pytest-20260912T081257.log",
+  "output_capture_limitation": "Bounded runner returned zero but did not drain final stdout after its storage scan; JUnit independently records all test outcomes.",
+  "protocol_policy": {
+    "applies_to": "initial idle connections and incomplete first/subsequent request headers; does not replace API body or work deadlines",
+    "connection_cap": 16,
+    "geometry_workers": 1,
+    "header_deadline_seconds": 5,
+    "real_tcp_test": "root to execute after owned server restart"
+  },
+  "returncode": 0,
+  "runtime_validation": {
+    "actual_tcp_and_real_extraction_report": "reports/prototype/live-extraction-20260912.json",
+    "free_space_and_total_storage_rechecked": true,
+    "initial_serve_indentation_error": "One import indentation introduced during wiring was corrected before successful startup; both modified runtime modules compiled and actual serve command then ran.",
+    "source_data_modified": false,
+    "spending_calls": 0
+  },
+  "storage": {
+    "accounted_bytes": 3627742043,
+    "additional_accounted_bytes": 5242880,
+    "additional_accounted_measurement": "conservative external/task footprint allowance; not filesystem-measured",
+    "allocated_bytes": 3483017216,
+    "checkpoint_reserve_bytes": 16777216,
+    "file_count": 35050,
+    "filesystems": [
+      {
+        "available_inodes": 172494541,
+        "device": 51,
+        "free_bytes": 22389051392,
+        "path": ".",
+        "quota": "not asserted; statvfs headroom only",
+        "total_bytes": 81604378624
+      }
+    ],
+    "logical_bytes": 3514183772,
+    "measured_accounted_bytes": 3622499163,
+    "minimum_free_bytes": 8589934592,
+    "observed_peak_accounted_bytes": 3627742043,
+    "observed_peak_temporary_bytes": 557206039,
+    "peak_measurement": "sampled between guarded writes; not an OS quota",
+    "roots": [
+      "."
+    ],
+    "temporary_bytes": 557206039,
+    "temporary_ceiling_bytes": 4294967296,
+    "total_ceiling_bytes": 6585973031
+  },
+  "synthetic_fixtures": true,
+  "test_summary": {
+    "errors": 0,
+    "existing_api_tests": 31,
+    "failed": 0,
+    "new_http_tests": 9,
+    "passed": 40,
+    "pytest_seconds": 3.067,
+    "skipped": 0
+  }
+}

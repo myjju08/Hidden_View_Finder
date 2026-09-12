@@ -10,17 +10,22 @@ import psutil
 from .errors import ResourceBudgetError
 
 GiB = 1024**3
+HARD_TOTAL_STORAGE_BYTES = 20_000_000_000
 
 @dataclass(frozen=True)
 class StoragePolicy:
-    total_budget_bytes: int = 20 * GiB
+    total_budget_bytes: int = HARD_TOTAL_STORAGE_BYTES
     minimum_free_bytes: int = 8 * GiB
     disk_cache_bytes: int = GiB
     temporary_budget_bytes: int = 4 * GiB
 
     def __post_init__(self) -> None:
-        if any(not isinstance(v, int) or v < 0 for v in asdict(self).values()):
+        if any(type(v) is not int or v < 0 for v in asdict(self).values()):
             raise ResourceBudgetError("Storage limits must be nonnegative integer byte counts")
+        if self.total_budget_bytes > HARD_TOTAL_STORAGE_BYTES:
+            raise ResourceBudgetError("Total storage budget must never exceed 20_000_000_000 bytes (20 decimal GB)")
+        if self.temporary_budget_bytes > 4 * GiB:
+            raise ResourceBudgetError("Temporary storage budget must never exceed 4 GiB")
 
 def tree_bytes(root: str | Path) -> int:
     root = Path(root)
@@ -56,7 +61,7 @@ def preflight(root: str | Path, additional_bytes: int = 0,
     if temporary_bytes > policy.temporary_budget_bytes:
         raise ResourceBudgetError(f"Temporary estimate {temporary_bytes:,} exceeds cap {policy.temporary_budget_bytes:,} bytes")
     if current + peak_extra > policy.total_budget_bytes:
-        raise ResourceBudgetError(f"Project peak {current + peak_extra:,} exceeds budget {policy.total_budget_bytes:,} bytes; reduce extent/resolution or revise budget")
+        raise ResourceBudgetError(f"Project peak {current + peak_extra:,} exceeds budget {policy.total_budget_bytes:,} bytes; checkpoint and use bounded batches without shrinking coverage")
     if free - peak_extra < policy.minimum_free_bytes:
         raise ResourceBudgetError(f"Free space after peak would be {free - peak_extra:,} bytes; required reserve {policy.minimum_free_bytes:,}")
     return report

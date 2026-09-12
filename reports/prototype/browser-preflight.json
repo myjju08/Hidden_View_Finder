@@ -1,0 +1,14 @@
+{
+  "status": "preflight_refused_before_extraction",
+  "initial_browser_allocation_bytes": 400000000,
+  "measured_archive_core_plus_inspected_expansion_bytes": 409212487,
+  "browser_archive_bytes": 119809080,
+  "browser_archive_sha256": "a9da028861a0cf789ff25c2fed45f5f1aaf969ed9247835b6a7821a4f7af9d1d",
+  "browser_expanded_member_bytes": 272533063,
+  "members": 287,
+  "parent_reallocated_browser_only_bytes": 500000000,
+  "global_hard_total_unchanged_bytes": 20000000000,
+  "development_reservation_unchanged": true,
+  "source_archives_preserved": true,
+  "resume": "bash scripts/prototype/python.sh scripts/prototype/browser_setup.py"
+}

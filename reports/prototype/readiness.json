@@ -1,0 +1,73 @@
+{
+  "acquisition_rerun": false,
+  "application_geometry_version": "68b0c4b2282002e2a7f4ef6106591045366b18ab2c4ea7a8d5093990013c4db8",
+  "browser_status": "passed",
+  "config_sha256": "dd9f32aa4a3011bfdf502047b87ea801a8bc08946b59c12d76d612edd6bfe3f4",
+  "current_provider_status": {
+    "calls_attempted_this_process": 0,
+    "credentials_present": false,
+    "fallback": "deterministic_evidence_and_geometry_schematic",
+    "image": "disabled",
+    "paid_enabled": false,
+    "spending": {
+      "accounting": "maximum_reservations_not_actual_invoices",
+      "calls": 0,
+      "daily_limit_micro_usd": 0,
+      "day_utc": "2026-09-11",
+      "images": 0,
+      "reserved_micro_usd": 0
+    },
+    "text": "disabled"
+  },
+  "district_outcomes": {
+    "empty": 2,
+    "http_error": 0,
+    "partial": 23
+  },
+  "field_verified": false,
+  "geographic_ready": false,
+  "local_exploration_available": true,
+  "observed_at_utc": "2026-09-11T15:50:21.506148+00:00",
+  "public_deployment_status": "blocked_pending_actual_layer_licence_review",
+  "recorded_validation_live_paid_provider_calls": 0,
+  "remaining_limitations": [
+    "Missing compatible surrounding terrain",
+    "Water-surface elevation unsupported",
+    "Seven source-invalid building flags quarantined",
+    "Incomplete relation/source readiness preserved",
+    "Estimated roofs and mapped terrain samples; canopy/full facades/field scenery not verified",
+    "Full-response five-second performance goal not met",
+    "Actual published-layer licence review required"
+  ],
+  "report_scope": "Aggregate of recorded validations plus current storage/provider configuration. Does not rerun tests/source validation; application startup independently verifies inputs.",
+  "resume_validation_command": "bash scripts/prototype/python.sh scripts/prototype/benchmark.py",
+  "source_package": "seoul-20260911-v1-6abf3cc88682",
+  "source_readiness": {
+    "acquisition_ready": true,
+    "building_unrepaired_invalid_geometry_count": 7,
+    "deployment_licence_review": "required: older mixed GBA distribution, source-specific conditions and ODbL obligations",
+    "field_verified": false,
+    "normalized_artifacts_complete": true,
+    "normalized_ready": false,
+    "osm_incomplete_relation_count": 36,
+    "osm_incomplete_relation_scope": "Unknown geometry remains explicit; names or country-edge metadata do not prove exclusion from requested support",
+    "osm_relation_geometry_complete": false,
+    "readiness_definitions": {
+      "acquisition_ready": "All selected core source artifacts acquired and validated; this does not assert the terrain buffer is supplied",
+      "normalized_artifacts_complete": "All core normalized artifacts and quality reports published; recorded geographic gaps may remain",
+      "normalized_ready": "All core normalized artifacts and quality reports completed without unresolved geometry errors or unlocated incomplete relations",
+      "visibility_ready": "Requires supported terrain and obstruction surfaces over complete modeled windows; remains false for the missing surrounding terrain"
+    },
+    "support_area_terrain_complete": false,
+    "visibility_ready": false
+  },
+  "start_command": "bash scripts/prototype/python.sh scripts/prototype/run.py serve --port 8000",
+  "tests": {
+    "failed": 0,
+    "passed": 680,
+    "pytest_seconds": 25.26,
+    "skipped": 0,
+    "warnings": 4
+  },
+  "visibility_ready": false
+}

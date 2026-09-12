@@ -17,8 +17,8 @@ from pathlib import Path
 free=shutil.disk_usage('.').free
 current=sum(p.stat().st_size for p in Path('.').rglob('*') if p.is_file())
 allowance=2*1024**3
-if free-allowance < 8*1024**3 or current+allowance > 20*1024**3:
-    raise SystemExit('Installation preflight failed: reserve 2 GiB installation peak, 8 GiB free, within 20 GiB project budget.')
+if free-allowance < 8*1024**3 or current+allowance > 20_000_000_000:
+    raise SystemExit('Installation preflight failed: reserve 2 GiB installation peak, 8 GiB free, within 20 decimal GB project budget.')
 PY
 python -m venv .venv
 .venv/bin/python -m pip install --no-cache-dir 'numpy==2.5.2' 'setuptools>=68' wheel

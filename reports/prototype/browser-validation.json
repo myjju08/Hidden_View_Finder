@@ -1,0 +1,245 @@
+{
+  "browser": {
+    "engine": "firefox",
+    "limitations": "Host user-namespace creation reports EPERM. Default Firefox security settings were retained; every OS sandbox facility was not independently verified. Chromium could not start with its sandbox enabled.",
+    "run_as": "existing unprivileged nobody account",
+    "sandbox_explicitly_disabled": false,
+    "version": "155.0"
+  },
+  "browser_dependency_aggregate_allocated_bytes": 880877568,
+  "browser_dependency_cap_bytes": 900000000,
+  "combined_artifacts_after_run": {
+    "allocated_bytes": 1617920,
+    "categories": {
+      "aggregate_reports": 462848,
+      "browser_profiles": 8343,
+      "runtime_artifacts": 1036792,
+      "staging_reports": 45056,
+      "staging_test_artifacts": 65703
+    },
+    "file_count": 62,
+    "headroom_bytes": 98381258,
+    "limit_bytes": 100000000,
+    "logical_bytes": 1471160,
+    "over_limit": false,
+    "used_bytes": 1618742
+  },
+  "command": "bash scripts/prototype/python.sh scripts/prototype/browser_run.py --engine firefox --base http://127.0.0.1:8000 --origin 126.81774514857614,37.56567741795218",
+  "external_page_requests": [],
+  "field_verified": false,
+  "finished_at": "2026-09-11T15:45:39.434Z",
+  "kind": "real Firefox desktop/mobile validation with separately labelled synthetic failure fixtures",
+  "layout": [
+    {
+      "map": {
+        "bottom": 639.5,
+        "height": 445,
+        "left": 363,
+        "right": 1401,
+        "top": 194.5,
+        "width": 1038,
+        "x": 363,
+        "y": 194.5
+      },
+      "name": "desktop",
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "map": {
+        "bottom": 1635,
+        "height": 390,
+        "left": 15,
+        "right": 375,
+        "top": 1245,
+        "width": 360,
+        "x": 15,
+        "y": 1245
+      },
+      "name": "mobile",
+      "scrollWidth": 390,
+      "width": 390
+    }
+  ],
+  "live_paid_provider_calls": 0,
+  "live_real_data_checks": [
+    "Application loaded with bundled Leaflet and local geographic API",
+    "Coverage overlay control",
+    "Map click updates origin",
+    "Local place search",
+    "Real recommendation response, exact card count and no padding",
+    "No-key real image adapter status and retained geometry schematic",
+    "Provider, source and incomplete-data details"
+  ],
+  "other_recoveries": [
+    "A stale enclosing development reservation was rejected before launch. Root recorded recovery of two task-owned synthetic fixture symlinks in reports/prototype/safety-recovery.json. Final successful run used normal Budget reservation."
+  ],
+  "page_javascript_errors": [],
+  "performance_and_resources": {
+    "artifact_limit_bytes": 100000000,
+    "artifact_measurement_scope": "Combined browser profiles, retained browser/test artifacts and prototype reports",
+    "artifacts": "data/prototype/staging/artifacts/run-1789141512702836390",
+    "command": [
+      "node",
+      "scripts/prototype/browser_check.cjs"
+    ],
+    "elapsed_s": 23.644,
+    "exit_code": 0,
+    "log": "data/prototype/staging/artifacts/run-1789141512702836390/browser-run.log",
+    "os_quota_asserted": false,
+    "rss_limit_bytes": 1500000000,
+    "rss_note": "Sampled sum of owned process-tree RSS; shared pages may be counted more than once.",
+    "run_as": "existing nobody user",
+    "sampled_peak_browser_artifact_bytes": 41682423,
+    "sampled_peak_owned_process_rss_bytes": 734691328,
+    "sandbox_disabled": false,
+    "shared_budget_policy": "shared Budget reservation"
+  },
+  "public_deployment_licence_review": "unresolved; browser success does not authorize publication",
+  "raw_report": "data/prototype/staging/artifacts/run-1789141512702836390/browser-report.json",
+  "raw_report_sha256": "75eca7464a8688e5c3e55c5358ea857691c02b8b593141ffa15bc57adcae2fc6",
+  "real_image_transition": "사용 불가AI 사용이 꺼져 있습니다. 기하 미리보기는 계속 사용할 수 있습니다.",
+  "real_query": {
+    "search": {
+      "candidates": {
+        "duplicate_positions": 7,
+        "excluded": 99,
+        "exploratory_only": 375,
+        "inspected_records": 3604,
+        "map_supported": 2806,
+        "representatives": 160,
+        "strata_completed": 64
+      },
+      "distance_method": "ellipsoidal_straight_line",
+      "endpoint_exclusions": {
+        "building_occupied_observer": 8,
+        "conservative_road_carriageway_vicinity": 12
+      },
+      "maximum_ray_distance_m": 10000,
+      "radius_m": 3000,
+      "refined_observers": 20,
+      "refined_views": 5,
+      "sampled": true,
+      "supported_observers": 140,
+      "target_groups": 20,
+      "target_inventory_policy": "near quadrants plus outer band; sampled, not complete scene coverage",
+      "target_inventory_radius_m": 13000,
+      "timings_seconds": {
+        "end_to_end": 7.9726,
+        "geometry": 4.4663,
+        "retrieval": 0.7752,
+        "target_retrieval": 2.6415
+      },
+      "view_at": "2026-09-11T18:00:00+09:00",
+      "work": {
+        "cells": 238238,
+        "max_cells": 2000000,
+        "max_rays": 10000,
+        "rays": 374,
+        "stopped_reason": null
+      }
+    },
+    "status": "partial",
+    "versions": {
+      "geometry": "68b0c4b2282002e2a7f4ef6106591045366b18ab2c4ea7a8d5093990013c4db8",
+      "package_id": "seoul-20260911-v1-6abf3cc88682",
+      "scene_method": "sparse-column-scenes-v1"
+    },
+    "view_ids": [
+      "ebe06fc788599fc7a79b3ca6",
+      "119f88a586a9c9f8109957a2",
+      "60d2dd0202df22767bbb8e0d"
+    ],
+    "views": 3
+  },
+  "retained_earlier_attempts": [
+    {
+      "artifact_directory": "data/prototype/staging/artifacts/run-1789139662822908111",
+      "outcome": "Chromium launch failed before page load: missing native library."
+    },
+    {
+      "artifact_directory": "data/prototype/staging/artifacts/run-1789139941600820634",
+      "outcome": "Chromium sandbox failed; no sandbox override used."
+    },
+    {
+      "artifact_directory": "data/prototype/staging/artifacts/run-1789140597655322634",
+      "outcome": "Firefox about:support diagnostics failed before app inspection."
+    },
+    {
+      "artifact_directory": "data/prototype/staging/artifacts/run-1789140627010811138",
+      "outcome": "Earlier Firefox real-data UI pass, before final target inventory/map/session changes."
+    },
+    {
+      "artifact_directory": "data/prototype/staging/artifacts/run-1789141320180202136",
+      "outcome": "Combined artifact accounting safely stopped at Firefox profile lock symlink. Narrow lstat-only accounting fix was subsequently tested; no output symlink guard weakened."
+    }
+  ],
+  "schema_version": 1,
+  "screenshot_bytes": 462642,
+  "screenshots": [
+    {
+      "bytes": 123561,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/desktop-initial.jpg",
+      "sha256": "ef02ab8dd0c66ffdb65518a5b55cdc54eaffcf13c3d04318972ea8fa48ec32a3"
+    },
+    {
+      "bytes": 127037,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/desktop-evidence.jpg",
+      "sha256": "9ac539e995780ca2fa8f043359ebb130f9ad2263a8fcb7d5a99d55b54885dd2e"
+    },
+    {
+      "bytes": 90207,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/desktop-results.jpg",
+      "sha256": "068b82fc85ec40e45591bc77dce10a958f3ef738eba7c54a06c36e9981f4b540"
+    },
+    {
+      "bytes": 38136,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/mobile-controls.jpg",
+      "sha256": "5f7c9aad1d6886ada37a0eb34c8b6eae7320118d9f04f328b9ab0975f15a8ce7"
+    },
+    {
+      "bytes": 39527,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/mobile-map.jpg",
+      "sha256": "337d483593a2ebcd3b2f8c8950901398542009b705f8f2efc04b6da28dab10f0"
+    },
+    {
+      "bytes": 44174,
+      "path": "data/prototype/staging/artifacts/run-1789141512702836390/mobile-result.jpg",
+      "sha256": "bfd582ea65ba5ad81ea7d425d04ba40cc245359ec5a6ec032dd75e0a9f432478"
+    }
+  ],
+  "source_global_readiness_changed": false,
+  "source_hashes": {
+    "src/hidden_view_finder/static/prototype.css": "43fc3ba2e68de36f73f45b03a848826ed5f6766a951e03128f658e41bc96c83a",
+    "src/hidden_view_finder/static/prototype.html": "af6a90472eab9a69c58f6e8acaa7d03b926a740e5f713e3773681fedb245170d",
+    "src/hidden_view_finder/static/prototype.js": "cc46171ae8e911700b77e293e32b4cefb2d3ea733172a80673c50dfece9f2352"
+  },
+  "started_at": "2026-09-11T15:45:16.203Z",
+  "status": "passed",
+  "synthetic_failure_checks": [
+    "HTTP429 queue limit retains map and previous cards",
+    "Untrusted source HTML/script remains literal text; unknown sample retained against intended denominator",
+    "Visible, blocked, unknown and excluded samples retain the same four-sample denominator; mixed target group remains partial",
+    "Unsupported/empty fixture clears stale cards and does not pad Top3"
+  ],
+  "visual_inspection": {
+    "actually_viewed": [
+      "desktop-initial.jpg",
+      "desktop-evidence.jpg",
+      "mobile-result.jpg"
+    ],
+    "findings": [
+      "Han River and district names appear on the geographic map.",
+      "Bundled Korean font renders clearly.",
+      "Desktop and mobile page widths fit their viewports.",
+      "Evidence dialog shows intended denominator and all four sample states.",
+      "Mixed target groups remain partial/unknown; sampled visibility is not whole-target visibility.",
+      "No-key image status retains the labelled numeric geometry schematic."
+    ],
+    "limits": [
+      "Schematic text is intentionally compact on the mobile card; evidence detail enlarges the same chart.",
+      "Only Firefox was able to complete the browser suite on this host.",
+      "No paid text/image provider or successful generated-image job was exercised live."
+    ]
+  }
+}

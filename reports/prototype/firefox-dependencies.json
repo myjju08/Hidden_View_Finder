@@ -1,0 +1,228 @@
+{
+  "browser": "Firefox155.0",
+  "playwright_revision": "1543",
+  "url": "https://cdn.playwright.dev/dbazure/download/playwright/builds/firefox/1543/firefox-ubuntu-24.04.zip",
+  "etag": "\"0xDA58D8A6D9A220AC105391BC64AF04CA94DEB1C57CC00DACDB21ED364D3D92BB\"",
+  "archive_bytes": 114822786,
+  "archive_sha256": "b0905e84427cc162b9a6e4392be14e5e54e0ade911c83639962c8078b273565e",
+  "integrity": "local whole-archive SHA256 and ZIP CRC; no independently published checksum",
+  "expanded_bytes": 320457770,
+  "outputs": [
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/platform.ini",
+      "bytes": 47,
+      "sha256": "356cfffb009b4c537b4856c92fc4a9290e8d30e18d70d3c5783f56e71638a8e6"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/pingsender",
+      "bytes": 667744,
+      "sha256": "d4c076646f64935ae6e7dded3751cf5850d6fa39abf7c5c03404e0668fd61457"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozwayland.so",
+      "bytes": 13392,
+      "sha256": "91d8e75272cc5d2b55908cd397b98909bc2eb51ed33839403939db0094d5fb2e"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libssl3.so",
+      "bytes": 395320,
+      "sha256": "793adb2c15f84e545c4cfdad995374540405a8fc18b6313912efc59ef6e1dfde"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libgkcodecs.so",
+      "bytes": 9356456,
+      "sha256": "7f7e86eed8b7b3c8b862d556ceefac056e5016051b3982ed173639604e68c06c"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozgtk.so",
+      "bytes": 4576,
+      "sha256": "f690d52be9dc9bcff62fcbc8df550e843503472102d60a721e2de72649951b0b"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libsmime3.so",
+      "bytes": 170744,
+      "sha256": "618796b0cf9008e86feda75a3ddd44f111068e3d5e0ae9d35ff24ec5917c995b"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libnss3.so",
+      "bytes": 718832,
+      "sha256": "5bc6565eb2074655c04109895e50f60fc6c854f5bd2644fdd63081576ec8dba3"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/omni.ja",
+      "bytes": 44608972,
+      "sha256": "a3f402374e2bd95d6551820117f4ec85b73f72d6792a029a798d20efbd0e7445"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/precomplete",
+      "bytes": 1297,
+      "sha256": "62b9332e713fd4cf4ba9b9cc9af69113501b7051fba748c5eda8df9246a9c668"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/fonts/TwemojiMozilla.ttf",
+      "bytes": 1474284,
+      "sha256": "6d90152ee0d29e82fe2a87793af5aa4b7ad13e6538360889e141e81ed299ee8e"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/dependentlibs.list",
+      "bytes": 189,
+      "sha256": "621f575eaaf819dd0b18976c6a8a94d1caae95a9c748f4c9058a052395a4d173"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozsqlite3.so",
+      "bytes": 1553072,
+      "sha256": "415bc0c6c46166c81682f57f50efdde1b25e72adfcdc0bebf13e34fa246e6eee"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libfreeblpriv3.so",
+      "bytes": 1016984,
+      "sha256": "0cc14d90375f508904fb4478ce21f27d1bad892a1e146a3259b2b930cfbdde2e"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/firefox-bin",
+      "bytes": 579648,
+      "sha256": "062272ac4d851eade5b75db2dc7c14569d96cb3ca38f949337cdc1b74367e35b"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/playwright.cfg",
+      "bytes": 14515,
+      "sha256": "e29fdba196ea88951e1d5d4d49c07211850f89f8cdfbe963bc9e13e37a3c8c51"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libnssutil3.so",
+      "bytes": 181224,
+      "sha256": "90a72628b4a536ee95cb2f240e39ae32f3c99ea26387eab9c6b5de826ea60715"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/gfxtest",
+      "bytes": 41896,
+      "sha256": "c6fc4e643540d38cf7f168e3bffd9a46fcb5eede83b616db7c8fcb0bd003a9fd"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/liblgpllibs.so",
+      "bytes": 52680,
+      "sha256": "29df7f6db72baba10c4d1054f2924e0e79d2910bffa1d66aa20c81e794fab533"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozinference.so",
+      "bytes": 2524672,
+      "sha256": "eebeaa7980ef18bfbf223ae943f58418aaa3c733a35fe13153e4223b7de8d819"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozavcodec.so",
+      "bytes": 4176896,
+      "sha256": "e5d2f55a78e083002949c64ec8c63726eb5ac98685038bacb98e679aad82cc6d"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozavutil.so",
+      "bytes": 607968,
+      "sha256": "80bd07c7c69fc009490939e4d7e445594b7b6ff439e88cad0eefcaeeab0e0cfa"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libxul.so",
+      "bytes": 184352280,
+      "sha256": "409645980d9430e3a7a488f507f88f64f57a9ff1ddeab227d0d79b58831417b5"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/firefox",
+      "bytes": 579648,
+      "sha256": "062272ac4d851eade5b75db2dc7c14569d96cb3ca38f949337cdc1b74367e35b"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libonnxruntime.so",
+      "bytes": 10551040,
+      "sha256": "8031d70645f5f1624d8f86ccbda75ecf4cf972db8f0858dd340b33f21a9dc473"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/removed-files",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libplc4.so",
+      "bytes": 17336,
+      "sha256": "d74e4c2a435f61a74d355cad65932d532cbbdd113c006214aad6647498943bed"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libsoftokn3.so",
+      "bytes": 361280,
+      "sha256": "6fb83c5d77d5ef6b3245e0282407aec2a39909a19eb7679004c153787e64ed4b"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/application.ini",
+      "bytes": 442,
+      "sha256": "a8085058e180844a664381f0d9ac1aa8bd4f5c6bcd6bdd52032abfbc851e6a93"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/omni.ja",
+      "bytes": 55861585,
+      "sha256": "a71ffd64d1e4002e32234561a52056b226fa5389c9b3e13b3f9031ecc371bf96"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/chrome/icons/default/default16.png",
+      "bytes": 757,
+      "sha256": "1e8aea59ad881e31e351f7f38143293a45a8e7b916571f3eccce5e89844c1969"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/chrome/icons/default/default48.png",
+      "bytes": 4462,
+      "sha256": "9ffbdd36b545394fca032ff753d5422c8092de97acd22ede27ea0b3b0dcb2359"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/chrome/icons/default/default32.png",
+      "bytes": 2292,
+      "sha256": "6b7170dd4e0ad2a095f11bb2d84c35bb7495e30e38218045eb85f81882f46a29"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/chrome/icons/default/default128.png",
+      "bytes": 17585,
+      "sha256": "be2fdb8622b028a2248510793980e8b9294cee66d55ca2cb0a103610bd409ba4"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/chrome/icons/default/default64.png",
+      "bytes": 6441,
+      "sha256": "060fd5cd86fda946ff84225f3035675e8031e25af55ef49c3bc16c779058fea9"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/browser/defaults/preferences/00-playwright-prefs.js",
+      "bytes": 160,
+      "sha256": "8c2d32801a924f2c2b133f1191d01213513c86e8d1e42e144e9cb1015ea71084"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libmozsandbox.so",
+      "bytes": 234232,
+      "sha256": "c5b15cc6b149ab4eee74ed1c35372e65e016caa1f73d4d59009fff98c3c01c2e"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/gmp-clearkey/0.1/libclearkey.so",
+      "bytes": 73240,
+      "sha256": "301c52757983abb1428d7ae4242e123fb027a6569f440beb88a9a2ffcd1bf97d"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/gmp-clearkey/0.1/manifest.json",
+      "bytes": 225,
+      "sha256": "b7d65e60cccb80ffb2e95b5ae7e355d2c8c37575e886eef4325ca04fa7ba68fc"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libnspr4.so",
+      "bytes": 220232,
+      "sha256": "90a77c9716c57ac7a948782caf5772c465801858ecb96ca53249d537ae6f6386"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/libplds4.so",
+      "bytes": 12696,
+      "sha256": "42a167b81a2b09feb6361542d6723b4e8e992534c5a439a450c62c750291222a"
+    },
+    {
+      "path": "data/prototype/dependencies/firefox/firefox/defaults/pref/channel-prefs.js",
+      "bytes": 429,
+      "sha256": "ef9fba57b2c3755b630b44ccfe703e2753d538fa50e3c52fc279c29e6db8200f"
+    }
+  ],
+  "browser_executable": "data/prototype/dependencies/firefox/firefox/firefox",
+  "browser_aggregate_bytes": 880877568,
+  "browser_cap_bytes": 900000000,
+  "chromium_preserved": true,
+  "sandbox_changes": false,
+  "purpose": "One official default-sandbox alternative after confirmed Chromium host sandbox failure"
+}

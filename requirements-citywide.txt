@@ -1,0 +1,12 @@
+# Optional local acquisition runtime, verified by scripts/data/bootstrap.py.
+# GDAL Python bindings MUST match the native libgdal version; never blindly pip
+# install this file against an unrelated libgdal. Ubuntu bootstrap pairs both.
+GDAL==3.8.4
+numpy==1.26.4
+scipy==1.15.3
+shapely==2.1.2
+pyproj==3.7.2
+pyarrow==25.0.1
+requests==2.34.2
+psutil==7.2.2
+osmium==4.1.1

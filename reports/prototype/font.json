@@ -1,0 +1,25 @@
+{
+  "font": "Noto Sans KR variable",
+  "license": "SIL Open Font License1.1",
+  "publisher": "Google Fonts",
+  "publisher_git_blob_sha1": "b386890ba945e1f39448a6b59f20c5d194f58808",
+  "publisher_metadata": "https://api.github.com/repos/google/fonts/contents/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf",
+  "assets": [
+    {
+      "path": "src/hidden_view_finder/static/vendor/fonts/NotoSansKR.ttf",
+      "bytes": 10414588,
+      "sha256": "194018e6b2b293a7964f037b25c0249ce1418bc9ab3c971060a03aa57861e252",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/NotoSansKR%5Bwght%5D.ttf",
+      "status": "acquired"
+    },
+    {
+      "path": "src/hidden_view_finder/static/vendor/fonts/OFL.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/OFL.txt",
+      "status": "acquired"
+    }
+  ],
+  "bytes": 10418976,
+  "transformation": "none; complete font, including Korean glyphs, bundled once"
+}

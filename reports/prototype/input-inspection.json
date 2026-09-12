@@ -1,0 +1,216 @@
+{
+  "artifact_validation": [
+    {
+      "ok": true,
+      "path": "extents.geojson",
+      "sha256": "49559c7f44033b95c825e42c9a54442cbb539cdc4c74aabc23033529d5b78009"
+    },
+    {
+      "ok": true,
+      "path": "buildings.gpkg",
+      "sha256": "fd080e4b09e8eeeffb68f5b3a77dd9a8b1404136a0dbe38d2436d787f4774ba8"
+    },
+    {
+      "ok": true,
+      "path": "candidates.gpkg",
+      "sha256": "8f23a5a6e6cb60071b894bf8452d8016d460ce671bb8a23f085d3f4a14b2b5c6"
+    },
+    {
+      "ok": true,
+      "path": "coverage.gpkg",
+      "sha256": "35bff33a9398836c081370fb11adbeebc3bc7fac77cb7cfa3a9251640bda29b8"
+    },
+    {
+      "ok": true,
+      "path": "osm.gpkg",
+      "sha256": "ea7c11eac09ad5c7c60a2e6caaa0d185ee0c1ef6b14a9ca2fc7bac6617eaba3e"
+    },
+    {
+      "ok": true,
+      "path": "terrain.gpkg",
+      "sha256": "28bdbed027a52cc9e811aa3b144735827835237e8ff7c3696e8150547a7cc372"
+    },
+    {
+      "ok": true,
+      "path": "south-korea.poly",
+      "sha256": "2d79a5bab097f4ef1272a5ac18d4bcd3b880ceca7b2c47eecc01f8d4e14bfed5"
+    },
+    {
+      "ok": true,
+      "path": "build-config.json",
+      "sha256": "162c388f45e62ebaba8b254a09204184afd7f302893979c6c08c11c30b41a7eb"
+    },
+    {
+      "ok": true,
+      "path": "buildings.source.json",
+      "sha256": "f65fbfc93d0a0099f1050264527fbb88c9911930dc7719f97dafd9e91f9be049"
+    },
+    {
+      "ok": true,
+      "path": "candidates.source.json",
+      "sha256": "db9d0dc68d197ca75c992604ac44491ad8b4830641e93a51b579b29906bdc626"
+    },
+    {
+      "ok": true,
+      "path": "coverage.json",
+      "sha256": "2942b6d9a934582afc55120eedd4e9144dcba38e8d553dc922b6ddc0b692a152"
+    },
+    {
+      "ok": true,
+      "path": "licences.json",
+      "sha256": "a30302ba2d0edd8e24a71ab4aca5fe45b163a8e63d11723983189dee735da741"
+    },
+    {
+      "ok": true,
+      "path": "osm.source.json",
+      "sha256": "f2bf7bd2f8664675c0473ca3d233e7873a6e97195bdbddf3f19448d07a6205fa"
+    },
+    {
+      "ok": true,
+      "path": "sources.json",
+      "sha256": "4cf3fd4ecaa1fec97406aafd7fb0534fb6e5b9c23a4f407caecb2ecb8b7386d1"
+    },
+    {
+      "ok": true,
+      "path": "terrain.source.json",
+      "sha256": "a0cfe3a380a6942ad64f5d6f27c610c296b2efb1c7865554ca9ce3a70b78e5a9"
+    }
+  ],
+  "counts": {
+    "buildings": 435438,
+    "candidates": 582255,
+    "districts": 25,
+    "green_space": 12853,
+    "landmarks": 2248,
+    "paths": 239880,
+    "peaks_ridges": 639,
+    "water": 3055
+  },
+  "existing_offline_package_validator": {
+    "coverage_validation_is_separate": true,
+    "integrity_valid": true,
+    "network_requests": 0,
+    "readiness": {
+      "acquisition_ready": true,
+      "building_unrepaired_invalid_geometry_count": 7,
+      "deployment_licence_review": "required: older mixed GBA distribution, source-specific conditions and ODbL obligations",
+      "field_verified": false,
+      "normalized_artifacts_complete": true,
+      "normalized_ready": false,
+      "osm_incomplete_relation_count": 36,
+      "osm_incomplete_relation_scope": "Unknown geometry remains explicit; names or country-edge metadata do not prove exclusion from requested support",
+      "osm_relation_geometry_complete": false,
+      "readiness_definitions": {
+        "acquisition_ready": "All selected core source artifacts acquired and validated; this does not assert the terrain buffer is supplied",
+        "normalized_artifacts_complete": "All core normalized artifacts and quality reports published; recorded geographic gaps may remain",
+        "normalized_ready": "All core normalized artifacts and quality reports completed without unresolved geometry errors or unlocated incomplete relations",
+        "visibility_ready": "Requires supported terrain and obstruction surfaces over complete modeled windows; remains false for the missing surrounding terrain"
+      },
+      "support_area_terrain_complete": false,
+      "visibility_ready": false
+    },
+    "validated_files": [
+      "extents.geojson",
+      "buildings.gpkg",
+      "candidates.gpkg",
+      "coverage.gpkg",
+      "osm.gpkg",
+      "terrain.gpkg",
+      "south-korea.poly",
+      "build-config.json",
+      "buildings.source.json",
+      "candidates.source.json",
+      "coverage.json",
+      "licences.json",
+      "osm.source.json",
+      "sources.json",
+      "terrain.source.json"
+    ]
+  },
+  "input_mutations": 0,
+  "memory": {
+    "available_cpu_affinity": 80,
+    "gdal_cache_bytes": 67108864,
+    "gdal_workers": 1,
+    "per_adapter_blocks_bytes": 33554432
+  },
+  "package_id": "seoul-20260911-v1-6abf3cc88682",
+  "policy": {
+    "candidate_deduplication": "same projected coordinates within1mm; source lineage preserved within sampled shortlist",
+    "publication": "licence review of actually published layers remains required",
+    "ray": "closed-column supercover; every sample including seams required; unknown takes precedence",
+    "standing": "dedicated mapped pedestrian use, restrictions override; actual endpoint checked; no route prerequisite",
+    "unresolved_relations": "source-derived valid independent objects only; unresolved public-space geometry is never invented"
+  },
+  "readiness_preserved": {
+    "acquisition_ready": true,
+    "building_unrepaired_invalid_geometry_count": 7,
+    "deployment_licence_review": "required: older mixed GBA distribution, source-specific conditions and ODbL obligations",
+    "field_verified": false,
+    "normalized_artifacts_complete": true,
+    "normalized_ready": false,
+    "osm_incomplete_relation_count": 36,
+    "osm_incomplete_relation_scope": "Unknown geometry remains explicit; names or country-edge metadata do not prove exclusion from requested support",
+    "osm_relation_geometry_complete": false,
+    "readiness_definitions": {
+      "acquisition_ready": "All selected core source artifacts acquired and validated; this does not assert the terrain buffer is supplied",
+      "normalized_artifacts_complete": "All core normalized artifacts and quality reports published; recorded geographic gaps may remain",
+      "normalized_ready": "All core normalized artifacts and quality reports completed without unresolved geometry errors or unlocated incomplete relations",
+      "visibility_ready": "Requires supported terrain and obstruction surfaces over complete modeled windows; remains false for the missing surrounding terrain"
+    },
+    "support_area_terrain_complete": false,
+    "visibility_ready": false
+  },
+  "storage": {
+    "accounted_bytes": 3627317639,
+    "effective_limit_bytes": 6585973031,
+    "free_bytes": 23336419328,
+    "minimum_free_bytes": 8589934592,
+    "os_quota_verified": false,
+    "status": "available",
+    "task_growth_bytes": 1041344608,
+    "temporary_bytes": 556904617,
+    "total_limit_bytes": 20000000000
+  },
+  "tile_adapter": {
+    "buildings_source_sha256": "fd080e4b09e8eeeffb68f5b3a77dd9a8b1404136a0dbe38d2436d787f4774ba8",
+    "crs": "EPSG:5186",
+    "curvature_coefficient": 0.8571428571428571,
+    "earth_diameter_m": 12756274.0,
+    "evidence_version": "38a4824102ef7bd246172dceb166aa7c86babb577f51183d2e3e00df8b64490e",
+    "geometry_version": "67cd2654e14de3c0dc1c9c4bf88fb4def81617d401f56a641d20941542b77fd3",
+    "hashes_verified": true,
+    "implementation_sha256": {
+      "adapter": "81eac4211bddf846e2f9a48a750d562fdec8e5bd6327fee501ada954b628ce02",
+      "reference": "3825bcc9446eb66fe42dc7c6e3f59258252c94b018fd8f39066339994ec53efc"
+    },
+    "limitations": [
+      "5 m spacing is not 5 m accuracy",
+      "estimated buildings; vegetation canopy unmodeled",
+      "unknown cells dominate a ray, including after a known blocker",
+      "partial sparse components do not certify panorama or atmospheric visibility"
+    ],
+    "local_exploration_available": true,
+    "manifest_sha256": "abdd4797037ebc5d8717bb660926a3337cccd4a8777a16eb72b3d66ac414cff3",
+    "maximum_modeled_distance_m": 10000,
+    "method": "citywide-closed-column-local-v1",
+    "obstacle_contact_tolerance_m": 1e-06,
+    "open_seconds": 2.2805012282915413,
+    "overlap_anomaly_sha256": "1c2da541c7b3a8acc3e09b3b586c20747ad6b6763a224319ab409405b502daa6",
+    "overlap_unknown_cells": 346,
+    "quality_bits": {
+      "building_coverage_valid": 2,
+      "height_estimated": 4,
+      "height_unresolved": 8,
+      "roof_conflict": 16,
+      "terrain_valid": 1
+    },
+    "resolution_m": 5.0,
+    "source_visibility_ready": false,
+    "terrain_source_sha256": "28bdbed027a52cc9e811aa3b144735827835237e8ff7c3696e8150547a7cc372",
+    "tile_count": 109,
+    "uncertainty_region_count": 365,
+    "vertical_reference": "Incheon mean sea level (NGII national map elevation convention)",
+    "whole_panorama_supported": false
+  }
+}

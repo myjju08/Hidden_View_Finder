@@ -14,18 +14,26 @@ import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
+import http.client
 import io
 import json
+import math
 from pathlib import Path
+import random
+import re
+import socket
 import struct
 import time
+import urllib.error
+import urllib.parse
 import urllib.request
+from email.utils import parsedate_to_datetime
 
 import numpy as np
-from osgeo import ogr, osr
 import pyarrow.parquet as pq
 from shapely import from_wkb
 from shapely.geometry import box
+from seoul_visibility.acquisition_safety import AcquisitionError
 if __package__:
     from .building_acquisition_common import budget_check, owned_temporary, scoped_paths, validate_bounds, validate_download_cap
 else:
@@ -35,26 +43,138 @@ URL = 'https://s3.us-west-2.amazonaws.com/us-west-2.opendata.source.coop/tge-lab
 MiB = 1024**2
 
 
+class _IncompleteRange(IOError):
+    """Retryable short/oversized payload, distinguished from network failures."""
+
+
+def _range_http_category(status):
+    if status in {401, 403, 407}: return 'authentication_blocked'
+    if status in {404, 410}: return 'missing_source'
+    if status == 429: return 'rate_limited'
+    if status == 412: return 'source_changed'
+    if status == 451: return 'permission_blocked'
+    if status in {408, 500, 502, 503, 504}: return 'network_error'
+    return 'range_protocol_error'
+
+
 class Ranges(io.RawIOBase):
-    """Seekable HTTP source; strict206 and byte cap avoid silent full downloads."""
-    def __init__(self, url: str, cap: int):
+    """Bounded in-memory ranges pinned to one upstream object.
+
+    Transfer accounting includes unsuccessful partial reads. Retries never write
+    to disk or concatenate responses, and never accept a full HTTP 200 payload.
+    """
+    def __init__(self, url: str, cap: int, *, retries: int = 5,
+                 timeout: float = 30, expected_identity: dict | None = None):
         super().__init__()
         if cap < MiB:
             raise ValueError('Download cap must allow at least 1 MiB for metadata and local ranges')
+        if not isinstance(retries, int) or not 0 <= retries <= 5:
+            raise ValueError('Transient retry limit must be between zero and five')
+        parsed = urllib.parse.urlsplit(url)
+        if parsed.scheme != 'https' or parsed.username or parsed.password or parsed.query:
+            raise ValueError('Range source requires a public HTTPS URL without credentials or query secrets')
         self.url, self.cap, self.pos, self.bytes_read = url, cap, 0, 0
+        self.host, self.retries, self.timeout = parsed.hostname, retries, timeout
         self.reads = []
-        request = urllib.request.Request(url, headers={'Range': 'bytes=-8'})
-        with urllib.request.urlopen(request, timeout=60) as response:
-            if response.status != 206:
-                raise RuntimeError('Server must support HTTP206 ranges')
-            self.size = int(response.headers['Content-Range'].split('/')[-1])
-            self.etag = response.headers['ETag']
-            self.version = response.headers.get('x-amz-version-id')
-            self.modified = response.headers.get('Last-Modified')
-            self.tail = response.read(9)
-        if len(self.tail) != 8 or self.tail[-4:] != b'PAR1':
-            raise RuntimeError('Not a Parquet file')
-        self.bytes_read = 8
+        self._cache_start = 0
+        self._cache_data = None
+        self.size = None
+        self.etag = self.version = self.modified = None
+        self.tail = self._fetch(None, 8)
+        if self.tail[-4:] != b'PAR1':
+            raise AcquisitionError('corrupt_content', 'Not a Parquet file')
+        if expected_identity and self.identity != expected_identity:
+            raise AcquisitionError('source_changed', 'Upstream identity mismatch; preserve prior subset and inspect new version')
+    @property
+    def identity(self):
+        return {'url': self.url, 'size': self.size, 'etag': self.etag,
+                'version': self.version, 'last_modified': self.modified}
+    def _fetch(self, start, n):
+        for attempt in range(self.retries + 1):
+            if self.bytes_read + n + 1 > self.cap:
+                raise AcquisitionError('transfer_limit', 'Bounded range total transfer cap exceeded')
+            headers = {'Range': 'bytes=-8' if start is None else f'bytes={start}-{start+n-1}',
+                       'Accept-Encoding': 'identity',
+                       'User-Agent': 'HiddenViewFinder/0.2 (+https://github.com/myjju08/Hidden_View_Finder)'}
+            if self.etag:
+                headers['If-Match'] = self.etag
+            request = urllib.request.Request(self.url, headers=headers)
+            retry_after = None
+            try:
+                with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                    final = urllib.parse.urlsplit(response.geturl())
+                    if final.scheme != 'https' or final.hostname != self.host:
+                        raise AcquisitionError('redirect_blocked', f'Range redirect left the approved HTTPS source host: {final.hostname}')
+                    if response.status != 206:
+                        raise AcquisitionError(_range_http_category(response.status), 'Refusing non206 response/full tile')
+                    match = re.fullmatch(r'bytes (\d+)-(\d+)/(\d+)', response.headers.get('Content-Range', ''))
+                    if not match:
+                        raise AcquisitionError('range_protocol_error', 'Missing or invalid Content-Range')
+                    first, last, size = map(int, match.groups())
+                    expected_first = size - 8 if start is None else start
+                    if size < 8 or first != expected_first or last != first + n - 1 or last >= size:
+                        raise AcquisitionError('range_protocol_error', 'Unexpected response range')
+                    if self.size is not None and size != self.size:
+                        raise AcquisitionError('source_changed', 'Upstream object size changed')
+                    length = response.headers.get('Content-Length')
+                    if length is not None and (not length.isdecimal() or int(length) != n):
+                        raise AcquisitionError('range_protocol_error', 'Content-Length disagrees with bounded range')
+                    if response.headers.get('Content-Encoding', 'identity').lower() != 'identity':
+                        raise AcquisitionError('range_protocol_error', 'Encoded ranges are not permitted')
+                    etag, version = response.headers.get('ETag'), response.headers.get('x-amz-version-id')
+                    if not etag or etag.startswith('W/') or not (etag.startswith('"') and etag.endswith('"')):
+                        raise AcquisitionError('range_protocol_error', 'A strong upstream ETag is required')
+                    if self.etag and (etag != self.etag or version != self.version):
+                        raise AcquisitionError('source_changed', 'Upstream identity mismatch during range acquisition')
+                    if self.size is None:
+                        self.size, self.etag, self.version = size, etag, version
+                        self.modified = response.headers.get('Last-Modified')
+                    chunks, received = [], 0
+                    while received < n + 1:
+                        block = response.read(min(64 * 1024, n + 1 - received))
+                        if not block:
+                            break
+                        received += len(block)
+                        self.bytes_read += len(block)
+                        chunks.append(block)
+                    if received != n:
+                        raise _IncompleteRange('Incomplete or oversized HTTP range')
+                    data = b''.join(chunks)
+                    self.reads.append([first, n, hashlib.sha256(data).hexdigest()])
+                    return data
+            except urllib.error.HTTPError as error:
+                category = _range_http_category(error.code)
+                retry_after = (error.headers or {}).get('Retry-After')
+                error.close()
+                if error.code not in {408, 429, 500, 502, 503, 504}:
+                    raise AcquisitionError(category, f'Range HTTP failure {error.code} from {self.host}; no transient retry') from error
+                if attempt == self.retries:
+                    raise AcquisitionError(category, f'Range HTTP failure {error.code} from {self.host}; bounded retries exhausted') from error
+            except (urllib.error.URLError, TimeoutError, socket.timeout, IOError, http.client.HTTPException) as error:
+                if isinstance(error, http.client.IncompleteRead) and isinstance(error.partial, bytes):
+                    self.bytes_read += len(error.partial)
+                if attempt == self.retries:
+                    category = ('corrupt_content' if isinstance(error, (_IncompleteRange, http.client.IncompleteRead))
+                                else 'range_protocol_error' if isinstance(error, http.client.BadStatusLine)
+                                and not isinstance(error, http.client.RemoteDisconnected)
+                                else 'network_error')
+                    message = ('Incomplete or oversized HTTP range' if category == 'corrupt_content'
+                               else f'Bounded range retries exhausted for {self.host}: {type(error).__name__}')
+                    raise AcquisitionError(category, message) from error
+            delay = min(30.0, 2 ** attempt + random.uniform(0, 0.5))
+            if retry_after:
+                try:
+                    try:
+                        pause = float(retry_after)
+                    except ValueError:
+                        pause = (parsedate_to_datetime(retry_after) - datetime.now(timezone.utc)).total_seconds()
+                    if not math.isfinite(pause): raise ValueError('Non-finite retry delay')
+                except (TypeError, ValueError, OverflowError):
+                    raise AcquisitionError('range_protocol_error', 'Invalid Retry-After header; checkpoint and inspect provider response') from None
+                if pause > 60:
+                    raise AcquisitionError('rate_limited', 'Rate limit requests a longer pause; checkpoint and resume later')
+                delay = max(delay, max(0, pause))
+            time.sleep(delay)
     def readable(self): return True
     def seekable(self): return True
     def tell(self): return self.pos
@@ -64,28 +184,36 @@ class Ranges(io.RawIOBase):
             raise ValueError('Seek outside source')
         self.pos = p
         return p
+    def clearcache(self):
+        """Release the sole row-group buffer; cached bytes never reach disk."""
+        self._cache_start, self._cache_data = 0, None
+    def prefetch(self, start: int, n: int):
+        """Fetch one inspected physical row-group span with normal safeguards."""
+        if (not isinstance(start, int) or not isinstance(n, int) or start < 0
+                or n <= 0 or n > 8 * MiB or start + n > self.size):
+            raise ValueError('Prefetch must be one in-object range of at most 8 MiB')
+        self.clearcache()  # Never retain two row-group payloads simultaneously.
+        data = self._fetch(start, n)
+        self._cache_start, self._cache_data = start, data
+        return {'start': start, 'bytes': n, 'sha256': hashlib.sha256(data).hexdigest()}
     def read(self, n=-1):
         n = self.size - self.pos if n < 0 else min(n, self.size-self.pos)
         if n == 0: return b''
-        if n > 8*MiB or self.bytes_read+n > self.cap:
-            raise RuntimeError(f'Bounded range/read cap exceeded: request={n}, total={self.bytes_read}')
+        if n > 8*MiB:
+            raise AcquisitionError('transfer_limit', f'Bounded range/read cap exceeded: request={n}, total={self.bytes_read}')
         start = self.pos
-        request = urllib.request.Request(self.url, headers={'Range': f'bytes={start}-{start+n-1}', 'If-Match': self.etag})
-        with urllib.request.urlopen(request, timeout=60) as response:
-            if response.status != 206:
-                raise RuntimeError('Refusing non206 response/full tile')
-            expected = f'bytes {start}-{start+n-1}/{self.size}'
-            if response.headers['Content-Range'] != expected:
-                raise RuntimeError('Unexpected response range')
-            data = response.read(n+1)
-        if len(data) != n: raise RuntimeError('Incomplete HTTP range')
+        if (self._cache_data is not None and self._cache_start <= start
+                and start + n <= self._cache_start + len(self._cache_data)):
+            data = self._cache_data[start - self._cache_start:start - self._cache_start + n]
+        else:
+            data = self._fetch(start, n)
         self.pos += n
-        self.bytes_read += n
-        self.reads.append([start, n, hashlib.sha256(data).hexdigest()])
         return data
 
 
 def main(argv=None):
+    from osgeo import ogr, osr
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bbox', nargs=4, type=float, default=[126.82,37.42,127.19,37.72])
     parser.add_argument('--data-root', type=Path, default=Path('data'), help='Account all acquisition outputs under this storage budget root')

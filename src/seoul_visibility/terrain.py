@@ -235,6 +235,18 @@ def _build_sample_index(config: dict[str, Any], grid: dict[str, Any], path: Path
     max_points = int(config.get("max_sample_points", 10_000_000))
     tolerance = float(config.get("duplicate_elevation_tolerance_m", 0.01))
     connection = sqlite3.connect(path)
+    # Optional citywide orchestration cap: native SQLite cannot grow its main
+    # file beyond this bound even between progress callbacks.
+    if config.get('sample_index_max_bytes') is not None:
+        limit = config['sample_index_max_bytes']
+        if isinstance(limit, bool) or not isinstance(limit, int) or limit < 65536:
+            connection.close()
+            raise ConfigurationError('sample_index_max_bytes must be an integer >=65536')
+        page_size = connection.execute('PRAGMA page_size').fetchone()[0]
+        if connection.execute(f'PRAGMA max_page_count={limit // page_size}').fetchone()[0] != limit // page_size:
+            connection.close()
+            raise ConfigurationError('Unable to enforce terrain sample index page limit')
+        connection.execute('PRAGMA cache_size=-16384')
     connection.executescript("""
       CREATE TABLE points(id INTEGER PRIMARY KEY,x REAL,y REAL,z REAL,holdout INTEGER,UNIQUE(x,y));
       CREATE VIRTUAL TABLE spatial USING rtree(id,minx,maxx,miny,maxy);
@@ -499,8 +511,10 @@ def _sampled_terrain(config: dict[str, Any], grid: dict[str, Any], output: Path,
     if not 16 <= tile_size <= 2048 or not 3 <= maximum <= 1_000_000:
         raise ConfigurationError("Terrain tile_size must be 16..2048, max_points_per_tile 3..1000000")
     memory_preflight(maximum * 400 + tile_size * tile_size * 300)
-    index_path = output.with_name("terrain_samples.sqlite")
-    info_path = output.with_name("terrain_samples.json")
+    index_path = Path(config['sample_index_path']) if config.get('sample_index_path') else output.with_name("terrain_samples.sqlite")
+    info_path = Path(config['sample_info_path']) if config.get('sample_info_path') else output.with_name("terrain_samples.json")
+    if config.get('sample_index_path') and not (index_path.is_file() and info_path.is_file()):
+        raise ConfigurationError('Explicit shared terrain sample index and inspection metadata must already exist')
     index_started = time.perf_counter()
     index_reused = index_path.exists() and info_path.exists()
     if index_path.exists() and info_path.exists():

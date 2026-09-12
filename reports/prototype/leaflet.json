@@ -1,0 +1,35 @@
+{
+  "library": "Leaflet",
+  "version": "1.9.4",
+  "documentation": "https://leafletjs.com/download.html",
+  "license": "BSD-2-Clause",
+  "assets": [
+    {
+      "path": "src/hidden_view_finder/static/vendor/leaflet/leaflet.js",
+      "url": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+      "bytes": 147552,
+      "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+      "integrity": "official documentation SHA256",
+      "status": "acquired"
+    },
+    {
+      "path": "src/hidden_view_finder/static/vendor/leaflet/leaflet.css",
+      "url": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
+      "bytes": 14806,
+      "sha256": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+      "integrity": "official documentation SHA256",
+      "status": "acquired"
+    },
+    {
+      "path": "src/hidden_view_finder/static/vendor/leaflet/LICENSE",
+      "url": "https://raw.githubusercontent.com/Leaflet/Leaflet/v1.9.4/LICENSE",
+      "bytes": 1395,
+      "sha256": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
+      "integrity": "locally computed SHA256; pinned release path",
+      "status": "acquired"
+    }
+  ],
+  "total_bytes": 163753,
+  "external_runtime_requests": false,
+  "css_image_usage": "Custom vector markers and built-in zoom controls; no Leaflet default marker/layer image controls used."
+}

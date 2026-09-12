@@ -1,0 +1,46 @@
+{
+  "cleanup": [
+    {
+      "allocated_bytes": 0,
+      "deletion_status": "deleted_link_only",
+      "disposable": true,
+      "kind": "task-created synthetic dangling symlink",
+      "logical_bytes": 40,
+      "path": "data/citywide/staging/prototype-providers/storage-lock-01/test_browser_profile_lock_mark1/data/citywide/staging/prototype-browser/runtime/firefox-profile/lock",
+      "source": "tests/test_prototype_storage.py; completed storage-lock-01 fixture run",
+      "target_accessed": false
+    },
+    {
+      "allocated_bytes": 0,
+      "deletion_status": "deleted_link_only",
+      "disposable": true,
+      "kind": "task-created synthetic dangling symlink",
+      "logical_bytes": 34,
+      "path": "data/citywide/staging/prototype-providers/storage-lock-01/test_browser_profile_nonlock_o0/data/citywide/staging/prototype-browser/runtime/firefox-profile/cache.sqlite",
+      "source": "tests/test_prototype_storage.py; completed storage-lock-01 fixture run",
+      "target_accessed": false
+    }
+  ],
+  "development_final_peak_counters_available": false,
+  "observed_at_unix": 1789141495.6885664,
+  "peak_reporting": "Use retained snapshots and later bounded-stage samples; original guard final in-memory counters were lost on refusal.",
+  "previous_reservation": {
+    "additional_accounted_bytes": 5242880,
+    "baseline_bytes": 2585973008,
+    "label": "prototype development: bounded code, dependency install, browser and fixtures",
+    "minimum_free_bytes": 8589934592,
+    "peak_bytes": 1266777216,
+    "pid": 924462,
+    "reservation_id": "9e164b669929475e65ded7167b513c87",
+    "roots": [
+      "."
+    ],
+    "stage_limit": 4294967296,
+    "stage_root": "./data/citywide/staging",
+    "started_unix": 1789138577.3084657,
+    "temporary_baseline_bytes": 422557440,
+    "temporary_bytes": 1125000000,
+    "total_limit": 20000000000
+  },
+  "reason": "Live development monitor correctly refused a synthetic fixture symlink outside the accounted checkout; it exited and released flock. No actual source or output was outside accounting. Small fixture-link-only recovery restores normal shared reservations."
+}

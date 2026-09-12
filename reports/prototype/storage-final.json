@@ -1,0 +1,167 @@
+{
+  "artifact_usage": {
+    "allocated_bytes": 1716224,
+    "categories": {
+      "aggregate_reports": 499712,
+      "browser_profiles": 8343,
+      "runtime_artifacts": 1040928,
+      "staging_reports": 45056,
+      "staging_test_artifacts": 123047
+    },
+    "file_count": 67,
+    "headroom_bytes": 98282914,
+    "limit_bytes": 100000000,
+    "logical_bytes": 1540184,
+    "over_limit": false,
+    "used_bytes": 1717086
+  },
+  "categories": {
+    "all_staging": {
+      "accounted_bytes": 442768924,
+      "allocated_bytes": 303333376,
+      "inodes": 36912,
+      "logical_bytes": 356620710
+    },
+    "bundled_map_font_assets": {
+      "accounted_bytes": 10596487,
+      "allocated_bytes": 10596352,
+      "inodes": 8,
+      "logical_bytes": 10582864
+    },
+    "checkout_other": {
+      "accounted_bytes": 26822633,
+      "allocated_bytes": 26820608,
+      "inodes": 375,
+      "logical_bytes": 26076913
+    },
+    "existing_gis_dependencies": {
+      "accounted_bytes": 384297151,
+      "allocated_bytes": 384282624,
+      "inodes": 5106,
+      "logical_bytes": 371297930
+    },
+    "normalized_development": {
+      "accounted_bytes": 106557619,
+      "allocated_bytes": 106557440,
+      "inodes": 26,
+      "logical_bytes": 106521334
+    },
+    "prepared_rasters": {
+      "accounted_bytes": 475666506,
+      "allocated_bytes": 475652096,
+      "inodes": 2785,
+      "logical_bytes": 470443893
+    },
+    "prototype_dependencies": {
+      "accounted_bytes": 895261968,
+      "allocated_bytes": 895254528,
+      "inodes": 1142,
+      "logical_bytes": 892671337
+    },
+    "prototype_runtime_artifacts": {
+      "accounted_bytes": 1041014,
+      "allocated_bytes": 1040384,
+      "inodes": 41,
+      "logical_bytes": 965557
+    },
+    "raw_geography": {
+      "accounted_bytes": 411648441,
+      "allocated_bytes": 411648000,
+      "inodes": 52,
+      "logical_bytes": 411521941
+    },
+    "source_package": {
+      "accounted_bytes": 867442688,
+      "allocated_bytes": 867442688,
+      "inodes": 39,
+      "logical_bytes": 867372660
+    }
+  },
+  "category_policy": "Disjoint inode accounting including directories; cross-category hard links assigned to first listed category. Snapshot also includes external allowance. Report publication adds a few KiB afterward.",
+  "cleanup": {
+    "browser_profiles": "Only task-owned disposable profiles auto-removed by Playwright; logs/screenshots/archives retained.",
+    "manual_fixture_links_deleted": 2,
+    "receipt": "reports/prototype/safety-recovery.json",
+    "source_files_deleted": 0
+  },
+  "core_source_and_raster_accounted_bytes": 1343109194,
+  "dependency_network_receipt_bytes_lower_bound": 257109667,
+  "effective_total_ceiling_bytes": 6585973031,
+  "final_snapshot": {
+    "accounted_bytes": 3627346311,
+    "additional_accounted_bytes": 5242880,
+    "additional_accounted_measurement": "conservative external/task footprint allowance; not filesystem-measured",
+    "allocated_bytes": 3482628096,
+    "checkpoint_reserve_bytes": 16777216,
+    "file_count": 34885,
+    "filesystems": [
+      {
+        "available_inodes": 172492039,
+        "device": 51,
+        "free_bytes": 23335739392,
+        "path": ".",
+        "quota": "not asserted; statvfs headroom only",
+        "total_bytes": 81604378624
+      }
+    ],
+    "logical_bytes": 3514075139,
+    "measured_accounted_bytes": 3622103431,
+    "minimum_free_bytes": 8589934592,
+    "observed_peak_accounted_bytes": 3627346311,
+    "observed_peak_temporary_bytes": 556904617,
+    "peak_measurement": "sampled between guarded writes; not an OS quota",
+    "roots": [
+      "."
+    ],
+    "temporary_bytes": 556904617,
+    "temporary_ceiling_bytes": 4294967296,
+    "total_ceiling_bytes": 6585973031
+  },
+  "generated_image_cache_bytes": 0,
+  "initial_development_snapshot": {
+    "accounted_bytes": 2585973031,
+    "additional_accounted_bytes": 5242880,
+    "additional_accounted_measurement": "conservative external/task footprint allowance; not filesystem-measured",
+    "allocated_bytes": 2479468544,
+    "checkpoint_reserve_bytes": 16777216,
+    "file_count": 21303,
+    "filesystems": [
+      {
+        "available_inodes": 172510287,
+        "device": 51,
+        "free_bytes": 24362749952,
+        "path": ".",
+        "quota": "not asserted; statvfs headroom only",
+        "total_bytes": 81604378624
+      }
+    ],
+    "logical_bytes": 2515170319,
+    "measured_accounted_bytes": 2580730151,
+    "minimum_free_bytes": 8589934592,
+    "observed_peak_accounted_bytes": 2585973031,
+    "observed_peak_temporary_bytes": 422557440,
+    "peak_measurement": "sampled between guarded writes; not an OS quota",
+    "roots": [
+      "."
+    ],
+    "temporary_bytes": 422557440,
+    "temporary_ceiling_bytes": 4294967296,
+    "total_ceiling_bytes": 20000000000
+  },
+  "mandatory_total_ceiling_bytes": 20000000000,
+  "map_derivative_bytes": 0,
+  "network_measurement": "Known retained dependency/assets receipts only; small metadata/probe/retry bytes were not fully metered. Geographic downloads and live paid-provider calls: zero.",
+  "observed_at_utc": "2026-09-11T15:50:21.506148+00:00",
+  "os_quota_verified": false,
+  "peak_measurements": {
+    "browser_sampled_peak_combined_artifacts_bytes": 41682423,
+    "development_reserved_peak_upper_bound_bytes": 3852750224,
+    "development_reserved_staging_upper_bound_bytes": 1547557440,
+    "last_full_test_sampled_peak_accounted_bytes": 3627313543,
+    "last_full_test_sampled_peak_staging_bytes": 556904617,
+    "limitation": "Sampled and reserved bounds are distinct. The initial development guard lost its final in-memory peak counters on a safe fixture-symlink refusal; continuous peak telemetry is not claimed. Later browser/tests used independent shared reservations."
+  },
+  "persistent_scene_cache_bytes": 0,
+  "prototype_growth_bytes": 1041373280,
+  "shared_disk_limitation": "Application reservations and polling do not constrain unrelated filesystem writers. No quotas or mounts were changed."
+}

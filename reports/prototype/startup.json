@@ -1,0 +1,37 @@
+{
+  "external_accounting_allowance_bytes": 5242880,
+  "observed_at_utc": "2026-09-11T14:56:17.308466+00:00",
+  "os_quota_verified": false,
+  "reservation_incremental_estimate": 1000000000,
+  "snapshot": {
+    "accounted_bytes": 2585973031,
+    "additional_accounted_bytes": 5242880,
+    "additional_accounted_measurement": "conservative external/task footprint allowance; not filesystem-measured",
+    "allocated_bytes": 2479468544,
+    "checkpoint_reserve_bytes": 16777216,
+    "file_count": 21303,
+    "filesystems": [
+      {
+        "available_inodes": 172510287,
+        "device": 51,
+        "free_bytes": 24362749952,
+        "path": ".",
+        "quota": "not asserted; statvfs headroom only",
+        "total_bytes": 81604378624
+      }
+    ],
+    "logical_bytes": 2515170319,
+    "measured_accounted_bytes": 2580730151,
+    "minimum_free_bytes": 8589934592,
+    "observed_peak_accounted_bytes": 2585973031,
+    "observed_peak_temporary_bytes": 422557440,
+    "peak_measurement": "sampled between guarded writes; not an OS quota",
+    "roots": [
+      "."
+    ],
+    "temporary_bytes": 422557440,
+    "temporary_ceiling_bytes": 4294967296,
+    "total_ceiling_bytes": 20000000000
+  },
+  "time_source": "live enclosing reservation start timestamp"
+}

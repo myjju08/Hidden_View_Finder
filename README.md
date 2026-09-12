@@ -6,6 +6,8 @@
 
 [데모 실행·API](docs/demo.md) · [실제 장소·경로 출처](docs/demo-sources.md) · [가시성 엔진](docs/engine.md) · [지형·건물 데이터](docs/data-sources.md)
 
+[서울 전역 데이터 취득·검증·재개](docs/citywide-acquisition.md): `scripts/data/citywide.py`는 서울 경계와 10 km 지원 영역을 기준으로 자료를 취득하고, 전체 저장 공간을 최대 20,000,000,000 bytes로 제한합니다. 버전별 입력 패키지와 실제 실행 집계는 `data/citywide/` 및 `reports/citywide/`에서 확인합니다.
+
 ## 바로 실행
 
 **Python 3.11+로 가상 시나리오 데모를 실행합니다.** Linux의 시간대 DB가 있는 환경에서는 패키지 설치·GIS 데이터·API 키가 필요하지 않습니다.
@@ -104,3 +106,7 @@ docs/                  # 실행, 데이터, 기하 계약, 검증 설명
 reports/               # 검토한 집계 JSON / CSV
 data/                 # 로컬 입력·가공·실행 산출물 (Git 제외)
 ```
+
+## Real-data local prototype
+
+The acquired Seoul package can now be explored with a Korean map, distance-only search, supported multi-sample scenes, and no-key geometry previews. Global coverage remains incomplete and public deployment licence review is still required. Start with [docs/prototype.md](docs/prototype.md); run `bash scripts/prototype/python.sh scripts/prototype/run.py serve --port 8000`. This does not acquire data or rebuild citywide rasters.

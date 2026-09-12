@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "package_version": "seoul-20260911-v1",
+  "data_root": "data/citywide",
+  "external_data_roots": [],
+  "maximum_sight_distance_m": 10000,
+  "terrain_interpolation_halo_m": 1000,
+  "resolution_m": 5,
+  "candidate_spacing_m": 20,
+  "projected_crs": "EPSG:5186",
+  "boundary": {
+    "snapshot": "2026-09-11 separately inspected Nominatim response for OSM relation 2297418",
+    "expected_response_sha256": "4969ce7ad7fa1ec2b9e2c81e715226364a65395aa4fcc442abe9efa578e39bf2",
+    "expected_response_bytes": 92003,
+    "integrity_kind": "Locally inspected fingerprint; not a publisher checksum",
+    "inspection": "Identity, valid Polygon/MultiPolygon, EPSG:4326 coordinates, area 606325921.6654047 square metres in EPSG:5186; original 2026-09-07 source pin retained unchanged"
+  },
+  "storage": {
+    "total_bytes": 20000000000,
+    "minimum_free_bytes": 8589934592,
+    "temporary_bytes": 4294967296,
+    "deployable_target_bytes": 8589934592,
+    "uncertain_incremental_margin": 1.25,
+    "checkpoint_reserve_bytes": 16777216,
+    "one_writer": true
+  },
+  "memory": {"working_bytes": 2147483648, "workers": 1, "gdal_cache_bytes": 67108864},
+  "limits": {
+    "boundary_transfer_bytes": 2097152,
+    "terrain_archive_bytes": 45852601,
+    "terrain_expanded_bytes": 78559101,
+    "buildings_transfer_bytes": 536870912,
+    "osm_transfer_bytes": 400000000,
+    "osm_normalized_bytes": 1073741824,
+    "candidates_bytes": 268435456,
+    "dependency_peak_bytes": 1073741824
+  },
+  "osm": {
+    "catalogue": "https://download.geofabrik.de/asia/south-korea.html",
+    "url": "https://download.geofabrik.de/asia/south-korea-260910.osm.pbf",
+    "checksum_url": "https://download.geofabrik.de/asia/south-korea-260910.osm.pbf.md5",
+    "expected_bytes": 286988090,
+    "publisher_md5": "6b4cb4d74d7355b0da24b9df3d48cbb6",
+    "source_timestamp": null
+  },
+  "terrain": {
+    "source_year": "2023",
+    "sample_spacing_m": 10,
+    "max_triangle_edge_m": 500,
+    "max_points_per_tile": 100000,
+    "max_sample_points": 3000000,
+    "tile_size": 256,
+    "buffer_source_status": "unavailable_pending_compatible_official_source"
+  }
+}

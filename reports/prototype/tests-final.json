@@ -1,0 +1,65 @@
+{
+  "artifact_usage": {
+    "allocated_bytes": 2035712,
+    "categories": {
+      "aggregate_reports": 643072,
+      "browser_profiles": 8343,
+      "runtime_artifacts": 1151480,
+      "staging_reports": 45056,
+      "staging_test_artifacts": 188583
+    },
+    "file_count": 76,
+    "headroom_bytes": 97963466,
+    "limit_bytes": 100000000,
+    "logical_bytes": 1830074,
+    "over_limit": false,
+    "used_bytes": 2036534
+  },
+  "command": [
+    "bash",
+    "scripts/prototype/python.sh",
+    "scripts/prototype/check.py"
+  ],
+  "elapsed_seconds": 34.13666819129139,
+  "log_bytes": 2047,
+  "log_path": "data/prototype/test-artifacts/pytest-20260912T082551.log",
+  "returncode": 0,
+  "storage": {
+    "accounted_bytes": 3665346615,
+    "additional_accounted_bytes": 5242880,
+    "additional_accounted_measurement": "conservative external/task footprint allowance; not filesystem-measured",
+    "allocated_bytes": 3507945472,
+    "checkpoint_reserve_bytes": 16777216,
+    "file_count": 37401,
+    "filesystems": [
+      {
+        "available_inodes": 172491067,
+        "device": 51,
+        "free_bytes": 22284963840,
+        "path": ".",
+        "quota": "not asserted; statvfs headroom only",
+        "total_bytes": 81604378624
+      }
+    ],
+    "logical_bytes": 3544279578,
+    "measured_accounted_bytes": 3660103735,
+    "minimum_free_bytes": 8589934592,
+    "observed_peak_accounted_bytes": 3665346615,
+    "observed_peak_temporary_bytes": 594630529,
+    "peak_measurement": "sampled between guarded writes; not an OS quota",
+    "roots": [
+      "."
+    ],
+    "temporary_bytes": 594630529,
+    "temporary_ceiling_bytes": 4294967296,
+    "total_ceiling_bytes": 6585973031
+  },
+  "synthetic_fixtures": true,
+  "test_summary": {
+    "failed": 0,
+    "passed": 689,
+    "pytest_seconds": 26.63,
+    "skipped": 0,
+    "warnings": 4
+  }
+}

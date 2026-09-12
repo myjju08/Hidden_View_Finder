@@ -1,0 +1,364 @@
+{
+  "packages": [
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/at-spi2-common_2.52.0-1build1_all.deb",
+      "filename": "at-spi2-common_2.52.0-1build1_all.deb",
+      "bytes": 8674,
+      "md5": "67a99e2fa96c670726f624a3a30cf84f",
+      "package": "at-spi2-common",
+      "version": "2.52.0-1build1",
+      "sha256": "7e05959b067031468f21ae46c6653a6813f1dccd994ef12a0b5f75de0ed346b6"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatk1.0-0t64_2.52.0-1build1_amd64.deb",
+      "filename": "libatk1.0-0t64_2.52.0-1build1_amd64.deb",
+      "bytes": 55282,
+      "md5": "bf49c1d99b6985512804dfc1a2229089",
+      "package": "libatk1.0-0t64",
+      "version": "2.52.0-1build1",
+      "sha256": "42c5d4b00954f17c2c3c4b866844f691eb8b6d57bf08b59203e65f12dc84a4f9"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatspi2.0-0t64_2.52.0-1build1_amd64.deb",
+      "filename": "libatspi2.0-0t64_2.52.0-1build1_amd64.deb",
+      "bytes": 80548,
+      "md5": "5585754ad1d593608ce9ffe22f22c806",
+      "package": "libatspi2.0-0t64",
+      "version": "2.52.0-1build1",
+      "sha256": "d686ace4080eca9c2d6ce8de69392a5ac56c846701894c0858922d4ce341a1d7"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb",
+      "filename": "libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb",
+      "bytes": 66020,
+      "md5": "952d23699da705b77c0e420e5bdc1b59",
+      "package": "libatk-bridge2.0-0t64",
+      "version": "2.52.0-1build1",
+      "sha256": "22b7d47e3c0f7953a78d3cfd309d1b20771085de9220fbe610c0989b9e808c9b"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nspr/libnspr4_4.35-1.1build1_amd64.deb",
+      "filename": "libnspr4_2%3a4.35-1.1build1_amd64.deb",
+      "bytes": 117398,
+      "md5": "d56a98b07cb817b8b7e5b04c3a7fca72",
+      "package": "libnspr4",
+      "version": "2:4.35-1.1build1",
+      "sha256": "e579e72d091f6c7a13f5a756c31065b15aae5b81840d61b069355aa2283c07b4"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nss/libnss3_3.98-1ubuntu0.2_amd64.deb",
+      "filename": "libnss3_2%3a3.98-1ubuntu0.2_amd64.deb",
+      "bytes": 1445132,
+      "md5": "27c0a341c0c28008d1b6f80fd135cd16",
+      "package": "libnss3",
+      "version": "2:3.98-1ubuntu0.2",
+      "sha256": "4254f11d782dfb970e78113519a59d440112ed43c4b56f709da0aef81da8651a"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcomposite/libxcomposite1_0.4.5-1build3_amd64.deb",
+      "filename": "libxcomposite1_1%3a0.4.5-1build3_amd64.deb",
+      "bytes": 6320,
+      "md5": "6e5b8b65d385a271fe97480f30f8c4c6",
+      "package": "libxcomposite1",
+      "version": "1:0.4.5-1build3",
+      "sha256": "a12d5d9ae70b798cbbf284080eae32b87367561fc9c24492f641b8860ac0f308"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxdamage/libxdamage1_1.1.6-1build1_amd64.deb",
+      "filename": "libxdamage1_1%3a1.1.6-1build1_amd64.deb",
+      "bytes": 6150,
+      "md5": "63e9de16dc4cde9d210e27f1a7e884e7",
+      "package": "libxdamage1",
+      "version": "1:1.1.6-1build1",
+      "sha256": "6891faf325e996ebd28ef53ebb9c043dc96f67327500490affc3e89d366d35ed"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/at-spi2-common/changelog.Debian.gz",
+      "bytes": 5113,
+      "sha256": "840ecefa23719c204297da430580c51e78f92ccacea0cd42a5d0eca568cb33bc",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/at-spi2-common/copyright",
+      "bytes": 11841,
+      "sha256": "72fbc9d2c44016dd061f3f63f75253e57089bcd23a4f9023039de4631e7cf918",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0.25209.1",
+      "bytes": 170064,
+      "sha256": "d312f3dbed8f19037bf4d8581f0e41ddfe53796dc7abbc9b7f253495d472a923",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatk1.0-0t64/changelog.Debian.gz",
+      "bytes": 5115,
+      "sha256": "91a0cfaa1df5ae5d1909c488530bb4f23ef5f052b6c300336937af5fb3bcbd82",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatk1.0-0t64/copyright",
+      "bytes": 11841,
+      "sha256": "72fbc9d2c44016dd061f3f63f75253e57089bcd23a4f9023039de4631e7cf918",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libatk1.0-0t64",
+      "bytes": 109,
+      "sha256": "020fcae8a9228a1ba4d0fb774846db2eb2bf58a2b29bc169d608b18efa1591b2",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0",
+      "bytes": 170064,
+      "sha256": "d312f3dbed8f19037bf4d8581f0e41ddfe53796dc7abbc9b7f253495d472a923",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatspi.so.0.0.1",
+      "bytes": 235904,
+      "sha256": "4af877d2d235b7eaab015abe6d81b82c82fe506a5d71403b9bbdfcbce99e8141",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatspi2.0-0t64/changelog.Debian.gz",
+      "bytes": 5115,
+      "sha256": "fe7f00b2615818f893fb32511c92c8d6099e1335f2f22ac7b0035472fe94302a",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatspi2.0-0t64/copyright",
+      "bytes": 11841,
+      "sha256": "72fbc9d2c44016dd061f3f63f75253e57089bcd23a4f9023039de4631e7cf918",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libatspi2.0-0t64",
+      "bytes": 110,
+      "sha256": "e1c36facbcc75384efd3bf6764b7d281ccf86f30706f81683b136801562a029f",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatspi.so.0",
+      "bytes": 235904,
+      "sha256": "4af877d2d235b7eaab015abe6d81b82c82fe506a5d71403b9bbdfcbce99e8141",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0.0.0",
+      "bytes": 243912,
+      "sha256": "366fcd2f2cd9a77767855a7c25b00ffce57e6b55109a2bf800872f0337a28415",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatk-bridge2.0-0t64/copyright",
+      "bytes": 11841,
+      "sha256": "72fbc9d2c44016dd061f3f63f75253e57089bcd23a4f9023039de4631e7cf918",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libatk-bridge2.0-0t64",
+      "bytes": 130,
+      "sha256": "c8f8dcd6f3f8c86f58158e77c70b8f87f41d8d06b21963cdb7d71275ca8196b2",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0",
+      "bytes": 243912,
+      "sha256": "366fcd2f2cd9a77767855a7c25b00ffce57e6b55109a2bf800872f0337a28415",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libatk-bridge2.0-0t64/changelog.Debian.gz",
+      "bytes": 5115,
+      "sha256": "91a0cfaa1df5ae5d1909c488530bb4f23ef5f052b6c300336937af5fb3bcbd82",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnspr4.so",
+      "bytes": 246248,
+      "sha256": "c32583a53640c144757419b977a76976ee3dbda7b905a0af1046ace3c570ae98",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libplc4.so",
+      "bytes": 22784,
+      "sha256": "f68520b4a9ba6190c67ce96511192f9af31dd96d91f18fd64cca48ffe08f7deb",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libplds4.so",
+      "bytes": 14624,
+      "sha256": "403f3c1ec489de93d04b5a386d2e659af6da0a41e09ffb90a280b6d68eeb1617",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libnspr4/changelog.Debian.gz",
+      "bytes": 1498,
+      "sha256": "0cfdf07dae405269575a303cbaf4883b9ab38ffa80eec5e1aca6c22fb4778763",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libnspr4/copyright",
+      "bytes": 331,
+      "sha256": "3c4fcc131809b2b6993513bfe4cf6f1ede391ec84f1d5ceca78fb75537b22452",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libnspr4",
+      "bytes": 795,
+      "sha256": "e468620345b004fc233ec7a2710cd7927945dee564531cc73664309d41c7b502",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libfreebl3.chk",
+      "bytes": 84,
+      "sha256": "32c4d2152ab8bb8836aebfc786637c1223a9076ee7001aecc99cc15660f843ca",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libfreebl3.so",
+      "bytes": 14560,
+      "sha256": "3270221a0d128e5827faead097de11e670dede762417daa4b09ad25e75fe0357",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libfreeblpriv3.chk",
+      "bytes": 84,
+      "sha256": "1f2a7c67707ccdccd8a4e36391d8abde892c4e229dffe881cfc94470a538b48e",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libfreeblpriv3.so",
+      "bytes": 833688,
+      "sha256": "706ee83ad56b8aa93e697815c2757ddcaa547b1c90c1a8ceb4e66282ffaf5452",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnss3.so",
+      "bytes": 1229736,
+      "sha256": "55b09461bb63081b8e1d4f600583b0e1fdb8eff1ebe2f25e44cfa5f45b2d4169",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnssckbi.so",
+      "bytes": 588912,
+      "sha256": "ad8090a7d9f03a0c3ee91ce9c39745aadf93f5cd34a9a2c602f2ddaf59537a53",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnssdbm3.chk",
+      "bytes": 84,
+      "sha256": "70a8cf6a2c60ca367935b3b42e6bdd8631f7dbdbad4c39d76f9d25f76fb922bd",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnssdbm3.so",
+      "bytes": 137520,
+      "sha256": "2884942b5d3be6dc3ba829dad4b2544e2a293f44efee65edbd8afefe1f0773d4",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libnssutil3.so",
+      "bytes": 199128,
+      "sha256": "39deb60cb4cd5a8b1ee4da37f838de80c65258a81428a4bdb668ffd6f93a9501",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libsmime3.so",
+      "bytes": 162208,
+      "sha256": "38b9c337509c7cf443d6c5f49d4e9e9bd0bb4bf53de48f47c9d39a29757ab7ac",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libsoftokn3.chk",
+      "bytes": 84,
+      "sha256": "e4a658e7fe87cc62abd3ef9c471f16aa824369132a226c76c5dd2bf9996ca8a8",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libsoftokn3.so",
+      "bytes": 358016,
+      "sha256": "38eb1d649ee238bc3559a1adc969227a2d271aacbfd3eeafd6b152e1d1b7a350",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libssl3.so",
+      "bytes": 432864,
+      "sha256": "a44a423009e1f441c72aa64bd430734defc0b49c601e3652206b94654f3c7ad2",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libnss3/changelog.Debian.gz",
+      "bytes": 3428,
+      "sha256": "b19a666652c26bb38db93cec1b2810ae7f073cb9f51a505a19200c5fcddd3e24",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libnss3/copyright",
+      "bytes": 4058,
+      "sha256": "3f450f9453233852b3a469a36a897cc68fb87be3e8b3a5ba64f63a7904528408",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libnss3",
+      "bytes": 1809,
+      "sha256": "9936b68cfcc24e0d52ad995f889aa0a176beed71dd63ca1b316bfafc5ebb11a2",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXcomposite.so.1.0.0",
+      "bytes": 14464,
+      "sha256": "675c78d8d5b088a59ad4f8eb15419d0842b17caca3317a5e9f68573171ec5d61",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxcomposite1/changelog.Debian.gz",
+      "bytes": 537,
+      "sha256": "506412be78281a70397d792f9ca4d0e24603ff2ec327cde4695dfa54d9b0d4b3",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxcomposite1/copyright",
+      "bytes": 2324,
+      "sha256": "e37c7a7e4026343c3e5c13990a6d9a8879194ae3ab26bfe420b34f6f206bf35f",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXcomposite.so.1",
+      "bytes": 14464,
+      "sha256": "675c78d8d5b088a59ad4f8eb15419d0842b17caca3317a5e9f68573171ec5d61",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXdamage.so.1.1.0",
+      "bytes": 14488,
+      "sha256": "6ff910fbde851ede163b9066671e1740e374df414591015d90770b99d5b3de4a",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxdamage1/changelog.Debian.gz",
+      "bytes": 640,
+      "sha256": "af9cc179866f6b9eb560005a1bd0590c5558f135a2e09bd3d21d6d464c0255e8",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxdamage1/copyright",
+      "bytes": 1221,
+      "sha256": "09182bc7805ff77a41251e450cebd0d33c48a74ba8ec4b734855a22c86f50417",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXdamage.so.1",
+      "bytes": 14488,
+      "sha256": "6ff910fbde851ede163b9066671e1740e374df414591015d90770b99d5b3de4a",
+      "materialized_link": true
+    }
+  ],
+  "expanded_bytes": 5683100,
+  "system_install": false,
+  "maintainer_scripts_executed": false,
+  "native_library_path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu"
+}

@@ -1,0 +1,110 @@
+{
+  "data": {
+    "building_imagery_years": "2025-09 conversion; mixed footprints; mainly 2019 height imagery",
+    "coverage_is_visibility_probability": false,
+    "coverage_measurement": "5 m cell centres, separately from exact vector administrative area",
+    "field_verified": false,
+    "metadata_hashes": {
+      "package": "1ddfe93c2a4a9a4a18ef25c597dfd0e78f2d21fd1fc17742afc1fe632f731250",
+      "source_receipts": "4cf3fd4ecaa1fec97406aafd7fb0534fb6e5b9c23a4f407caecb2ecb8b7386d1",
+      "tile_collection": "abdd4797037ebc5d8717bb660926a3337cccd4a8777a16eb72b3d66ac414cff3"
+    },
+    "metadata_status": "validated_source_receipt",
+    "obstruction_quality_counts": {
+      "building_coverage_valid": 84522277,
+      "height_estimated": 12558241,
+      "height_unresolved": 6347894,
+      "roof_conflict": 0
+    },
+    "osm_snapshot": "2026-09-10T20:21:06Z",
+    "package_id": "seoul-20260911-v1-6abf3cc88682",
+    "sources": {
+      "buildings": {
+        "deployment_licence_review": "required",
+        "height_estimated": true,
+        "height_reference": "AGL",
+        "height_units": "m",
+        "licences": [
+          "ODbL for OSM/Microsoft footprints",
+          "CC BY-NC 4.0 for other footprints and heights"
+        ],
+        "source_catalogue": "https://source.coop/tge-labs/globalbuildingatlas-lod1",
+        "source_date": "2025-09 conversion; mixed footprints; mainly 2019 height imagery"
+      },
+      "osm": {
+        "attribution": "© OpenStreetMap contributors",
+        "catalogue": "https://download.geofabrik.de/asia/south-korea.html",
+        "licence": "ODbL1.0",
+        "source_timestamp": "2026-09-10T20:21:06Z"
+      },
+      "terrain": {
+        "catalogue": "https://data.seoul.go.kr/dataList/OA-22241/F/1/datasetView.do",
+        "licence": "KOGL Type 1",
+        "source_file_updated": "2025-03-20",
+        "source_year": "2023",
+        "vertical_reference": "Incheon mean sea level (NGII national map elevation convention)"
+      }
+    },
+    "terrain_cell_counts": {
+      "inside_seoul_cells": 24253086,
+      "requested_support_cells": 84544177,
+      "terrain_valid_seoul_cells": 23260369,
+      "terrain_valid_support_cells": 23260369
+    },
+    "terrain_seoul_fraction": 0.9590684253542003,
+    "terrain_source_year": "2023",
+    "terrain_support_fraction": 0.27512680145907625,
+    "tile_count": 109,
+    "tile_resolution_m": 5
+  },
+  "geographic_ready": false,
+  "local_exploration_available": true,
+  "provider_status": {
+    "calls_attempted_this_process": 0,
+    "credentials_present": false,
+    "fallback": "deterministic_evidence_and_geometry_schematic",
+    "image": "disabled",
+    "paid_enabled": false,
+    "spending": {
+      "accounting": "maximum_reservations_not_actual_invoices",
+      "calls": 0,
+      "daily_limit_micro_usd": 0,
+      "day_utc": "2026-09-11",
+      "images": 0,
+      "reserved_micro_usd": 0
+    },
+    "text": "disabled"
+  },
+  "public_deployment_status": "blocked_pending_actual_layer_licence_review",
+  "source_readiness": {
+    "acquisition_ready": true,
+    "building_unrepaired_invalid_geometry_count": 7,
+    "deployment_licence_review": "required: older mixed GBA distribution, source-specific conditions and ODbL obligations",
+    "field_verified": false,
+    "normalized_artifacts_complete": true,
+    "normalized_ready": false,
+    "osm_incomplete_relation_count": 36,
+    "osm_incomplete_relation_scope": "Unknown geometry remains explicit; names or country-edge metadata do not prove exclusion from requested support",
+    "osm_relation_geometry_complete": false,
+    "readiness_definitions": {
+      "acquisition_ready": "All selected core source artifacts acquired and validated; this does not assert the terrain buffer is supplied",
+      "normalized_artifacts_complete": "All core normalized artifacts and quality reports published; recorded geographic gaps may remain",
+      "normalized_ready": "All core normalized artifacts and quality reports completed without unresolved geometry errors or unlocated incomplete relations",
+      "visibility_ready": "Requires supported terrain and obstruction surfaces over complete modeled windows; remains false for the missing surrounding terrain"
+    },
+    "support_area_terrain_complete": false,
+    "visibility_ready": false
+  },
+  "storage": {
+    "accounted_bytes": 3627116935,
+    "effective_limit_bytes": 6585973031,
+    "free_bytes": 23335907328,
+    "minimum_free_bytes": 8589934592,
+    "os_quota_verified": false,
+    "status": "available",
+    "task_growth_bytes": 1041143904,
+    "temporary_bytes": 556675241,
+    "total_limit_bytes": 20000000000
+  },
+  "visibility_ready": false
+}

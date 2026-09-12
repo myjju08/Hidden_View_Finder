@@ -1,0 +1,20 @@
+{
+  "artifact_limit_bytes": 100000000,
+  "artifact_measurement_scope": "Combined browser profiles, retained browser/test artifacts and prototype reports",
+  "artifacts": "data/prototype/staging/artifacts/run-1789141512702836390",
+  "command": [
+    "node",
+    "scripts/prototype/browser_check.cjs"
+  ],
+  "elapsed_s": 23.644,
+  "exit_code": 0,
+  "log": "data/prototype/staging/artifacts/run-1789141512702836390/browser-run.log",
+  "os_quota_asserted": false,
+  "rss_limit_bytes": 1500000000,
+  "rss_note": "Sampled sum of owned process-tree RSS; shared pages may be counted more than once.",
+  "run_as": "existing nobody user",
+  "sampled_peak_browser_artifact_bytes": 41682423,
+  "sampled_peak_owned_process_rss_bytes": 734691328,
+  "sandbox_disabled": false,
+  "shared_budget_policy": "shared Budget reservation"
+}

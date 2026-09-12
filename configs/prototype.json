@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "package_manifest": "data/citywide/packages/seoul-20260911-v1-6abf3cc88682/manifest.json",
+  "tile_manifest": "data/citywide/prepared/67cd2654e14de3c0/manifest.json",
+  "runtime_root": "data/prototype",
+  "storage": {
+    "total_bytes": 20000000000,
+    "minimum_free_bytes": 8589934592,
+    "temporary_bytes": 4294967296,
+    "additional_accounted_bytes": 5242880,
+    "task_additions_bytes": 4000000000,
+    "image_cache_bytes": 250000000,
+    "query_cache_bytes": 256000000,
+    "map_derivatives_bytes": 250000000,
+    "artifacts_bytes": 100000000
+  },
+  "limits": {
+    "candidate_representatives": 160,
+    "target_groups": 20,
+    "sparse_rays": 10000,
+    "traversed_cells": 2000000,
+    "refined_views": 20,
+    "geometry_seconds": 5.0,
+    "maximum_sight_distance_m": 10000,
+    "memory_scene_entries": 60,
+    "map_features": 700,
+    "geometry_workers": 1
+  },
+  "ai": {
+    "enabled": false,
+    "daily_usd": 0,
+    "text_model": null,
+    "image_model": null,
+    "image_cache_bytes": 250000000
+  },
+  "public_deployment_status": "blocked_pending_actual_layer_licence_review"
+}

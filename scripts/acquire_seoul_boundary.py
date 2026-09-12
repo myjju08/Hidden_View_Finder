@@ -16,8 +16,6 @@ import urllib.parse
 import urllib.request
 import zipfile
 
-from osgeo import ogr
-
 from seoul_visibility.resources import preflight
 
 
@@ -107,6 +105,7 @@ def main() -> None:
     if args.source == "osm":
         acquire_osm(args.output, budget)
         return
+    from osgeo import ogr
     archive = args.output / ARCHIVE
     downloaded = not archive.exists()
     if downloaded:

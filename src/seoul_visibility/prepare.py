@@ -20,7 +20,7 @@ from shapely.geometry import MultiPolygon, Polygon
 
 from .errors import ConfigurationError, ResourceBudgetError
 from .inspect import fingerprint, source_files
-from .resources import StoragePolicy, preflight, tree_bytes
+from .resources import StoragePolicy, preflight, tree_bytes, memory_preflight
 from .terrain import (NODATA, create_raster, iter_tiles, open_vector, prepare_terrain,
                       read_valid, spatial_reference)
 
@@ -328,10 +328,33 @@ def _normalise_buildings(config: dict[str, Any], grid: dict[str, Any], dtm_path:
              "roof_conflicts": 0, "outside_grid": 0, "partly_outside_grid": 0,
              'maximum_base_estimates': 0, 'large_terrain_relief_footprints': 0}
     temporary = path.with_name("buildings.writing.gpkg")
-    # Only these exact tool-owned partial files are removed on resume.
+    preserve = bool(config.get('preserve_intermediates', False))
+    # Citywide workers use fresh, manifest-owned attempts; their cleanup is
+    # recorded only after validated successors exist. Legacy callers retain
+    # their existing disposable-intermediate behaviour.
     for ending in ("", "-wal", "-shm", "-journal"):
-        Path(str(temporary) + ending).unlink(missing_ok=True)
+        partial = Path(str(temporary) + ending)
+        if preserve and partial.exists():
+            raise ConfigurationError('Existing building intermediate preserved; select a fresh attempt')
+        if not preserve:
+            partial.unlink(missing_ok=True)
     result = ogr.GetDriverByName("GPKG").CreateDataSource(str(temporary))
+    if config.get('artifact_max_bytes') is not None:
+        maximum = int(config['artifact_max_bytes'])
+        row = result.ExecuteSQL('PRAGMA page_size')
+        page_size = int(row.GetNextFeature().GetField(0))
+        result.ReleaseResultSet(row)
+        if maximum < page_size * 16:
+            raise ConfigurationError('Building artifact_max_bytes is too small for a GeoPackage')
+        row = result.ExecuteSQL(f'PRAGMA max_page_count={maximum // page_size}')
+        effective_pages = int(row.GetNextFeature().GetField(0))
+        result.ReleaseResultSet(row)
+        if effective_pages * page_size > maximum:
+            raise ResourceBudgetError('Native building GeoPackage page limit was not applied')
+        for sql in ['PRAGMA cache_size=-16384', 'PRAGMA temp_store=MEMORY']:
+            row = result.ExecuteSQL(sql)
+            if row is not None:
+                result.ReleaseResultSet(row)
     target = result.CreateLayer("buildings", spatial_reference(grid["crs"]), ogr.wkbMultiPolygon,
                                 options=["SPATIAL_INDEX=YES"])
     for name, dtype in (("source_fid", ogr.OFTString), ("base_m", ogr.OFTReal), ("height_m", ogr.OFTReal),
@@ -340,9 +363,24 @@ def _normalise_buildings(config: dict[str, Any], grid: dict[str, Any], dtm_path:
         target.CreateField(ogr.FieldDefn(name, dtype))
     dtm = gdal.Open(str(dtm_path))
     seen_path = path.with_name(".building-dedup.sqlite")
-    seen_path.unlink(missing_ok=True)
+    if preserve and seen_path.exists():
+        raise ConfigurationError('Existing building deduplication index preserved; select a fresh attempt')
+    if not preserve:
+        seen_path.unlink(missing_ok=True)
     seen = sqlite3.connect(seen_path)
+    if config.get('dedup_max_bytes') is not None:
+        page_size = seen.execute('PRAGMA page_size').fetchone()[0]
+        maximum = int(config['dedup_max_bytes'])
+        effective_pages = seen.execute(f'PRAGMA max_page_count={maximum // page_size}').fetchone()[0]
+        if effective_pages * page_size > maximum:
+            raise ResourceBudgetError('Native building deduplication page limit was not applied')
+        seen.execute('PRAGMA cache_size=-4096')
+        seen.execute('PRAGMA temp_store=MEMORY')
     seen.execute("CREATE TABLE seen(hash TEXT PRIMARY KEY)")
+    batch_size = int(config.get('feature_batch_size', 1000))
+    if batch_size < 1 or batch_size > 1000:
+        raise ConfigurationError('Building feature_batch_size must be between 1 and 1000')
+    progress_after_commit = bool(config.get('progress_after_commit_only', False))
     source = None
     target.StartTransaction()
     try:
@@ -353,7 +391,8 @@ def _normalise_buildings(config: dict[str, Any], grid: dict[str, Any], dtm_path:
                     raise ConfigurationError(f"Configured building {field}={config[field]!r} does not exist")
             for feature in layer:
                 stats["features_read"] += 1
-                if stats["features_read"] % 500 == 1:
+                if stats['features_read'] == 1 or (not progress_after_commit and
+                        (stats["features_read"] - 1) % min(500, batch_size) == 0):
                     progress_check()
                 geometry = feature.GetGeometryRef()
                 if geometry is None or geometry.IsEmpty():
@@ -444,16 +483,20 @@ def _normalise_buildings(config: dict[str, Any], grid: dict[str, Any], dtm_path:
                 stats["estimated_heights"] += estimated
                 stats["unresolved_heights"] += unresolved
                 stats["roof_conflicts"] += conflict
-                if stats["features_read"] % 1000 == 0:
+                completed_in_batch = stats['features_retained'] if progress_after_commit else stats['features_read']
+                if completed_in_batch % batch_size == 0:
                     seen.commit()
                     target.CommitTransaction()
+                    progress_check()
                     target.StartTransaction()
         target.CommitTransaction()
         target.SyncToDisk()
         result.FlushCache()
+        progress_check()
     finally:
         seen.close()
-        seen_path.unlink(missing_ok=True)
+        if not preserve:
+            seen_path.unlink(missing_ok=True)
         result = target = dtm = source = None
     os.replace(temporary, path)
     return {**stats, "base_method": 'reliable configured absolute base; otherwise '+config.get('base_estimation_method','median')+' valid all-touched DTM cells',
@@ -538,8 +581,18 @@ def _apply_terrain_coverage(path: Path, grid: dict[str, Any], config: dict[str, 
 
 def _prepare_surfaces(config: dict[str, Any], grid: dict[str, Any], staging: Path,
                        progress_check: Any) -> dict[str, Any]:
-    dtm = gdal.Open(str(staging / "dtm.tif"))
+    tile_size = int(config.get('surface_tile_size', 256))
+    if not 16 <= tile_size <= 512:
+        raise ConfigurationError('Surface tile size must remain bounded at 16..512 pixels')
+    if tile_size != 256:
+        memory_preflight(tile_size ** 2 * 800)
+    dtm = gdal.Open(str(config.get('dtm_path', staging / "dtm.tif")))
     buildings = gdal.OpenEx(str(staging / "buildings.gpkg"), gdal.OF_VECTOR)
+    if config['buildings'].get('artifact_max_bytes') is not None:
+        for sql in ['PRAGMA cache_size=-16384', 'PRAGMA temp_store=MEMORY']:
+            result = buildings.ExecuteSQL(sql)
+            if result is not None:
+                buildings.ReleaseResultSet(result)
     layer = buildings.GetLayerByName("buildings")
     outputs = {name: create_raster(staging / f"{name}.tif", grid,
                                   gdal.GDT_Float32 if name == "surface" else gdal.GDT_Byte)
@@ -549,7 +602,7 @@ def _prepare_surfaces(config: dict[str, Any], grid: dict[str, Any], staging: Pat
     coverage_shape, coverage_details = _coverage_geometry(config['buildings'].get('coverage_boundary'), grid['crs'])
     r = grid["resolution_m"]
     try:
-        for window in iter_tiles(grid):
+        for window in iter_tiles(grid, tile_size):
             progress_check()
             x, y, width, height = window
             gt = grid["transform"]
@@ -613,6 +666,7 @@ def _prepare_surfaces(config: dict[str, Any], grid: dict[str, Any], staging: Pat
         mask.FlushCache()
         mask = source = normalised = None
     return {"pixel_counts": counts, "quality_bits": QUALITY_BITS,
+            'processing_window_pixels': tile_size,
             'building_survey_polygon': coverage_details,
             "coverage_policy": "Terrain finite and full-cell building survey coverage; unknown roofs flagged, never assumed absent"}
 

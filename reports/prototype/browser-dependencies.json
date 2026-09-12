@@ -1,0 +1,28 @@
+{
+  "aggregate_bytes": 410144768,
+  "browser": {
+    "bytes": 119809080,
+    "integrity": "local SHA256 only; no separately published browser checksum",
+    "path": "data/prototype/dependencies/browser-archives/chromium-headless-shell.zip",
+    "sha256": "a9da028861a0cf789ff25c2fed45f5f1aaf969ed9247835b6a7821a4f7af9d1d",
+    "url": "https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-headless-shell-linux64.zip"
+  },
+  "browser_allocation_bytes": 500000000,
+  "browser_executable": "data/prototype/dependencies/chromium-headless-shell/chrome-headless-shell-linux64/chrome-headless-shell",
+  "cli_plan": "Chrome Headless Shell 153.0.8010.12 (playwright chromium-headless-shell v1243)\n  Install location:    ./data/prototype/dependencies/browsers/chromium_headless_shell-1243\n  Download url:        https://cdn.playwright.dev/builds/cft/153.0.8010.12/linux64/chrome-headless-shell-linux64.zip\n\nFFmpeg (playwright ffmpeg v1011)\n  Install location:    ./data/prototype/dependencies/browsers/ffmpeg-1011\n  Download url:        https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip\n  Download fallback 1: https://playwright.download.prss.microsoft.com/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip\n  Download fallback 2: https://cdn.playwright.dev/builds/ffmpeg/1011/ffmpeg-linux.zip\n\n",
+  "documentation": [
+    "https://playwright.dev/docs/browsers",
+    "https://playwright.dev/python/docs/browsers#chromium-headless-shell"
+  ],
+  "expanded_bytes": 285986432,
+  "npm": {
+    "bytes": 3123044,
+    "integrity": "npm publisher SHA512",
+    "path": "data/prototype/dependencies/browser-archives/playwright-core-1.63.0.tgz",
+    "sha256": "208593d4e1bcd8f8fe5f869cad1cc332dc7f1d70dc1d58c102dc3ac36e30f26c",
+    "url": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.63.0.tgz"
+  },
+  "playwright_version": "1.63.0",
+  "system_packages_installed": false,
+  "test_status": "not yet run"
+}

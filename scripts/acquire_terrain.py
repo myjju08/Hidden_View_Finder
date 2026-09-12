@@ -38,8 +38,8 @@ def _tree_bytes(root: Path) -> int:
 def _preflight(data_root: Path, additional: int) -> None:
     used = _tree_bytes(data_root)
     free = shutil.disk_usage(data_root).free
-    if used + additional > 20 * 1024**3:
-        raise RuntimeError("Acquisition exceeds 20 GiB project-data budget")
+    if used + additional > 20_000_000_000:
+        raise RuntimeError("Acquisition exceeds 20 decimal GB project-data budget")
     if free - additional < 8 * 1024**3:
         raise RuntimeError("Acquisition would breach 8 GiB free-space floor")
     if additional > 4 * 1024**3:

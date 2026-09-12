@@ -1,0 +1,511 @@
+{
+  "packages": [
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dconf/libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+      "filename": "libdconf1_0.40.0-4ubuntu0.1_amd64.deb",
+      "bytes": 39588,
+      "md5": "18fa10000039421906eeb9e03fd8346e",
+      "package": "libdconf1",
+      "version": "0.40.0-4ubuntu0.1",
+      "sha256": "86bf3825fbaec0d5159c5e6bd88f10ade991a086c821aeef15631c510c6d9904"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/avahi/libavahi-common3_0.8-13ubuntu6.2_amd64.deb",
+      "filename": "libavahi-common3_0.8-13ubuntu6.2_amd64.deb",
+      "bytes": 23444,
+      "md5": "549bf701d2bb6e0a1f0c677e7c970774",
+      "package": "libavahi-common3",
+      "version": "0.8-13ubuntu6.2",
+      "sha256": "edd1f7a4a21e70504d0872c429600f2e13fdff7775c0952145f1afeacede1c82"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/avahi/libavahi-client3_0.8-13ubuntu6.2_amd64.deb",
+      "filename": "libavahi-client3_0.8-13ubuntu6.2_amd64.deb",
+      "bytes": 26810,
+      "md5": "9a92d13bb26f2b8ab036d84ffe9befb5",
+      "package": "libavahi-client3",
+      "version": "0.8-13ubuntu6.2",
+      "sha256": "00609b52ea5a1a9e35fcee4bfba03b6ff743a8015649026cb9109c356762f4d9"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/colord/libcolord2_1.4.7-1build2_amd64.deb",
+      "filename": "libcolord2_1.4.7-1build2_amd64.deb",
+      "bytes": 148960,
+      "md5": "41dcf2855c0a560608146bb6af559703",
+      "package": "libcolord2",
+      "version": "1.4.7-1build2",
+      "sha256": "ef148eb22d566506302a133516594e455e59307aa0dc9874c15a8618268e3355"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/c/cups/libcups2t64_2.4.7-1.2ubuntu7.14_amd64.deb",
+      "filename": "libcups2t64_2.4.7-1.2ubuntu7.14_amd64.deb",
+      "bytes": 274470,
+      "md5": "b5cbe4490f260c1a676859985c4e105b",
+      "package": "libcups2t64",
+      "version": "2.4.7-1.2ubuntu7.14",
+      "sha256": "b815a3d936718614e403035bb4a545e1323305ea624709bff2e9d94c214f9cc4"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/d/dbus-glib/libdbus-glib-1-2_0.112-3build2_amd64.deb",
+      "filename": "libdbus-glib-1-2_0.112-3build2_amd64.deb",
+      "bytes": 64236,
+      "md5": "843d9c24f0e527d6f19953d4046bd671",
+      "package": "libdbus-glib-1-2",
+      "version": "0.112-3build2",
+      "sha256": "1fa4cbcfd7d01e4cbadd04e15631e02d41ce036e8eb7789cb7556deb104e077e"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libe/libepoxy/libepoxy0_1.5.10-1build1_amd64.deb",
+      "filename": "libepoxy0_1.5.10-1build1_amd64.deb",
+      "bytes": 220408,
+      "md5": "ef4089532e1a8906814e74e6917570e1",
+      "package": "libepoxy0",
+      "version": "1.5.10-1build1",
+      "sha256": "e2e754da4e7fb89021476b093cb5ebe9b1859a688fa37739809e529627d39f1f"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxinerama/libxinerama1_1.1.4-3build1_amd64.deb",
+      "filename": "libxinerama1_2%3a1.1.4-3build1_amd64.deb",
+      "bytes": 6396,
+      "md5": "ddc8dafa00868e42db352df330177077",
+      "package": "libxinerama1",
+      "version": "2:1.1.4-3build1",
+      "sha256": "c8c93a3efdbb06e314f41bf48af4ca3652e4a3826bab5b9e00887660e619f239"
+    },
+    {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gtk%2b3.0/libgtk-3-0t64_3.24.41-4ubuntu1.3_amd64.deb",
+      "filename": "libgtk-3-0t64_3.24.41-4ubuntu1.3_amd64.deb",
+      "bytes": 2913080,
+      "md5": "554d77fba850a492091acd13d0410fc4",
+      "package": "libgtk-3-0t64",
+      "version": "3.24.41-4ubuntu1.3",
+      "sha256": "fd61e308234b12d243160798216d0efcb605d83af185bf3414ac99c2ed5166fc"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libdconf.so.1.0.0",
+      "bytes": 67656,
+      "sha256": "8349080aa25bd4d99c8f80b7e9e4ba1fe49a581e0890fdeb146916b66d9245ec",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdconf1/NEWS.gz",
+      "bytes": 9754,
+      "sha256": "127dfb69676182af9353336411b571a78f16368f2aa92b3f1a9197ba8a966a00",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdconf1/README",
+      "bytes": 3439,
+      "sha256": "ea94f0e93ca87b1159faa9680d4bcffbc83e0f5481d0072eb73b21f07831eae8",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdconf1/changelog.Debian.gz",
+      "bytes": 2117,
+      "sha256": "fed37f1e3889bf95b83669d08ad1b68c051005a0f0f48e01046c3a8ea0268a80",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdconf1/copyright",
+      "bytes": 1912,
+      "sha256": "a9d427b6a6e5cb665da3b4115039750c9d1092f558d6dee391d20800fb5c850e",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libdconf.so.1",
+      "bytes": 67656,
+      "sha256": "8349080aa25bd4d99c8f80b7e9e4ba1fe49a581e0890fdeb146916b66d9245ec",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libavahi-common.so.3.5.4",
+      "bytes": 51648,
+      "sha256": "39554b903a4ff94fb42375f552009995f5bbcbc8468e3c467883d551183dca62",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-common3/copyright",
+      "bytes": 5487,
+      "sha256": "66849d0ab7cbf0d770e40e00276ed8d264ed8974c0e064fb12814c0f80430c5d",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libavahi-common.so.3",
+      "bytes": 51648,
+      "sha256": "39554b903a4ff94fb42375f552009995f5bbcbc8468e3c467883d551183dca62",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-common3/NEWS.gz",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/NEWS.gz",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-common3/README",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/README",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-common3/changelog.Debian.gz",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/changelog.Debian.gz",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libavahi-client.so.3.2.9",
+      "bytes": 72016,
+      "sha256": "b3dca38686ab3869e1026c5b851ffa7ad6b66a420e0651ee4c033f3c3d7bdf35",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-client3/copyright",
+      "bytes": 5487,
+      "sha256": "66849d0ab7cbf0d770e40e00276ed8d264ed8974c0e064fb12814c0f80430c5d",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libavahi-client.so.3",
+      "bytes": 72016,
+      "sha256": "b3dca38686ab3869e1026c5b851ffa7ad6b66a420e0651ee4c033f3c3d7bdf35",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-client3/NEWS.gz",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/NEWS.gz",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-client3/README",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/README",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libavahi-client3/changelog.Debian.gz",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libavahi-common-data/changelog.Debian.gz",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libcolord.so.2.0.5",
+      "bytes": 326944,
+      "sha256": "82eec8f0da7d833308bcbb39bc5aebf4213f0b163b34b06b95b3a761c40e2e3d",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libcolordprivate.so.2.0.5",
+      "bytes": 216352,
+      "sha256": "1bfccdec3088e0d7c40e1d4d5df39522e877374ed5f8c457643dc8c985b7e335",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcolord2/changelog.Debian.gz",
+      "bytes": 2919,
+      "sha256": "6e84a3a2e40daa107427ea397ec43376cb58bcfd76ab28ac6f1be8f4ab1d86c1",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcolord2/copyright",
+      "bytes": 22086,
+      "sha256": "ef303b9a14eccf720e0f1b422776fc0548c374191f88e78e92fe5b66c00b85de",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libcolord.so.2",
+      "bytes": 326944,
+      "sha256": "82eec8f0da7d833308bcbb39bc5aebf4213f0b163b34b06b95b3a761c40e2e3d",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libcolordprivate.so.2",
+      "bytes": 216352,
+      "sha256": "1bfccdec3088e0d7c40e1d4d5df39522e877374ed5f8c457643dc8c985b7e335",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libcups.so.2",
+      "bytes": 653416,
+      "sha256": "df3aa37f2995344a4e0b09d0ee9d98241dadb3e282fe11054899bbb7bcc57eaa",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcups2t64/README.Debian.gz",
+      "bytes": 3440,
+      "sha256": "c5ba31837a752dcd42779569f7f3ca705586e0961154eecdbfe4723ded05b5ce",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcups2t64/changelog.Debian.gz",
+      "bytes": 11736,
+      "sha256": "5f7eb4d130ec28eefe772654ccfe84e44418bae89f979f55282c61dacd9a8c47",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcups2t64/copyright",
+      "bytes": 6757,
+      "sha256": "82dabde9d9e18c5929f320e274095627f2ed1c45153fd4744ab884adac65c425",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libcups2t64/examples/client.conf",
+      "bytes": 2690,
+      "sha256": "30a0a5ddc2b37e62ad7371dea9af784111a807f61975205d10ed8fc3b9872184",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libcups2t64",
+      "bytes": 56,
+      "sha256": "f56837ded789c8f7a45d3ae3a85020d9ad509e82f29fc41ad63bac8cdb383dcf",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.3.5",
+      "bytes": 174160,
+      "sha256": "5833ca1171113d2e83a0ebf3cced225212ed680f663517467a552f6da2ff7040",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdbus-glib-1-2/changelog.Debian.gz",
+      "bytes": 1189,
+      "sha256": "3725d96593c293fc61e86b916ab2f5d522b428f2fb32cf3f65bca78e839ae536",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libdbus-glib-1-2/copyright",
+      "bytes": 11993,
+      "sha256": "66cc45e0351ad9d98e5326246a4855eb0d66fd966b03e82f51c4b9527b49e0cb",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libdbus-glib-1-2",
+      "bytes": 127,
+      "sha256": "6c0109cb56668e76c55d897020414990f8e0211faeb717ad67fb0fac58c64068",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2",
+      "bytes": 174160,
+      "sha256": "5833ca1171113d2e83a0ebf3cced225212ed680f663517467a552f6da2ff7040",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libepoxy.so.0.0.0",
+      "bytes": 1189616,
+      "sha256": "5fc7dd1ea433bfe5f1fd9854e66246bdb44e0cbf148707121c5f4c99fe11be29",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libepoxy0/changelog.Debian.gz",
+      "bytes": 854,
+      "sha256": "05d12bb014d0d98a8c4f62a1fb2f7622892548f5c52f02582a99c81020074ff7",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libepoxy0/copyright",
+      "bytes": 1352,
+      "sha256": "a8be83fe8a66a6ecc1a9fbcec9cf1b43aacca69d38220a94fb37632f090b611e",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libepoxy.so.0",
+      "bytes": 1189616,
+      "sha256": "5fc7dd1ea433bfe5f1fd9854e66246bdb44e0cbf148707121c5f4c99fe11be29",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0",
+      "bytes": 14616,
+      "sha256": "dceff724f4f74c420116fa6a11ece62894af4fc0e74a2254c923ccc215e1a041",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxinerama1/changelog.Debian.gz",
+      "bytes": 701,
+      "sha256": "a8df6c3cd669476370a9c60417b84cb8c4d4184a3f3e99f571fc2368b6bd2a38",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libxinerama1/copyright",
+      "bytes": 3670,
+      "sha256": "e49d9732f261b3ffcb50c40914bd9d144de5557dad9b2ae20dbe8e3c5b3d17fb",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libXinerama.so.1",
+      "bytes": 14616,
+      "sha256": "dceff724f4f74c420116fa6a11ece62894af4fc0e74a2254c923ccc215e1a041",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/etc/gtk-3.0/settings.ini",
+      "bytes": 126,
+      "sha256": "5317c571e0136bdcb9bd14de8f2d8aeabbcc5fe64e9905e4e17bf7614fac661d",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-am-et.so",
+      "bytes": 27904,
+      "sha256": "d5361eeb04a69044438bf7beb30b49a8c7a1578a520631d35911c51b20a36cc5",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-broadway.so",
+      "bytes": 14576,
+      "sha256": "3e12430a39c4bc823ded88ded00c7bed4f8d9112c650b838f41260048081af29",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-cedilla.so",
+      "bytes": 14672,
+      "sha256": "7326296a56522170b019c4566ef217b10262763c0355ce69db9e97ba23aed684",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-cyrillic-translit.so",
+      "bytes": 16208,
+      "sha256": "f4fb31d0d054686ae58e6b748d8ef697b9303d726798024b1741d96c0aedaf65",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-inuktitut.so",
+      "bytes": 16640,
+      "sha256": "831ba2a27458f1225531564696e86ef1d4629bdde1dc74910e585f8344219101",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ipa.so",
+      "bytes": 15320,
+      "sha256": "0ddceb6784f419f6ce92622e5d5091eafb94d14e696c919d8eda43612ba084f8",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-multipress.so",
+      "bytes": 18672,
+      "sha256": "a1efd57c44d390c264bd099e0576d4b497e2855100ba4d408c7a76162f8f31ca",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-thai.so",
+      "bytes": 14576,
+      "sha256": "4a6861e614b662223e35750f706fbf8f76ce89823cc7b25a480912af21e20d9e",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ti-er.so",
+      "bytes": 27888,
+      "sha256": "2c2b5fc940aba23682076988a0baaa47fbb921d404af4bed1c8133e23b43cd4b",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-ti-et.so",
+      "bytes": 27888,
+      "sha256": "5b1e820e0ec9b1e166b9461362c17307928b45e858f430742f9744ec87a7f135",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-viqr.so",
+      "bytes": 16536,
+      "sha256": "2a4c96b9092a72b73a940cd08b132b84ae47a10d4305a655ad2a0c154f936688",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-wayland.so",
+      "bytes": 26952,
+      "sha256": "a333ccb298031a838def95ecdd9bf3912ef031eeb51fd9d88c8b31ee7e87dc71",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules/im-xim.so",
+      "bytes": 39152,
+      "sha256": "11d27d96314081b5ecc39149eae0c186cd501606710d8ed65f50f45cd60ba269",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/printbackends/libprintbackend-cups.so",
+      "bytes": 150480,
+      "sha256": "6ed8d3ba9eef25a7c784f83c420300fefcec43d95e8098fc2c61b752f41f4a40",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/printbackends/libprintbackend-file.so",
+      "bytes": 30952,
+      "sha256": "33a64c883e927c5a4af45f858770d0075aa8e2fb26294f1240592c15c1f78ed5",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libgdk-3.so.0.2409.32",
+      "bytes": 1022416,
+      "sha256": "0b52fb8111e4baf38d469d1fa0b0c49f166faa41bbcde1494221232302829dea",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libgtk-3-0t64/gtk-query-immodules-3.0",
+      "bytes": 22840,
+      "sha256": "399e468aae8e855f78166a423247add2f463b1c7d88d1598c7e344d2230c9417",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libgtk-3.so.0.2409.32",
+      "bytes": 8156632,
+      "sha256": "0611fd19d1354a39a7cfafceffa3bdf4289d4c497c7f69ff337f86e99cf37d93",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/bug/libgtk-3-0t64/control",
+      "bytes": 342,
+      "sha256": "8c87283d823bd11f61ae86db2e3fb2a067ad50dcac44ff59dad7a3a8dc1b45e0",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libgtk-3-0t64/changelog.Debian.gz",
+      "bytes": 18721,
+      "sha256": "d96ce2741bfad4ecfc989b05a8dfcf35e0cd7e9a488191e276b6f4ff87e2c243",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libgtk-3-0t64/copyright",
+      "bytes": 60525,
+      "sha256": "2be2199cc990913cd94874b6f16fc84f1e3c35aaaa4719ad34b4478f1e69c557",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/lintian/overrides/libgtk-3-0t64",
+      "bytes": 121,
+      "sha256": "0756a97f24db13e44b6ebf1f482ef9a1d7fcd321f36dc842c11c3b77bf7fb7c9",
+      "materialized_link": false
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libgdk-3.so.0",
+      "bytes": 1022416,
+      "sha256": "0b52fb8111e4baf38d469d1fa0b0c49f166faa41bbcde1494221232302829dea",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu/libgtk-3.so.0",
+      "bytes": 8156632,
+      "sha256": "0611fd19d1354a39a7cfafceffa3bdf4289d4c497c7f69ff337f86e99cf37d93",
+      "materialized_link": true
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libgtk-3-0t64/NEWS.gz",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libgtk-3-common/NEWS.gz",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    },
+    {
+      "path": "data/prototype/dependencies/browser-native/root/usr/share/doc/libgtk-3-0t64/README.md",
+      "status": "preserved_in_original_deb_only",
+      "target": "usr/share/doc/libgtk-3-common/README.md",
+      "reason": "Cross-package documentation link; omitted package is not a headless runtime ELF dependency."
+    }
+  ],
+  "expanded_bytes": 23896385,
+  "system_install": false,
+  "maintainer_scripts_executed": false,
+  "native_library_path": "data/prototype/dependencies/browser-native/root/usr/lib/x86_64-linux-gnu"
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "scope": "Optional providers, image cache, spending controls and API boundary; synthetic fixtures unless explicitly marked read-only real metadata",
+  "provider_execution": {
+    "credential_names_checked": ["OPENAI_API_KEY", "HVF_AI_ENABLED"],
+    "openai_api_key_present": false,
+    "ai_enablement_present": false,
+    "live_text_calls": 0,
+    "live_image_calls": 0,
+    "paid_spending_authorized_usd": 0,
+    "live_account_model_availability": "untested",
+    "mocked_api_calls_are_not_live_calls": true,
+    "official_documentation_reviewed": [
+      "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "https://developers.openai.com/api/docs/guides/image-generation",
+      "https://developers.openai.com/api/docs/pricing"
+    ]
+  },
+  "latest_targeted_validation": {
+    "command": "bash scripts/prototype/python.sh -m pytest tests/test_prototype_api.py tests/test_prototype_ai.py -q -p no:cacheprovider --basetemp=data/citywide/staging/prototype-providers/combined-03",
+    "passed": 68,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 4.24,
+    "provider_tests": 40,
+    "api_tests": 28,
+    "warnings": [
+      "Installed Starlette TestClient deprecates httpx in favour of httpx2",
+      "Installed AnyIO BlockingPortal alias is deprecated"
+    ]
+  },
+  "subsequent_session_isolation_validation": {
+    "command": "bash scripts/prototype/python.sh -m pytest tests/test_prototype_api.py -q -p no:cacheprovider --basetemp=data/citywide/staging/prototype-providers/api-session-02",
+    "passed": 31,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 3.25,
+    "dependency_deprecation_warnings": 2,
+    "session_context": "Server-issued anonymous cookie; only its hash and issue time retained in memory",
+    "cookie_flags": ["HttpOnly", "SameSite=Strict", "Secure when served over HTTPS"],
+    "maximum_session_registry_entries": 256,
+    "session_lifetime_seconds": 3600,
+    "global_view_cache_limit_unchanged": true,
+    "actual_user_origins_persisted": false,
+    "validated": [
+      "Two sessions with the same stable view ID retain different distance, score and description context",
+      "AI annotations and image submission select only the originating session's retained scene",
+      "Missing, unrelated, fabricated and expired sessions cannot retrieve another session's view",
+      "Session expiry and registry eviction discard corresponding context",
+      "Global configured view-entry cap holds across all sessions",
+      "Stable geographic view IDs and public geometry image-cache keys remain unchanged"
+    ]
+  },
+  "earlier_failures_fixed": [
+    {
+      "run": "provider tests-01",
+      "passed": 15,
+      "setup_errors": 18,
+      "cause": "Requested accounted pytest basetemp parent directory did not exist",
+      "resolution": "Created only the accounted parent directory; subsequent fresh fixture runs passed"
+    },
+    {
+      "run": "api-02",
+      "passed": 25,
+      "failed": 1,
+      "cause": "Cancelling an ASGI request released the geometry slot while its native worker continued",
+      "resolution": "Root API now releases the slot from the actual concurrent worker completion callback; cancellation regression passes"
+    },
+    {
+      "run": "combined-02",
+      "passed": 65,
+      "failed": 1,
+      "cause": "Transport startup-error handling caught its own ProviderUnavailable deadline as generic RuntimeError",
+      "resolution": "ProviderUnavailable is re-raised before generic startup errors; child deadline and startup-failure fixtures pass"
+    }
+  ],
+  "tested_controls": [
+    "No-key mode and key-without-authorization perform no billable request",
+    "Model/pricing mismatch, stale pricing and kill switches",
+    "Strict structured response shape, invented view/evidence IDs and unknown-sample references",
+    "No source instructions, free text, origin or rank edits sent to AI",
+    "Visible/blocked/unknown/excluded counts retain the intended denominator",
+    "Concurrent durable daily spending reservations, request/image caps and restart persistence",
+    "Uncertain failures remain charged at maximum; no billable retry",
+    "Provider HTTP status, redirects, body caps without Content-Length and truncation",
+    "Owned child absolute deadline, sanitized startup failure and pipe cleanup",
+    "Image model/geometry/evidence/position/orientation/solar/season/weather cache identity",
+    "Stale forecasts stay unknown; hypothetical weather remains distinct",
+    "Bounded image decoding/encoding, cache reuse, LRU and source preservation",
+    "Simulated storage refusal before cost/network; no real disk-fill test",
+    "Symlink escape, hidden partial accounting, changed owned files and hash-verified publication recovery",
+    "Image queue coalescing, bounded unfinished jobs, interruption PID/start identity and shutdown",
+    "Actual application SceneEvidence dataclass accepted with null-model/no-key image status",
+    "Corrupt optional spending ledger does not break core capability status",
+    "Distance-only API without route/ETA fields and Asia/Seoul viewing-time semantics",
+    "Global readiness false with a separately supported synthetic local result",
+    "Input/radius/URL/path/origin/host validation, rate limits and early oversized-stream refusal",
+    "Old fictional art, source data and unknown/expired view IDs are not exposed",
+    "Geometry queue remains occupied through request cancellation until actual work completes",
+    "Missing data produces an empty status without Top 3 padding",
+    "Capability dates/fractions derived from checksum-verified source metadata",
+    "No CDN-backed documentation pages; local OpenAPI schema remains available"
+  ],
+  "real_read_only_metadata_check": {
+    "package_id": "seoul-20260911-v1-6abf3cc88682",
+    "package_manifest_sha256": "1ddfe93c2a4a9a4a18ef25c597dfd0e78f2d21fd1fc17742afc1fe632f731250",
+    "tile_manifest_sha256": "abdd4797037ebc5d8717bb660926a3337cccd4a8777a16eb72b3d66ac414cff3",
+    "sources_json_sha256": "4cf3fd4ecaa1fec97406aafd7fb0534fb6e5b9c23a4f407caecb2ecb8b7386d1",
+    "tile_count": 109,
+    "terrain_seoul_fraction": 0.9590684253542003,
+    "terrain_support_fraction": 0.27512680145907625,
+    "measurement": "Published 5 m cell-centre counts, not a visibility probability",
+    "source_mutations": 0,
+    "source_normalized_ready": false,
+    "source_visibility_ready": false,
+    "public_deployment_licence_review": "unresolved"
+  },
+  "storage": {
+    "hard_total_bytes": 20000000000,
+    "minimum_free_bytes": 8589934592,
+    "aggregate_staging_bytes": 4294967296,
+    "image_cache_max_bytes": 250000000,
+    "new_dependency_installs_by_provider_agent": 0,
+    "fixture_root": "data/citywide/staging/prototype-providers",
+    "development_writes": "Under root-held shared prototype development reservation; isolated synthetic Budget roots for refusal/concurrency tests",
+    "os_enforced_quota_claimed": false
+  },
+  "limitations": [
+    "Mocked adapter and API tests do not demonstrate live provider availability or geographic accuracy",
+    "Incorrect/outdated operator-entered pricing cannot guarantee a provider bill; paid calls remain off until reviewed",
+    "Uncertain paid attempts are not automatically retried or refunded",
+    "Unknown/corrupt cache partials remain counted and may block new cache writes",
+    "Core no-key results and geometry schematics remain the fallback for all provider failures"
+  ]
+}

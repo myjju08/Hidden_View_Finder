@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/at-spi2-common_2.52.0-1build1_all.deb",
+    "filename": "at-spi2-common_2.52.0-1build1_all.deb",
+    "bytes": 8674,
+    "md5": "67a99e2fa96c670726f624a3a30cf84f",
+    "package": "at-spi2-common",
+    "version": "2.52.0-1build1",
+    "sha256": "7e05959b067031468f21ae46c6653a6813f1dccd994ef12a0b5f75de0ed346b6"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatk1.0-0t64_2.52.0-1build1_amd64.deb",
+    "filename": "libatk1.0-0t64_2.52.0-1build1_amd64.deb",
+    "bytes": 55282,
+    "md5": "bf49c1d99b6985512804dfc1a2229089",
+    "package": "libatk1.0-0t64",
+    "version": "2.52.0-1build1",
+    "sha256": "42c5d4b00954f17c2c3c4b866844f691eb8b6d57bf08b59203e65f12dc84a4f9"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatspi2.0-0t64_2.52.0-1build1_amd64.deb",
+    "filename": "libatspi2.0-0t64_2.52.0-1build1_amd64.deb",
+    "bytes": 80548,
+    "md5": "5585754ad1d593608ce9ffe22f22c806",
+    "package": "libatspi2.0-0t64",
+    "version": "2.52.0-1build1",
+    "sha256": "d686ace4080eca9c2d6ce8de69392a5ac56c846701894c0858922d4ce341a1d7"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/a/at-spi2-core/libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb",
+    "filename": "libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb",
+    "bytes": 66020,
+    "md5": "952d23699da705b77c0e420e5bdc1b59",
+    "package": "libatk-bridge2.0-0t64",
+    "version": "2.52.0-1build1",
+    "sha256": "22b7d47e3c0f7953a78d3cfd309d1b20771085de9220fbe610c0989b9e808c9b"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nspr/libnspr4_4.35-1.1build1_amd64.deb",
+    "filename": "libnspr4_2%3a4.35-1.1build1_amd64.deb",
+    "bytes": 117398,
+    "md5": "d56a98b07cb817b8b7e5b04c3a7fca72",
+    "package": "libnspr4",
+    "version": "2:4.35-1.1build1",
+    "sha256": "e579e72d091f6c7a13f5a756c31065b15aae5b81840d61b069355aa2283c07b4"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/nss/libnss3_3.98-1ubuntu0.2_amd64.deb",
+    "filename": "libnss3_2%3a3.98-1ubuntu0.2_amd64.deb",
+    "bytes": 1445132,
+    "md5": "27c0a341c0c28008d1b6f80fd135cd16",
+    "package": "libnss3",
+    "version": "2:3.98-1ubuntu0.2",
+    "sha256": "4254f11d782dfb970e78113519a59d440112ed43c4b56f709da0aef81da8651a"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcomposite/libxcomposite1_0.4.5-1build3_amd64.deb",
+    "filename": "libxcomposite1_1%3a0.4.5-1build3_amd64.deb",
+    "bytes": 6320,
+    "md5": "6e5b8b65d385a271fe97480f30f8c4c6",
+    "package": "libxcomposite1",
+    "version": "1:0.4.5-1build3",
+    "sha256": "a12d5d9ae70b798cbbf284080eae32b87367561fc9c24492f641b8860ac0f308"
+  },
+  {
+    "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxdamage/libxdamage1_1.1.6-1build1_amd64.deb",
+    "filename": "libxdamage1_1%3a1.1.6-1build1_amd64.deb",
+    "bytes": 6150,
+    "md5": "63e9de16dc4cde9d210e27f1a7e884e7",
+    "package": "libxdamage1",
+    "version": "1:1.1.6-1build1",
+    "sha256": "6891faf325e996ebd28ef53ebb9c043dc96f67327500490affc3e89d366d35ed"
+  }
+]

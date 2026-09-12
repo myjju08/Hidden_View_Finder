@@ -1,0 +1,42 @@
+{
+  "python": "3.12.13",
+  "platform": "Linux",
+  "native_gdal": "GDAL 3.8.4, released 2024/02/08",
+  "versions": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "shapely": "2.1.2",
+    "pyproj": "3.7.2",
+    "requests": "2.34.2",
+    "pyarrow": "25.0.1",
+    "fastapi": "0.141.1",
+    "uvicorn": "0.52.4",
+    "pydantic": "2.13.5",
+    "Pillow": "12.3.0"
+  },
+  "cpu_affinity_count": 80,
+  "cgroup": {
+    "memory.max": "183497654272",
+    "memory.current": "46069018624",
+    "cpu.max": "3840000 100000"
+  },
+  "memory_current_scope": "Whole shared container at this observation, not task peak",
+  "gdal_cache_bytes": 67108864,
+  "gpu_used": false,
+  "administrator_changes": false,
+  "quota_verified": false,
+  "storage": {
+    "status": "available",
+    "accounted_bytes": 3555268699,
+    "total_limit_bytes": 20000000000,
+    "effective_limit_bytes": 6585973031,
+    "free_bytes": 23408746496,
+    "minimum_free_bytes": 8589934592,
+    "temporary_bytes": 512729728,
+    "task_growth_bytes": 969295668,
+    "os_quota_verified": false
+  },
+  "runtime_geometry_workers": 1,
+  "runtime_map_readers": 2,
+  "live_provider_calls": 0
+}
