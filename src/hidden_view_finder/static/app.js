@@ -184,12 +184,72 @@
     const stairs=access.step_free===true ? '계단 없는 지점' : access.step_free===false ? '계단 있음' : '계단 여부 미확인';
     const weatherText=weather.status==='unknown' || !weather.status ? '날씨 미확인' : [weather.precipitation_mm!=null ? `강수 ${num(weather.precipitation_mm,1)} mm` : null,weather.wind_m_s!=null ? `바람 ${num(weather.wind_m_s,1)} m/s` : null].filter(Boolean).join(' · ') || translated(weather.status);
     const mapLink=`https://www.openstreetmap.org/?mlat=${encodeURIComponent(location.lat)}&mlon=${encodeURIComponent(location.lon)}#map=18/${encodeURIComponent(location.lat)}/${encodeURIComponent(location.lon)}`;
-    return `<article class="spot-card ${unverified?'unverified-card':''}" id="${html(id)}" data-spot-id="${html(spot.id)}"><div class="card-main"><div class="card-heading"><span class="rank-number">${unverified?'?':String(rank).padStart(2,'0')}</span><div class="card-heading-text"><h3>${html(spot.name)}</h3><p>${html(targetNames(spot).join(' · '))}</p></div><div class="card-score"><strong>${num(spot.score,1)}</strong>${spot.score!=null?'<span>/ 100</span>':''}<small>근거 커버리지 ${num(coverage*100)}%</small></div></div><div class="card-tags">${badge(spot.visibility || 'unknown')}${badge(unverified?'unverified':scenario?'scenario':'passed',unverified?'필수 조건 미확인':scenario?'가상 조건 충족':'필수 조건 확인')}${list(spot.scenic_features).slice(0,4).map((feature)=>badge('feature',translated(feature))).join('')}</div><p class="card-description">${html(description)}</p><div class="card-facts"><div><p class="fact-label">이동 · 권장 도착</p><p class="fact-value">${html(translated(route.mode))} ${num(route.travel_minutes)}분</p><p class="fact-note">${html(localTime(spot.arrival_at))} 도착 · 걷기 ${num(route.walking_m)} m<br>${html(translated(route.status))}</p></div><div><p class="fact-label">바라볼 방향</p><p class="fact-value">${html(direction)}</p><p class="fact-note">시야각 ${num(spot.field_of_view_deg || 60)}°${spot.field_of_view_deg?'':' (가정)'} · 눈높이 1.7 m<br>대상 점의 가시성</p></div><div><p class="fact-label">혼잡 · 방문 날씨</p><p class="fact-value">혼잡 ${html(translated(crowd.level))} ${badge(crowd.status || 'unknown')}</p><p class="fact-note">${html(weatherText)}<br>${html(translated(weather.status || 'unknown'))}</p></div></div>${imageBlock(image)}<div class="card-controls"><a class="map-link" href="${html(mapLink)}" target="_blank" rel="noopener noreferrer">${scenario?'데모 좌표 위치':'지도에서 위치 보기'} ↗</a><span class="fact-note">${num(location.lat,6)}, ${num(location.lon,6)}</span></div></div><details class="card-details"><summary>평가 근거와 확인할 내용<span>커버리지 ${num(coverage*100)}%</span></summary><div class="detail-body"><div class="detail-section"><h4>항목별 점수</h4><div class="criteria-grid">${Object.entries(weights).map(([key,weight])=>{const score=spot.criteria?.[key];return `<div class="criterion-row"><span>${criteriaLabels[key]} · ${weight}%</span><div class="criterion-track ${score==null?'missing':''}">${score==null?'':`<div class="criterion-fill" style="width:${Math.min(100,Math.max(0,Number(score)))}%"></div>`}</div><span>${score==null?'미확인':num(score)}</span></div>`;}).join('')}</div><p style="margin-top:10px">미확인 항목은 점수를 채우지 않고 나머지 가중치를 재조정합니다. 총점은 비교용 휴리스틱이며 만족 확률이 아닙니다.</p></div><div class="detail-section"><h4>이동과 접근성</h4><p>${html(stairs)} · ${html(opening)}<br>경로 ${html(translated(route.status))} · 일반인 접근 ${access.public===false?'출입 금지':html(translated(access.public_status || access.status || 'unknown'))}</p>${constraints.length?`<ul>${constraints.map((reason)=>`<li>${html(translatedReason(reason))}</li>`).join('')}</ul>`:''}</div><div class="detail-section"><h4>시간에 따라 달라지는 정보</h4><p>날씨: ${html(translated(weather.status || 'unknown'))} · 기준 ${html(localTime(weather.reference_time,true))}<br>혼잡: ${html(translated(crowd.status || 'unknown'))} · 기준 ${html(localTime(crowd.reference_time,true))}<br>주거 인구밀도를 방문 시간의 혼잡도로 대체하지 않습니다.</p></div><div class="detail-section"><h4>풍경의 근거와 한계</h4><p>${html(spot.visibility_description || '점 가시성은 대상 전체나 구도를 보장하지 않습니다.')}</p><ul>${list(spot.uncertainties).map((item)=>`<li>${html(item)}</li>`).join('')}</ul></div>${spotEvidence(spot)}${imagePrompt(image)}<div class="detail-section"><h4>출처</h4><p>${list(spot.sources || spot.source_ids).map((source)=>{const entry=list(lastResult?.sources).find((item)=>item.id===source);const url=safeUrl(entry?.url);return url?`<a href="${html(url)}" target="_blank" rel="noopener noreferrer">${html(entry.name || source)} ↗</a>`:html(entry?.name || source.name || source);}).join('<br>') || '출처 미확인'}</p></div></div></details></article>`;
+    return `<article class="spot-card ${unverified?'unverified-card':''}" id="${html(id)}" data-spot-id="${html(spot.id)}"><div class="card-main"><div class="card-heading"><span class="rank-number">${unverified?'?':String(rank).padStart(2,'0')}</span><div class="card-heading-text"><h3>${html(spot.name)}</h3><p>${html(targetNames(spot).join(' · '))}</p></div><div class="card-score"><strong>${num(spot.score,1)}</strong>${spot.score!=null?'<span>/ 100</span>':''}<small>근거 커버리지 ${num(coverage*100)}%</small></div></div><div class="card-tags">${badge(spot.visibility || 'unknown')}${badge(unverified?'unverified':scenario?'scenario':'passed',unverified?'필수 조건 미확인':scenario?'가상 조건 충족':'필수 조건 확인')}${list(spot.scenic_features).slice(0,4).map((feature)=>badge('feature',translated(feature))).join('')}</div><p class="card-description">${html(description)}</p><div class="card-facts"><div><p class="fact-label">이동 · 권장 도착</p><p class="fact-value">${html(translated(route.mode))} ${num(route.travel_minutes)}분</p><p class="fact-note">${html(localTime(spot.arrival_at))} 도착 · 걷기 ${num(route.walking_m)} m<br>${html(translated(route.status))}</p></div><div><p class="fact-label">바라볼 방향</p><p class="fact-value">${html(direction)}</p><p class="fact-note">시야각 ${num(spot.field_of_view_deg || 60)}°${spot.field_of_view_deg?'':' (가정)'} · 눈높이 1.7 m<br>대상 점의 가시성</p></div><div><p class="fact-label">혼잡 · 방문 날씨</p><p class="fact-value">혼잡 ${html(translated(crowd.level))} ${badge(crowd.status || 'unknown')}</p><p class="fact-note">${html(weatherText)}<br>${html(translated(weather.status || 'unknown'))}</p></div></div>${sceneImagePanel(image)}<div class="card-controls"><a class="map-link" href="${html(mapLink)}" target="_blank" rel="noopener noreferrer">${scenario?'데모 좌표 위치':'지도에서 위치 보기'} ↗</a><span class="fact-note">${num(location.lat,6)}, ${num(location.lon,6)}</span></div></div><details class="card-details"><summary>평가 근거와 확인할 내용<span>커버리지 ${num(coverage*100)}%</span></summary><div class="detail-body"><div class="detail-section"><h4>항목별 점수</h4><div class="criteria-grid">${Object.entries(weights).map(([key,weight])=>{const score=spot.criteria?.[key];return `<div class="criterion-row"><span>${criteriaLabels[key]} · ${weight}%</span><div class="criterion-track ${score==null?'missing':''}">${score==null?'':`<div class="criterion-fill" style="width:${Math.min(100,Math.max(0,Number(score)))}%"></div>`}</div><span>${score==null?'미확인':num(score)}</span></div>`;}).join('')}</div><p style="margin-top:10px">미확인 항목은 점수를 채우지 않고 나머지 가중치를 재조정합니다. 총점은 비교용 휴리스틱이며 만족 확률이 아닙니다.</p></div><div class="detail-section"><h4>이동과 접근성</h4><p>${html(stairs)} · ${html(opening)}<br>경로 ${html(translated(route.status))} · 일반인 접근 ${access.public===false?'출입 금지':html(translated(access.public_status || access.status || 'unknown'))}</p>${constraints.length?`<ul>${constraints.map((reason)=>`<li>${html(translatedReason(reason))}</li>`).join('')}</ul>`:''}</div><div class="detail-section"><h4>시간에 따라 달라지는 정보</h4><p>날씨: ${html(translated(weather.status || 'unknown'))} · 기준 ${html(localTime(weather.reference_time,true))}<br>혼잡: ${html(translated(crowd.status || 'unknown'))} · 기준 ${html(localTime(crowd.reference_time,true))}<br>주거 인구밀도를 방문 시간의 혼잡도로 대체하지 않습니다.</p></div><div class="detail-section"><h4>풍경의 근거와 한계</h4><p>${html(spot.visibility_description || '점 가시성은 대상 전체나 구도를 보장하지 않습니다.')}</p><ul>${list(spot.uncertainties).map((item)=>`<li>${html(item)}</li>`).join('')}</ul></div>${spotEvidence(spot)}${imagePrompt(image)}<div class="detail-section"><h4>출처</h4><p>${list(spot.sources || spot.source_ids).map((source)=>{const entry=list(lastResult?.sources).find((item)=>item.id===source);const url=safeUrl(entry?.url);return url?`<a href="${html(url)}" target="_blank" rel="noopener noreferrer">${html(entry.name || source)} ↗</a>`:html(entry?.name || source.name || source);}).join('<br>') || '출처 미확인'}</p></div></div></details></article>`;
   }
   function spotEvidence(spot) {
     const features=list(spot.features || spot.feature_evidence),sun=spot.sunlight || {},composition=spot.composition || {};
     return `<div class="detail-section"><h4>장면 요소별 근거</h4>${features.length?`<ul>${features.map((feature)=>`<li>${html(translated(feature.name || feature.feature))} · ${html(translated(feature.status || 'unknown'))}${feature.confidence?` · 신뢰도 ${html(feature.confidence==='fictional'?'가상 설정':feature.confidence)}`:''}${feature.detail?`<br>${html(feature.detail)}`:''}</li>`).join('')}</ul>`:'<p>장면 요소별 추가 근거가 제공되지 않았습니다.</p>'}<p>대상의 각크기 ${num(composition.angular_size_deg,2)}${composition.angular_size_deg!=null?'°':''} · 개방감 ${html(composition.openness ?? '미확인')}<br>전경 ${html(composition.foreground==='unknown' || !composition.foreground?'미확인':composition.foreground)} · 중경 ${html(composition.middle_ground==='unknown' || !composition.middle_ground?'미확인':composition.middle_ground)} · 배경 ${html(composition.background==='unknown' || !composition.background?'미확인':composition.background)}</p></div>${sun.status==='computed'?`<div class="detail-section"><h4>도착 시각의 태양 위치 · 계산값</h4><p>고도 ${num(sun.altitude_deg,1)}° · 방위각 ${num(sun.azimuth_deg,1)}°<br>천문학적 근사 위치입니다. 구름·건물 그림자·실제 조명과 노을은 확인되지 않았습니다.</p></div>`:''}`;
   }
+  const imageTasks = new Map();
+  function sceneImagePanel(image) {
+    const generation=image.generation;
+    if (!generation) return imageBlock(image);
+    const key=generation.scene_id || '', active=imageTasks.get(key);
+    const enabled=generation.enabled, pending=active?.pending;
+    return `<section class="scene-image-panel" data-image-scene="${html(key)}"><div class="scene-image-output">${imageBlock(active?.result || image)}</div><div class="scene-image-actions"><button type="button" class="text-button" data-generate-scene="${html(key)}" ${!enabled || pending || active?.result || active?.failed?'disabled':''}>${pending?'예상 풍경 생성 중…':active?.result?'예상 풍경 생성 완료':active?.resume?'생성 상태 확인':'예상 풍경 생성'}</button><span class="fact-note">${enabled?'분석한 대상·방향·높이를 반영 · 클릭 시 API 사용료 발생':'이미지 생성 준비 필요'}</span></div><p class="scene-image-status fact-note" role="status" aria-live="polite">${html(active?.message || (enabled?'AI 생성 예상 풍경이며 실제 경치와 다를 수 있습니다.':generation.reason || '서버 .env에 OPENAI_API_KEY를 설정하고 재시작하면 사용할 수 있습니다.'))}</p></section>`;
+  }
+  function updateSceneImage(key) {
+    const task=imageTasks.get(key);
+    for (const group of ['recommendations','unverified']) {
+      for (const spot of lastResult?.[group] || []) {
+        if (spot.image?.generation?.scene_id===key && task?.result) spot.image={...spot.image,...task.result};
+      }
+    }
+    document.querySelectorAll('[data-image-scene]').forEach((panel)=>{
+      if(panel.dataset.imageScene!==key)return;
+      const spot=[...(lastResult?.recommendations || []),...(lastResult?.unverified || [])].find((item)=>item.image?.generation?.scene_id===key);
+      if(spot)panel.outerHTML=sceneImagePanel(spot.image);
+    });
+  }
+  async function generateSceneImage(key) {
+    if (!key || imageTasks.get(key)?.pending) return;
+    const resume=imageTasks.get(key)?.resume;
+    const task={pending:true,resume:true,message:'이미지를 생성하고 있습니다. 지도와 다른 결과는 계속 확인할 수 있습니다.'};
+    imageTasks.set(key,task);updateSceneImage(key);
+    try {
+      let response=await fetch(resume?`/api/images/${encodeURIComponent(key)}`:'/api/images',resume?
+        {signal:AbortSignal.timeout(15000)}:
+        {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({scene_id:key}),signal:AbortSignal.timeout(15000)});
+      let result=await response.json();
+      if(!response.ok){task.resume=false;throw new Error(result.error || '이미지 생성 요청에 실패했습니다.');}
+      if(result.status==='ready'){task.resume=false;throw new Error('생성 요청이 접수되지 않았습니다. 예상 풍경 생성을 다시 눌러 주세요.');}
+      const deadline=Date.now()+10*60*1000;
+      while(['queued','running'].includes(result.status)) {
+        if(Date.now()>deadline)throw new Error('아직 생성 중입니다. 생성 상태 확인으로 이어서 확인해 주세요.');
+        await new Promise((resolve)=>setTimeout(resolve,2000));
+        response=await fetch(`/api/images/${encodeURIComponent(key)}`,{signal:AbortSignal.timeout(15000)});
+        result=await response.json();
+        if(!response.ok)throw new Error(result.error || '생성 상태를 확인하지 못했습니다.');
+      }
+      if(result.status==='failed') {
+        task.failed=true;
+        throw new Error(result.error || '이미지 생성에 실패했습니다.');
+      }
+      if(result.status!=='generated' || !safeUrl(result.url))throw new Error('이미지가 아직 준비되지 않았습니다.');
+      task.result=result;task.message='분석 결과를 참고한 AI 예상 풍경입니다. 실제 사진이나 정확한 지형 재현은 아닙니다.';
+    } catch(error) {
+      task.message=error.name==='TimeoutError'?'연결 대기 시간이 초과되었습니다. 생성 상태 확인을 눌러 주세요.':error.message;
+      task.resume=task.resume && !task.failed;
+    } finally {
+      task.pending=false;updateSceneImage(key);
+      // Keep only current/recent UI state; active jobs remain available on the server.
+      if(imageTasks.size>64)for(const [id,item] of imageTasks){if(!item.pending && id!==key){imageTasks.delete(id);break;}}
+    }
+  }
+  document.addEventListener('click',(event)=>{
+    const button=event.target.closest('[data-generate-scene]');
+    if(button && !button.disabled)generateSceneImage(button.dataset.generateScene);
+  });
   function imageBlock(image) {
     const url=safeUrl(image.url);
     if (!url || !['generated','available','generated_illustration','illustrative'].includes(image.status)) return '<div class="image-status"><span aria-hidden="true">◫</span><p>예상 이미지 미생성<small>생성 프롬프트와 한계는 아래 평가 근거에서 확인하세요.</small></p></div>';

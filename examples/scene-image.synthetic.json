@@ -1,0 +1,21 @@
+{
+  "view_id": "fictional-mountain-lake-example",
+  "evidence_kind": "scenario",
+  "orientation": {"bearing_deg": 0, "fov_deg": 70},
+  "standing": {"observer_z_m": 51.7, "eye_height_m": 1.7},
+  "view_at": "2026-09-13T16:00:00+09:00",
+  "scene_samples": [
+    {
+      "target_id": "fictional-mountain", "name": "가상 한빛산", "category": "mountain",
+      "state": "visible", "bearing_deg": 345, "distance_m": 3000,
+      "target": {"z_m": 650}, "angular_elevation_deg": 11.28,
+      "target_height_reference": "fictional absolute elevation in metres"
+    },
+    {
+      "target_id": "fictional-lake", "name": "가상 푸른호수", "category": "water",
+      "state": "visible", "bearing_deg": 15, "distance_m": 800,
+      "target": {"z_m": 30}, "angular_elevation_deg": -1.55,
+      "target_height_reference": "fictional absolute water elevation in metres"
+    }
+  ]
+}

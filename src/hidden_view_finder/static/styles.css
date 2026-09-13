@@ -1996,3 +1996,10 @@ td small {
     transition:none!important
   }
 }
+/* Runtime scene images stay attached to the analysis result that requested them. */
+.scene-image-panel { margin-top: 18px; padding-top: 12px; border-top: 1px solid #dde3d6; }
+.scene-image-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.scene-image-actions button { padding: 9px 14px; border: 1px solid #a3b298; border-radius: 6px; }
+.scene-image-actions button:disabled { opacity: .65; cursor: default; }
+.scene-image-status { margin: 8px 0; overflow-wrap: anywhere; }
+.scene-image-output img { width: 100%; height: auto; border-radius: 8px; }
