@@ -30,7 +30,7 @@ Windows의 UTF-8 BOM·CRLF 파일과 `OPENAI_API_KEY="키" # 주석` 형식도 �
 기본 모델은 `gpt-image-2.5-sunburst`, 크기는 `1536x1024`, 품질은 `medium`입니다.
 Images API의 `POST /v1/images/generations`와 PNG base64 응답을 사용합니다.
 규격 확인: [공식 OpenAI 이미지 생성 문서](https://developers.openai.com/api/docs/guides/image-generation)
-(2026-09-13 확인).
+(2026-09-14 재확인).
 
 선택 설정:
 
@@ -157,3 +157,16 @@ python scripts/demo/check_scene_image.py
 따라서 **이미 분석 결과가 있거나 가상 시나리오로 실행하는 경우, 이미지 기능의 추가 필수 설정은
 유효한 OpenAI API 키 한 개**입니다. 서울 실제 지형 분석 자료, OpenAI 계정의 모델 권한·결제,
 외부 HTTPS 연결까지 API 키가 대신 준비해 주는 것은 아닙니다.
+
+### 2026-09-14 브랜치 게시 전 재검증
+
+`adding-API(image)`의 독립 작업 사본에서 관련 테스트 **156개가 모두 통과**했습니다.
+GIS 환경으로 실행해 앞서 생략됐던 테스트도 포함했습니다. Chromium 모의 제공자 검사도
+통과했습니다: 버튼 클릭 전 API 호출 없음, 생성 대기 표시, PNG 디코딩·표시,
+중복 호출 방지, 키 비노출, 모바일 화면 및 JavaScript 오류 없음.
+추가 패키지를 로딩하지 않는 `python3 -S` CLI의 `--dry-run`도 통과했습니다.
+
+점검한 로컬 프로젝트에는 `.env`가 없었고 실행 환경의 `OPENAI_API_KEY`도
+설정되어 있지 않았습니다. 따라서 **키 입력을 위한 코드는 준비됐지만 실제 키는
+미설정이며, 실제 계정 인증·결제·모델 권한 및 유료 생성 성공은 검증하지 않았습니다.**
+`.env.example`의 키 값은 빈칸으로 유지하며, 실제 키를 넣은 `.env`는 Git에서 제외됩니다.
